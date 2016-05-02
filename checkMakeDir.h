@@ -6,11 +6,10 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-struct stat st = {0};
+struct stat st;
 
 bool checkDir(const std::string inPath)
 {
-
   if(stat(inPath.c_str(), &st) != 0) return false;
 
   if(st.st_mode & S_IFDIR) return true;
@@ -26,13 +25,20 @@ bool checkFile(const std::string inFile)
 }
 
 
-void checkMakeDir(const std::string inPath)
+bool checkMakeDir(const std::string inPath)
 {
-  if(!checkDir(inPath)){
+  bool dirIsMade = false;
+  
+  if(checkFile(inPath)){
+    std::cout << "Path \'" << inPath << "\' already exists as file. Return false." << std::endl;
+  }
+  else if(checkDir(inPath)) dirIsMade = true;
+  else if(!checkDir(inPath)){
     mkdir(inPath.c_str(), 0700);
+    dirIsMade = true;
   }
 
-  return;
+  return dirIsMade;
 }
 
 #endif
