@@ -4,7 +4,7 @@
 int testReturnFileList(const std::string testPath, const std::string filterStr)
 {
   std::vector<std::string> testFileVect = returnFileList(testPath, filterStr);
-  std::cout << "Number of files (filter == " << filterStr << "): " << testFileVect.size() << std::endl;
+  std::cout << "Number of files (filter == \'" << filterStr << "\'): " << testFileVect.size() << std::endl;
 
   for(int iter = 0; iter < (int)testFileVect.size(); iter++){
     std::cout << " File #" << iter << ": " << testFileVect.at(iter) << std::endl;
