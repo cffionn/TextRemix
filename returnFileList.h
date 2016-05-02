@@ -11,6 +11,8 @@
 
 #include "checkMakeDir.h"
 
+const int listSizeLimit = 10000;
+
 std::vector<std::string> returnFileList(std::string dirPath, const std::string filterStr = ".txt")
 {
   bool doFilter = true;
@@ -45,9 +47,19 @@ std::vector<std::string> returnFileList(std::string dirPath, const std::string f
         for(int iter = 0; iter < (int)tempStrVect.size(); iter++){
           if(tempStrVect.at(iter).find(filterStr.c_str()) != std::string::npos || !doFilter) fileList.push_back(tempStrVect.at(iter));
         }
+
+	if(fileList.size() > listSizeLimit){
+	  std::cout << "Exceeded limit on number of files (" << listSizeLimit << "). Return." << std::endl;
+	  return fileList;
+	}
       }
       else{
         if(fullStr.find(filterStr.c_str()) != std::string::npos || !doFilter) fileList.push_back(fullStr);
+
+	if(fileList.size() > listSizeLimit){
+	  std::cout << "Exceeded limit on number of files (" << listSizeLimit << "). Return." << std::endl;
+	  return fileList;
+	}
       }
 
       epdf = readdir(dpdf);
