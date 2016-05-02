@@ -1,4 +1,4 @@
-#include "returnFileList.h"
+#include "interface/returnFileList.h"
 #include <iostream>
 
 int testReturnFileList(const std::string testPath, const std::string filterStr)

@@ -1,4 +1,4 @@
-#include "getSyllable.h"
+#include "interface/getSyllable.h"
 
 int testGetSyllable(const std::string testWord)
 {

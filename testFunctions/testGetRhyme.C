@@ -1,5 +1,5 @@
-#include "returnFileList.h"
-#include "getRhyme.h"
+#include "interface/returnFileList.h"
+#include "interface/getRhyme.h"
 #include <iostream>
 
 const std::string filterStr = ".txt";

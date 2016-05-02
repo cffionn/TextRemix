@@ -2,9 +2,9 @@
 #include <iostream>
 #include <string>
 
-#include "getSyllable.h"
+#include "interface/getSyllable.h"
 
-#include "checkMakeDir.h"
+#include "interface/checkMakeDir.h"
 
 const std::string outSylPath = "outputSylSort/";
 

@@ -9,8 +9,8 @@
 
 #include <boost/algorithm/string.hpp>    
 
-#include "defAlphaNumSoup.h"
-#include "returnFileList.h"
+#include "interface/defAlphaNumSoup.h"
+#include "interface/returnFileList.h"
 
 const std::string rhymeDatabasePath = "rhymeDatabase/";
 
@@ -46,7 +46,7 @@ int getRhyme(std::string inWord, std::vector<std::string>* fileList_p)
       std::string rhymingWord =  fileList_p->at(rhymeIter).substr(0, fileList_p->at(rhymeIter).find(".txt"));
       rhymingWord = rhymingWord.substr(rhymingWord.find("/")+1, rhymingWord.find("/")+1-rhymingWord.size());
 
-      std::cout << " Input " << rhymeIter << ": " << rhymingWord << std::endl;
+      std::cout << " Input " << rhymeIter << ": " << rhymingWord << " (" << inWord << ")" << std::endl;
     }
 
     std::cout << " Enter num: ";

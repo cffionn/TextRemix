@@ -9,7 +9,7 @@
 
 #include <boost/algorithm/string.hpp>    
 
-#include "defAlphaNumSoup.h"
+#include "interface/defAlphaNumSoup.h"
 
 const int nSylFiles = 8;
 const std::string sylFileStrings[nSylFiles] = {"syllableDatabase/oneSyllable.txt", "syllableDatabase/twoSyllable.txt", "syllableDatabase/threeSyllable.txt", "syllableDatabase/fourSyllable.txt", "syllableDatabase/fiveSyllable.txt", "syllableDatabase/sixSyllable.txt", "syllableDatabase/sevenSyllable.txt", "syllableDatabase/eightSyllable.txt"};
@@ -41,8 +41,10 @@ int getSyllable(std::string inWord)
     std::cout << "Word not found. Please enter integer corresponding to number of syllables (1-8) in \'" << inWord << "\': ";
     int input;
     std::cin >> input;
-    if(std::cin.fail()){
+    if(!(std::cin.good())){
       std::cout << "Input was not integer. Please enter integer 1 thru 8." << std::endl;
+      std::cin.clear();
+      std::cin.ignore(INT_MAX, '\n');
     }
     else if(input < 1) std::cout << "Input less than 1. Please enter integer 1 thru 8." << std::endl;
     else if(input > 8) std::cout << "Input greater than 8. Please enter integer 1 thru 8." << std::endl;
