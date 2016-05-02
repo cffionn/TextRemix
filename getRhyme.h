@@ -10,15 +10,7 @@
 #include <boost/algorithm/string.hpp>    
 
 #include "defAlphaNumSoup.h"
-
-
-std::vector<std::string> returnFileList(std::string dirPath)
-{
-  std::vector<std::string>* fileList_p = new std::vector<std::string>;
-
-  return fileList_p;
-}
-
+#include "returnFileList.h"
 
 int getRhyme(std::string inWord, std::vector<std::string>* fileList_p)
 {
