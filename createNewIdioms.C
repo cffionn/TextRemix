@@ -11,6 +11,10 @@
 #include <boost/algorithm/string.hpp>
 
 #include "defAlphaNumSoup.h"
+#include "checkMakeDir.h"
+
+const std::string outDirFull = "outputFull/";
+const std::string outDirTweet = "outputTweet/";
 
 int myrandom(int i){return std::rand()%i;}
 
@@ -210,39 +214,50 @@ int createNewIdioms(const std::string inFileName, const std::string inFileName2,
   if(tempOutName.find(".txt") != std::string::npos){
     tempOutName.replace(tempOutName.find(".txt"), 4, repStr);
   }
-
-  tempOutName = "outputFull/" + tempOutName;
-
+  tempOutName = outDirFull + tempOutName;
+   
+ 
   std::string tempOutNameTweet = outName;
   std::string repStrTweet = "_TweetOutput.txt";
   if(tempOutNameTweet.find(".txt") != std::string::npos){
     tempOutNameTweet.replace(tempOutNameTweet.find(".txt"), 4, repStrTweet);
   }
-
-  tempOutNameTweet = "outputTweet/" + tempOutNameTweet;
+  tempOutNameTweet = outDirTweet + tempOutNameTweet;
 
   std::srand(unsigned(std::time(NULL)));
   std::random_shuffle(newStr_p->begin(), newStr_p->end(), myrandom);
- 
-  std::ofstream outFile;
-  if(doAppend) outFile.open(tempOutName.c_str(), std::ios_base::app);
-  else outFile.open(tempOutName.c_str());
+
   const int newStrSize = (int)newStr_p->size();
-  for(int iter = 0; iter < newStrSize; iter++){
-    outFile << newStr_p->at(iter) << std::endl;
+ 
+  if(checkMakeDir(outDirFull)){
+    std::ofstream outFile;
+
+    if(doAppend) outFile.open(tempOutName.c_str(), std::ios_base::app);
+    else outFile.open(tempOutName.c_str());
+    for(int iter = 0; iter < newStrSize; iter++){
+      outFile << newStr_p->at(iter) << std::endl;
+    }
+  
+    outFile.close();
+  }
+  else{
+    std::cout << "Error making dir \'" << outDirFull << "\'. File \'" << tempOutName << "\' not written." << std::endl;
+  }
+
+  if(checkMakeDir(outDirTweet)){
+    std::ofstream outTweetFile;
+    if(doAppend) outTweetFile.open(tempOutNameTweet.c_str(), std::ios_base::app);
+    else outTweetFile.open(tempOutNameTweet.c_str());
+    for(int iter = 0; iter < newStrSize; iter++){
+      if(newStr_p->at(iter).size() < 140) outTweetFile << newStr_p->at(iter) << std::endl;
+    }
+
+    outTweetFile.close();
+  }
+  else{
+    std::cout << "Error making dir \'" << outDirTweet << "\'. File \'" << tempOutNameTweet << "\' not written." << std::endl;
   }
   
-  outFile.close();
-
-  std::ofstream outTweetFile;
-  if(doAppend) outTweetFile.open(tempOutNameTweet.c_str(), std::ios_base::app);
-  else outTweetFile.open(tempOutNameTweet.c_str());
-  for(int iter = 0; iter < newStrSize; iter++){
-    if(newStr_p->at(iter).size() < 140) outTweetFile << newStr_p->at(iter) << std::endl;
-  }
-  
-  outTweetFile.close();
-
   totalWords_p->clear();
   delete totalWords_p;
   
@@ -282,15 +297,17 @@ int runCreateNewIdioms(const std::string inFileName, const std::string inFileNam
     if(!strcmp(tempChar1.c_str(), ".")) lead = 0;
     else if(!strcmp(tempChar2.c_str(), ".")) lead = 1;
     
+    if(lead != -1) break;
+
     if(alphabetSoup.find(tempChar1.c_str()) == std::string::npos){
-      std::cout << "Non-alphanumeric char in inFileName1. Return 1." << std::endl;
+      std::cout << "Non-alphanumeric char in inFileName1, \'" + tempInFileName + "\'. Return 1." << std::endl;
       return 1;
     }
     else if(alphabetSoup.find(tempChar2.c_str()) == std::string::npos){
-      std::cout << "Non-alphanumeric char in inFileName2. Return 1." << std::endl;
+      std::cout << "Non-alphanumeric char in inFileName2, \'" + tempInFileName2 + "\'. Return 1." << std::endl;
       return 1;
-    };
-    
+    }
+  
     boost::algorithm::to_lower(tempChar1);
     boost::algorithm::to_lower(tempChar2);
     

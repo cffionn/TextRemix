@@ -4,6 +4,8 @@
 
 #include "getSyllable.h"
 
+#include "checkMakeDir.h"
+
 const std::string outSylPath = "outputSylSort/";
 
 const bool doDebug = false;
@@ -149,16 +151,21 @@ int createSyllableSorted(const std::string inFileName)
   
   outName = outSylPath + outName;
 
-  std::ofstream outFile(outName.c_str());
-  int sylNum = -1;
-  for(int iter = 0; iter < (int)inStr_p->size(); iter++){
-    if(inStrSyl_p->at(iter) != sylNum){
-      sylNum = inStrSyl_p->at(iter);
-      outFile << "Syllables: " << sylNum << std::endl;
+  if(checkMakeDir(outSylPath)){
+    std::ofstream outFile(outName.c_str());
+    int sylNum = -1;
+    for(int iter = 0; iter < (int)inStr_p->size(); iter++){
+      if(inStrSyl_p->at(iter) != sylNum){
+	sylNum = inStrSyl_p->at(iter);
+	outFile << "Syllables: " << sylNum << std::endl;
+      }
+      outFile << "  " << inStr_p->at(iter) << " (" << inStrSyl_p->at(iter) << ")" << std::endl;
     }
-    outFile << "  " << inStr_p->at(iter) << " (" << inStrSyl_p->at(iter) << ")" << std::endl;
+    outFile.close();
   }
-  outFile.close();
+  else{
+    std::cout << "Error making dir \'" << outSylPath << "\'. File \'" << outName << "\' not written." << std::endl;
+  }
 
   inStrSyl_p->clear();
   delete inStrSyl_p;
