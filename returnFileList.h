@@ -41,7 +41,7 @@ std::vector<std::string> returnFileList(std::string dirPath, const std::string f
       std::string fullStr = dirPath + interString + tempStr;
 
       if(checkDir(fullStr)){
-	std::vector<std::string> tempStrVect = returnFileList(fullStr);
+	std::vector<std::string> tempStrVect = returnFileList(fullStr, filterStr);
         for(int iter = 0; iter < (int)tempStrVect.size(); iter++){
           if(tempStrVect.at(iter).find(filterStr.c_str()) != std::string::npos || !doFilter) fileList.push_back(tempStrVect.at(iter));
         }
