@@ -14,7 +14,7 @@
 std::vector<std::string> returnFileList(std::string dirPath, const std::string filterStr = ".txt")
 {
   bool doFilter = true;
-  if(!strcmp(filterStr.c_str(), "")) doFilter = false;
+  if(filterStr.size() == 0) doFilter = false;
 
   std::vector<std::string> fileList;
 
@@ -22,18 +22,18 @@ std::vector<std::string> returnFileList(std::string dirPath, const std::string f
   struct dirent *epdf;
 
   std::string interString = "";
-  if(strcmp(dirPath.substr(dirPath.size()-1, 1).c_str(), "/") != 0) interString = "/";
+  if(dirPath.substr(dirPath.size()-1, 1).find("/") == std::string::npos) interString = "/";
 
   if(dpdf != NULL){
     epdf = readdir(dpdf);
     while(epdf){
       std::string tempStr = epdf->d_name;
 
-      if(!strcmp(tempStr.c_str(), ".")){
+      if(tempStr.find(".") != std::string::npos && tempStr.size() == 1){
 	epdf = readdir(dpdf);
 	continue;
       }
-      else if(!strcmp(tempStr.c_str(), "..")){
+      else if(tempStr.find("..") != std::string::npos && tempStr.size() == 2){
 	epdf = readdir(dpdf);
 	continue;
       }
