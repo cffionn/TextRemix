@@ -23,6 +23,7 @@ int sortFileStrings(const std::string inFileName)
   std::vector<int>* strSylForSort_p = new std::vector<int>;
   
   while(std::getline(file, str)){
+    if(str.size() == 0) continue;
     strForSort_p->push_back(str);
   }
   
@@ -98,40 +99,45 @@ int sortFileStrings(const std::string inFileName)
   std::string newFileName = inFileName;
   std::string newFilePath = "";
 
-  if(newFileName.find("noRhyme") == std::string::npos){
-    while(newFileName.find("/") != std::string::npos){
-      newFilePath = newFilePath + newFileName.substr(0, newFileName.find("/")+1);
-      newFileName.replace(0, newFileName.find("/")+1, "");
-    }
-    
-    while(newFileName.find(".txt") != std::string::npos){
-      newFileName.replace(newFileName.find(".txt"), 4, "");
-    }
-    
-    int newFileNameSize = (int)newFileName.size();
-    
-    for(int fileNameIter = 0; fileNameIter < newFileNameSize; fileNameIter++){
-      if(alphabetSoupUpper.find(newFileName.at(fileNameIter)) != std::string::npos || underscoreStr.find(newFileName.at(fileNameIter)) != std::string::npos){
-	newFileName.replace(fileNameIter, newFileName.size()-fileNameIter, "");
-	break;
+
+  //renaming section only applicable to rhyming database
+
+  if(newFileName.find("rhymeDatabase") != std::string::npos){
+    if(newFileName.find("noRhyme") == std::string::npos){
+      while(newFileName.find("/") != std::string::npos){
+	newFilePath = newFilePath + newFileName.substr(0, newFileName.find("/")+1);
+	newFileName.replace(0, newFileName.find("/")+1, "");
       }
-    }
-
-    std::string firstConsonantWord = "";
-    for(int strIter = 0; strIter < nStr; strIter++){
-      if(alphabetSoupConsonant.find(strForSort_p->at(strIter).at(0)) != std::string::npos){
-	firstConsonantWord = strForSort_p->at(strIter);
-	break;
-      } 
-    }
-    if(firstConsonantWord.size() == 0) firstConsonantWord = strForSort_p->at(0);
-
-    std::string firstConsonantWordLetter = firstConsonantWord.substr(0, 1);
-    boost::algorithm::to_upper(firstConsonantWordLetter);
     
-    firstConsonantWord = firstConsonantWordLetter + firstConsonantWord.substr(1, firstConsonantWord.size()-1);
-  
-    newFileName = newFilePath + newFileName + "_" + firstConsonantWord + ".txt";
+      while(newFileName.find(".txt") != std::string::npos){
+	newFileName.replace(newFileName.find(".txt"), 4, "");
+      }
+      
+      int newFileNameSize = (int)newFileName.size();
+      
+      for(int fileNameIter = 0; fileNameIter < newFileNameSize; fileNameIter++){
+	if(alphabetSoupUpper.find(newFileName.at(fileNameIter)) != std::string::npos || underscoreStr.find(newFileName.at(fileNameIter)) != std::string::npos){
+	  newFileName.replace(fileNameIter, newFileName.size()-fileNameIter, "");
+	  break;
+	}
+      }
+      
+      std::string firstConsonantWord = "";
+      for(int strIter = 0; strIter < nStr; strIter++){
+	if(alphabetSoupConsonant.find(strForSort_p->at(strIter).at(0)) != std::string::npos){
+	  firstConsonantWord = strForSort_p->at(strIter);
+	  break;
+	} 
+      }
+      if(firstConsonantWord.size() == 0) firstConsonantWord = strForSort_p->at(0);
+      
+      std::string firstConsonantWordLetter = firstConsonantWord.substr(0, 1);
+      boost::algorithm::to_upper(firstConsonantWordLetter);
+      
+      firstConsonantWord = firstConsonantWordLetter + firstConsonantWord.substr(1, firstConsonantWord.size()-1);
+      
+      newFileName = newFilePath + newFileName + "_" + firstConsonantWord + ".txt";
+    }
   }
 
   if(std::remove(inFileName.c_str()) != 0){
