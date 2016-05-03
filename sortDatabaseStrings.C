@@ -5,6 +5,7 @@
 #include "interface/getSyllable.h"
 #include "interface/checkMakeDir.h"
 #include "interface/returnFileList.h"
+#include "interface/defAlphaNumSoup.h"
 
 int sortDatabaseStrings(const std::string inPath)
 {
@@ -24,12 +25,15 @@ int sortDatabaseStrings(const std::string inPath)
     int nStr = (int)strForSort_p->size();
 
     for(int strIter = 0; strIter < nStr-1; strIter++){
-      int nChar = (int)strForSort_p->at(strIter).size();
+      std::string tempStr = strForSort_p->at(strIter);
+      int nChar = (int)tempStr.size();
       
       for(int charIter = 0; charIter < nChar; charIter++){
-
+	if(alphabetSoup.find(tempStr.at(charIter)) == std::string::npos){
+	  std::cout << "Word \'" << tempStr << "\' in file \'" << dbFileList.at(fileIter) << "\' has none alphabet char. Please remove and try again. Return 1." << std::endl;
+	  return 1;
+	}
       }
-
     }
 
     strForSort_p->clear();
