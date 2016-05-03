@@ -9,7 +9,9 @@
 
 #include <boost/algorithm/string.hpp>
 
-int sortDatabaseStrings(const std::string inFileName)
+const std::string underscoreStr = "_";
+
+int sortFileStrings(const std::string inFileName)
 {
   if(!checkFile(inFileName)){
     std::cout << "Input file \'" << inFileName << "\' is invalid. Return 1." << std::endl;
@@ -24,8 +26,13 @@ int sortDatabaseStrings(const std::string inFileName)
     strForSort_p->push_back(str);
   }
   
-  int nStr = (int)strForSort_p->size();
+  const int nStr = (int)strForSort_p->size();
   
+  if(nStr == 0){
+    std::cout << "Input file is empty. Return 1." << std::endl;
+    return 1;
+  }
+
   for(int strIter = 0; strIter < nStr; strIter++){
     std::string tempStr = strForSort_p->at(strIter);
     int nChar = (int)tempStr.size();
@@ -87,6 +94,56 @@ int sortDatabaseStrings(const std::string inFileName)
       }      
     }
   }
+
+  std::string newFileName = inFileName;
+  std::string newFilePath = "";
+
+  if(newFileName.find("noRhyme") == std::string::npos){
+    while(newFileName.find("/") != std::string::npos){
+      newFilePath = newFilePath + newFileName.substr(0, newFileName.find("/")+1);
+      newFileName.replace(0, newFileName.find("/")+1, "");
+    }
+    
+    while(newFileName.find(".txt") != std::string::npos){
+      newFileName.replace(newFileName.find(".txt"), 4, "");
+    }
+    
+    int newFileNameSize = (int)newFileName.size();
+    
+    for(int fileNameIter = 0; fileNameIter < newFileNameSize; fileNameIter++){
+      if(alphabetSoupUpper.find(newFileName.at(fileNameIter)) != std::string::npos || underscoreStr.find(newFileName.at(fileNameIter)) != std::string::npos){
+	newFileName.replace(fileNameIter, newFileName.size()-fileNameIter, "");
+	break;
+      }
+    }
+
+    std::string firstConsonantWord = "";
+    for(int strIter = 0; strIter < nStr; strIter++){
+      if(alphabetSoupConsonant.find(strForSort_p->at(strIter).at(0)) != std::string::npos){
+	firstConsonantWord = strForSort_p->at(strIter);
+	break;
+      } 
+    }
+    if(firstConsonantWord.size() == 0) firstConsonantWord = strForSort_p->at(0);
+
+    std::string firstConsonantWordLetter = firstConsonantWord.substr(0, 1);
+    boost::algorithm::to_upper(firstConsonantWordLetter);
+    
+    firstConsonantWord = firstConsonantWordLetter + firstConsonantWord.substr(1, firstConsonantWord.size()-1);
+  
+    newFileName = newFilePath + newFileName + "_" + firstConsonantWord + ".txt";
+  }
+
+  if(std::remove(inFileName.c_str()) != 0){
+    std::cout << "Error deleting file \'" << inFileName << "\'. Return 1" << std::endl;
+    return 1;
+  }
+
+  std::ofstream newFile(newFileName);
+  for(int strIter = 0; strIter < nStr; strIter++){
+    newFile << strForSort_p->at(strIter) << std::endl;
+  }
+  newFile.close();
   
   strSylForSort_p->clear();
   delete strSylForSort_p;
@@ -97,6 +154,32 @@ int sortDatabaseStrings(const std::string inFileName)
   return 0;
 }
 
+
+int sortDatabaseStrings(const std::string inPath)
+{
+  int retVal = -1;
+
+  if(!checkDir(inPath)){
+    std::cout << "Invalid path \'" << inPath << "\' given. Return 1." << std::endl;
+    return 1;
+  }
+  else if(inPath.find("Database") == std::string::npos){
+    std::cout << "Input path \'" << inPath << "\' not a database. Return 1." << std::endl;
+    return 1;
+  }
+
+  const std::string filterString = ".txt";
+  
+  std::vector<std::string> dbFileList = returnFileList(inPath, filterString);
+  int nFiles = (int)dbFileList.size();
+
+  for(int fileIter = 0; fileIter < nFiles; fileIter++){
+    retVal = sortFileStrings(dbFileList.at(fileIter));
+    if(retVal != 0) break;
+  }
+
+  return retVal;
+}
 
 int main(int argc, char *argv[])
 {
