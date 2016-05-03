@@ -1,0 +1,8 @@
+boat
+coat
+float
+gloat
+goat
+oat
+stoat
+throat

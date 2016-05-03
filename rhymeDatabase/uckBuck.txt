@@ -1,0 +1,13 @@
+buck
+chuck
+cluck
+duck
+luck
+muck
+puck
+pluck
+stuck
+struck
+truck
+tuck
+yuck

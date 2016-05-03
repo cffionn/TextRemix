@@ -1,0 +1,14 @@
+all
+ball
+call
+fall
+gall
+hall
+install
+mall
+small
+squall
+stall
+tall
+thrall
+wall
