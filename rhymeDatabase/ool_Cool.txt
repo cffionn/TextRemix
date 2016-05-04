@@ -6,3 +6,5 @@ spool
 stool
 stools
 tool
+rule
+mule
