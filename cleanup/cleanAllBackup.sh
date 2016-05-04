@@ -9,6 +9,7 @@ path=${path:0:$pos}
 rm $path/*.C~
 rm $path/testFunctions/*.C~
 rm $path/*.h~
+rm $path/*.md~
 rm $path/interface/*.h~
 rm $path/*.sh~
 rm $path/inputDatabase/*.txt~
