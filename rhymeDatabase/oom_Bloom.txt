@@ -6,4 +6,5 @@ gloom
 groom
 loom
 room
+tombs
 zoom

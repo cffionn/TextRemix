@@ -8,6 +8,7 @@ nap
 rap
 sap
 scrap
+scraps
 slap
 snap
 strap

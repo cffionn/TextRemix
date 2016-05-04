@@ -6,6 +6,7 @@
 #include "interface/getRhyme.h"
 #include "interface/checkMakeDir.h"
 #include "interface/returnFileList.h"
+#include "interface/defAlphaNumSoup.h"
 
 #include <boost/algorithm/string.hpp>
 
@@ -39,6 +40,10 @@ int createSyllableSorted(const std::string inFileName)
   int fillIter = 1;
 
   while(std::getline(file, str)){
+    if(str.size() == 0) continue;
+
+    str = replaceNumbersWithWords(str);
+
     inStr_p->push_back(str);
     inStrSyl_p->push_back(getSyllables(str));
 
@@ -53,6 +58,8 @@ int createSyllableSorted(const std::string inFileName)
     }
 
     if(doDebug) std::cout << __LINE__ << std::endl;
+
+    
 
     int iter = 0;
     while(iter < str.size()){

@@ -3,3 +3,4 @@ knife
 life
 strife
 wife
+afterlife

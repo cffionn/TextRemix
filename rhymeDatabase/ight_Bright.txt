@@ -5,8 +5,10 @@ fright
 height
 knight
 light
+lights
 might
 night
+nights
 plight
 right
 sight

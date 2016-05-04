@@ -3,7 +3,6 @@
 
 #include <string>
 #include <vector>
-
 #include <fstream>
 #include <iostream>
 
@@ -63,14 +62,7 @@ int getSyllables(std::string inSentence)
 {
   int syllables = 0;
 
-  for(int iter = 0; iter < nNumbers; iter++){
-    for(int iter2 = 0; iter2 < nNumBack; iter2++){
-      std::string tempNumberSoup = " " + numberSoup[iter] + numBack[iter2];
-      while(inSentence.find(tempNumberSoup.c_str()) != std::string::npos){
-	inSentence.replace(inSentence.find(tempNumberSoup.c_str()), tempNumberSoup.size(), " " + numberSoupStr[iter] + numBack[iter2]);
-      }
-    }
-  }
+  inSentence = replaceNumbersWithWords(inSentence);
 
   int sentenceIter = 0;
   while(sentenceIter < (int)inSentence.size()){
@@ -97,6 +89,7 @@ int getSyllables(std::string inSentence)
   }
 
   for(int iter = 0; iter < (int)sentenceWords_p->size(); iter++){
+    if(sentenceWords_p->at(iter).size() == 0) continue;
     syllables += getSyllable(sentenceWords_p->at(iter));
   }
 

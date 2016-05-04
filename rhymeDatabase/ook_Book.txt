@@ -4,6 +4,7 @@ cook
 crook
 hook
 look
+looks
 nook
 rook
 shook

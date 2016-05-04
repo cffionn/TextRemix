@@ -1,7 +1,12 @@
+buy
 bye
 eye
 eyes
+fly
 fry
+high
 lie
 sigh
+sky
 tie
+testify
