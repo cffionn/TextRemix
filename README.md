@@ -6,7 +6,7 @@ Run top level C files as executables as follows:
 
 sh compile.sh <.C file>
 
-./<Created .exe File> <input args>
+./\<Created .exe File\> \<input args\>
 
 where <input args> will be requested as prompt when running ./<.C File> with no arguments
 
