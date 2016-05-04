@@ -5,12 +5,12 @@ eyes
 fly
 fry
 high
+i
 lie
+rise
 sigh
+skies
 sky
 tie
-testify
-skies
-rise
-i
 suprise
+testify
