@@ -14,6 +14,8 @@
 
 const std::string rhymeDatabasePath = "rhymeDatabase/";
 
+const std::string noRhymeStr = "noRhyme";
+
 int getRhyme(std::string inWord, std::vector<std::string>* fileList_p)
 {
   boost::algorithm::to_lower(inWord);
@@ -21,6 +23,14 @@ int getRhyme(std::string inWord, std::vector<std::string>* fileList_p)
   int rhymeNum = -1;
 
   const int nRhymeFiles = (int)fileList_p->size();
+
+  if(nRhymeFiles == 0){
+    std::cout << "Input list of rhyme files empty. Please give non-empty list of rhyme files" << std::endl;
+    return -1;
+  }
+  else if(fileList_p->at(nRhymeFiles-1).find(noRhymeStr) == std::string::npos){
+    
+  }
 
   for(int rhymeIter = 0; rhymeIter < nRhymeFiles; rhymeIter++){
     std::ifstream file(fileList_p->at(rhymeIter).c_str());
