@@ -334,7 +334,7 @@ int runCreateNewIdioms(const std::string inFileName, const std::string inFileNam
   }
   else if(lead == 1){
     if(tempInFileName2.find(".txt") != std::string::npos) tempInFileName2.replace(tempInFileName2.find(".txt"), 4, "");
-    outName = tempInFileName + "_" + tempInFileName2;
+    outName = tempInFileName2 + "_" + tempInFileName;
   }
 
   int retVal = createNewIdioms(inFileName, inFileName2, outName, false);
