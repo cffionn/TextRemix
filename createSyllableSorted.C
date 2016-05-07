@@ -144,8 +144,8 @@ int createSyllableSorted(const std::string inFileName, const bool doInteractiveR
 	int pos = 0;
 
 
-	int tempPos1 = getRhyme(tempWord1, &rhymeFileList);
-	int tempPos2 = getRhyme(tempWord2, &rhymeFileList);
+	int tempPos1 = getRhyme(tempWord1, &rhymeFileList, doInteractiveRhyme);
+	int tempPos2 = getRhyme(tempWord2, &rhymeFileList, doInteractiveRhyme);
 
 	if(tempPos1 > tempPos2) lead = 1;
 	else if(tempPos1 < tempPos2) lead = 0;

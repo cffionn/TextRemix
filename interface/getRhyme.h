@@ -48,7 +48,7 @@ int orderRhymeFileList(std::vector<std::string>* fileList_p)
   return 0;
 }
 
-int getRhyme(std::string inWord, std::vector<std::string>* fileList_p, bool doRhymeInteractive)
+int getRhyme(std::string inWord, std::vector<std::string>* fileList_p, bool doInteractiveRhyme)
 {
   boost::algorithm::to_lower(inWord);
 
@@ -113,7 +113,10 @@ int getRhyme(std::string inWord, std::vector<std::string>* fileList_p, bool doRh
       }			
     }
     else{
-      rhymeNum == nRhymeFiles-1;
+      rhymeNum = nRhymeFiles-1;
+      std::fstream file(fileList_p->at(rhymeNum).c_str(), std::fstream::app);
+      file << inWord << std::endl;
+      file.close();
     }      
   }
   
