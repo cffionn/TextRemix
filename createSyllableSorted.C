@@ -14,7 +14,7 @@ const std::string outSylPath = "outputSylSort/";
 
 const bool doDebug = false;
 
-int createSyllableSorted(const std::string inFileName)
+int createSyllableSorted(const std::string inFileName, const bool doInteractiveRhyme)
 {
   std::vector<std::string>* inStr_p = new std::vector<std::string>;
   std::vector<std::string>* lastWordStr_p = new std::vector<std::string>;
@@ -23,6 +23,11 @@ int createSyllableSorted(const std::string inFileName)
   std::string str;
 
   std::vector<std::string> rhymeFileList = returnFileList(rhymeDatabasePath, ".txt");
+
+  if(inFileName.find(".txt") == std::string::npos){
+    std::cout << "inFileName, \'" << inFileName << "\' is invalid. Not \'.txt\'. Return 1." << std::endl;
+    return 1;
+  }
 
   std::ifstream file(inFileName);
 
@@ -73,11 +78,7 @@ int createSyllableSorted(const std::string inFileName)
 
     lastWordStr_p->push_back(str);
 
-    int beforeSize = rhymeFileList.size();
-    int rhymePos = getRhyme(str, &rhymeFileList);
-    int afterSize = rhymeFileList.size();
-
-    if(beforeSize != afterSize) fillIter++;
+    int rhymePos = getRhyme(str, &rhymeFileList, doInteractiveRhyme);
 
     if(fillIter%10 == 0 || lineIter%(numberOfLines/10) == 0){
       std::cout << "Line number " << lineIter << "/" << numberOfLines - 1 << std::endl;
@@ -239,8 +240,8 @@ int createSyllableSorted(const std::string inFileName)
 
 int main(int argc, char *argv[])
 {
-  if(argc != 2){
-    std::cout << "Usage: createSyllableSorted.exe <inputFileName>" << std::endl;
+  if(argc != 3){
+    std::cout << "Usage: createSyllableSorted.exe <inputFileName> <doInteractiveRhyme>" << std::endl;
     std::cout << "Number of args given: " << argc << std::endl;
     for(int iter = 0; iter < argc; iter++){
       std::cout << "  argv[" << iter << "]: " << argv[iter] << std::endl;
@@ -248,7 +249,17 @@ int main(int argc, char *argv[])
     return -1;
   }
 
-  int retVal = createSyllableSorted(argv[1]);
+  const std::string arg1 = argv[1];
+  const std::string arg2 = argv[2];
+
+  if(arg2.size() != 1 || (arg2.find("0") == std::string::npos && arg2.find("1") == std::string::npos )){
+    std::cout << "Usage: createSyllableSorted.exe <inputFileName> <doInteractiveRhyme>" << std::endl;
+    std::cout << "Arg \'<doInteractiveRhyme>\' invalid. Please input 1/0 for true/false. Return -1." << std::endl;
+    return -1;
+  }
+
+
+  int retVal = createSyllableSorted(arg1, std::stoi(arg2));
   return retVal;
 }
 

@@ -16,7 +16,39 @@ const std::string rhymeDatabasePath = "rhymeDatabase/";
 
 const std::string noRhymeStr = "noRhyme";
 
-int getRhyme(std::string inWord, std::vector<std::string>* fileList_p)
+
+int orderRhymeFileList(std::vector<std::string>* fileList_p)
+{
+  const int nRhymeFiles = (int)fileList_p->size();
+
+  if(nRhymeFiles == 0){
+    std::cout << "Input list of rhyme files empty. Please give non-empty list of rhyme files" << std::endl;
+    return -1;
+  }
+  else{
+    int pos = -1;
+    for(int iter = 0; iter < nRhymeFiles; iter++){
+      if(fileList_p->at(iter).find(noRhymeStr) != std::string::npos){
+	pos = iter;
+	break;
+      }
+    }
+
+    if(pos == -1){
+      std::cout << "Input list of rhyme files does not contain noRhyme file. Return -1." << std::endl;
+      return -1;
+    }
+    else{
+      std::string tempString = fileList_p->at(pos);
+      fileList_p->at(pos) = fileList_p->at(nRhymeFiles-1);
+      fileList_p->at(nRhymeFiles-1) = tempString;
+    }
+  }
+
+  return 0;
+}
+
+int getRhyme(std::string inWord, std::vector<std::string>* fileList_p, bool doRhymeInteractive)
 {
   boost::algorithm::to_lower(inWord);
 
@@ -29,7 +61,10 @@ int getRhyme(std::string inWord, std::vector<std::string>* fileList_p)
     return -1;
   }
   else if(fileList_p->at(nRhymeFiles-1).find(noRhymeStr) == std::string::npos){
-    
+    std::cout << "noRhyme file not last in list. Swapping." << std::endl;
+    if(orderRhymeFileList(fileList_p) == -1){
+      return -1;
+    }
   }
 
   for(int rhymeIter = 0; rhymeIter < nRhymeFiles; rhymeIter++){
@@ -50,31 +85,36 @@ int getRhyme(std::string inWord, std::vector<std::string>* fileList_p)
   }
 
   while(rhymeNum == -1){
-    std::cout << "Word not found. Please enter integer corresponding to rhyme file (0-" << nRhymeFiles-1 << ") of \'" << inWord << "\': " << std::endl;
-
-    for(int rhymeIter = 0; rhymeIter < nRhymeFiles; rhymeIter++){
-      std::string rhymingWord =  fileList_p->at(rhymeIter).substr(0, fileList_p->at(rhymeIter).find(".txt"));
-      rhymingWord = rhymingWord.substr(rhymingWord.find("/")+1, rhymingWord.find("/")+1-rhymingWord.size());
-
-      std::cout << " Input " << rhymeIter << ": " << rhymingWord << " (" << inWord << ")" << std::endl;
+    if(doInteractiveRhyme){
+      std::cout << "Word not found. Please enter integer corresponding to rhyme file (0-" << nRhymeFiles-1 << ") of \'" << inWord << "\': " << std::endl;
+      
+      for(int rhymeIter = 0; rhymeIter < nRhymeFiles; rhymeIter++){
+	std::string rhymingWord =  fileList_p->at(rhymeIter).substr(0, fileList_p->at(rhymeIter).find(".txt"));
+	rhymingWord = rhymingWord.substr(rhymingWord.find("/")+1, rhymingWord.find("/")+1-rhymingWord.size());
+	
+	std::cout << " Input " << rhymeIter << ": " << rhymingWord << " (" << inWord << ")" << std::endl;
+      }
+      
+      std::cout << " Enter num: ";
+      int input;
+      std::cin >> input;
+      if(!(std::cin.good())){
+	std::cout << "Input was not integer. Please enter integer 0 thru " << nRhymeFiles-1 << "." << std::endl;
+	std::cin.clear();
+	std::cin.ignore(INT_MAX, '\n');
+      }
+      else if(input < 0) std::cout << "Input less than 0. Please enter integer 0 thru " << nRhymeFiles-1 << "." << std::endl;
+      else if(input > nRhymeFiles-1) std::cout << "Input greater than " << nRhymeFiles-1 << ". Please enter integer 0 thru "<< nRhymeFiles-1 <<"." << std::endl;
+      else{
+	rhymeNum = input;
+	std::fstream file(fileList_p->at(rhymeNum).c_str(), std::fstream::app);
+	file << inWord << std::endl;
+	file.close();
+      }			
     }
-
-    std::cout << " Enter num: ";
-    int input;
-    std::cin >> input;
-    if(!(std::cin.good())){
-      std::cout << "Input was not integer. Please enter integer 0 thru " << nRhymeFiles-1 << "." << std::endl;
-      std::cin.clear();
-      std::cin.ignore(INT_MAX, '\n');
-    }
-    else if(input < 0) std::cout << "Input less than 0. Please enter integer 0 thru " << nRhymeFiles-1 << "." << std::endl;
-    else if(input > nRhymeFiles-1) std::cout << "Input greater than " << nRhymeFiles-1 << ". Please enter integer 0 thru "<< nRhymeFiles-1 <<"." << std::endl;
     else{
-      rhymeNum = input;
-      std::fstream file(fileList_p->at(rhymeNum).c_str(), std::fstream::app);
-      file << inWord << std::endl;
-      file.close();
-    }			      
+      rhymeNum == nRhymeFiles-1;
+    }      
   }
   
   return rhymeNum;

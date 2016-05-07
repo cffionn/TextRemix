@@ -20,24 +20,38 @@ int myrandom(int i){return std::rand()%i;}
 
 int createNewIdioms(const std::string inFileName, const std::string inFileName2, const std::string outName, bool doAppend)
 {
-  std::ifstream file(inFileName.c_str());
+
+  std::ifstream file;
   std::string str; 
 
   std::vector<std::string>* inStr1_p = new std::vector<std::string>;
   std::vector<std::string>* inStr2_p = new std::vector<std::string>;
   std::vector<std::string>* totalWords_p = new std::vector<std::string>;
 
-  while(std::getline(file, str)){
-    inStr1_p->push_back(str);
-  }
-  file.close();
 
-  file.open(inFileName2.c_str());
-  while(std::getline(file, str)){
-    inStr2_p->push_back(str);
+  if(inFileName.find(".txt") != std::string::npos){
+    file.open(inFileName.c_str());
+    while(std::getline(file, str)){
+      inStr1_p->push_back(str);
+    }
+    file.close();
   }
-  file.close();
+  else{
+    std::cout << "inFileName 1, \'" << inFileName << "\' is invalid. Not \'.txt\'. Return 1." << std::endl;
+    return 1;
+  }
 
+  if(inFileName2.find(".txt") != std::string::npos){
+    file.open(inFileName2.c_str());
+    while(std::getline(file, str)){
+      inStr2_p->push_back(str);
+    }
+    file.close();
+  }
+  else{
+    std::cout << "inFileName 2, \'" << inFileName2 << "\' is invalid. Not \'.txt\'. Return 1." << std::endl;
+    return 1;
+  }
 
   if(inStr1_p->size() == 0){
     std::cout << "Input file 1 empty. Return 1" << std::endl;
