@@ -10,13 +10,22 @@
 int expandRhymeDatabase()
 {
   if(!checkDir(rhymeDatabasePath)){
-    std::cout << "Something wrong with global rhymeDatabasePath, \'" << rhymeDatabasePath << "\'. Return 1." << std::endl;
+    std::cout << "rhymeDatabasePath, \'" << rhymeDatabasePath << "\' not a directory. Return 1." << std::endl;
     return 1;
   }
 
   std::vector<std::string> rhymeFileList = returnFileList(rhymeDatabasePath, ".txt");
   
-  
+  if(rhymeFileList.size() == 0){
+    std::cout << "rhymeDatabasePath, \'" << rhymeDatabasePath << "\' contains no files with filter .txt. Return 1." << std::endl;
+    return 1;
+  }
+
+  if(-1 == orderRhymeFileList(&rhymeFileList)) return 1;
+
+  for(int iter = 0; iter < (int)rhymeFileList.size(); iter++){
+    std::cout << "File " << iter << "/" << rhymeFileList.size()-1 << ": " << rhymeFileList.at(iter) << std::endl;
+  }
 
   return 0;
 }

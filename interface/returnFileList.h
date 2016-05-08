@@ -57,7 +57,7 @@ std::vector<std::string> returnFileList(std::string dirPath, const std::string f
       }
       else{
         if(fullStr.find(filterStr.c_str()) != std::string::npos || !doFilter){
-	  if(checkFile(tempStrVect.at(iter))) fileList.push_back(fullStr);
+	  if(checkFile(fullStr)) fileList.push_back(fullStr);
 	}
 
 	if(fileList.size() + currentSize > listSizeLimit){

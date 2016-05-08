@@ -39,9 +39,13 @@ int orderRhymeFileList(std::vector<std::string>* fileList_p)
       return -1;
     }
     else{
-      std::string tempString = fileList_p->at(pos);
-      fileList_p->at(pos) = fileList_p->at(nRhymeFiles-1);
-      fileList_p->at(nRhymeFiles-1) = tempString;
+
+      for(int iter = pos; iter < (int)fileList_p->size()-1; iter++){
+	std::string tempString = fileList_p->at(iter);
+	fileList_p->at(iter) = fileList_p->at(iter+1);
+	fileList_p->at(iter+1) = tempString;
+      }
+
     }
   }
 
