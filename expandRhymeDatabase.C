@@ -6,9 +6,16 @@
 #include "interface/checkMakeDir.h"
 #include "interface/returnFileList.h"
 
+#include <boost/algorithm/string.hpp>
+
+const bool doDebug = false;
 
 int expandRhymeDatabase()
 {
+  //  const bool doInteractive = true;
+
+  if(doDebug) std::cout << __LINE__ << std::endl;
+
   if(!checkDir(rhymeDatabasePath)){
     std::cout << "rhymeDatabasePath, \'" << rhymeDatabasePath << "\' not a directory. Return 1." << std::endl;
     return 1;
@@ -23,9 +30,71 @@ int expandRhymeDatabase()
 
   if(-1 == orderRhymeFileList(&rhymeFileList)) return 1;
 
-  for(int iter = 0; iter < (int)rhymeFileList.size(); iter++){
-    std::cout << "File " << iter << "/" << rhymeFileList.size()-1 << ": " << rhymeFileList.at(iter) << std::endl;
+  std::ifstream noRhymeFile(rhymeFileList.at(rhymeFileList.size()-1).c_str());
+  std::string wordStr;
+  std::vector<std::string>* wordStrVect_p = new std::vector<std::string>;
+  std::vector<std::string>* stillNoRhymeVect_p = new std::vector<std::string>;
+
+  while(std::getline(noRhymeFile, wordStr)){
+    if(wordStr.size() == 0) continue;
+    wordStrVect_p->push_back(wordStr);
   }
+
+
+  if(doDebug) std::cout << __LINE__ << std::endl;
+
+  if(wordStrVect_p->size() == 0){
+    std::cout << "Input file is empty. Return 1." << std::endl;
+    return 1;
+  }
+
+  if(doDebug) std::cout << __LINE__ << std::endl;
+
+  int wordIter = 0;
+  while(wordStrVect_p->size() > wordIter){
+    std::cout << "Create new rhyme file for word \'" << wordStrVect_p->at(wordIter) << "\'? (y/n) ";
+    std::string input;
+    std::cin >> input;
+    
+    if(input.size() == 0){
+      std::cout << "No input give. Please choose y/n." << std::endl;
+      continue;
+    }
+
+    bool continueBool = false;
+    for(int iter = 0; iter < (int)input.size(); iter++){
+      if(alphabetSoup.find(input.at(iter)) == std::string::npos){
+	std::cout << "Input not alphabet. Please choose y/n" << std::endl;
+	continueBool = true;
+	break;
+      }
+    }
+    
+    if(continueBool) continue;
+
+    boost::algorithm::to_lower(input);    
+
+    if((input.find("y") != std::string::npos && input.size() == 1) || (input.find("yes") != std::string::npos && input.size() == 3)){
+      //yes block
+
+    }
+    else if((input.find("n") != std::string::npos && input.size() == 1) || (input.find("no") != std::string::npos && input.size() == 2)){
+      //no block
+      
+    }
+    else{
+      std::cout << "Input not y/n. Please choose y/n" << std::endl;
+      continue;
+    }
+
+    wordIter++;
+  }
+
+  stillNoRhymeVect_p->clear();
+  delete stillNoRhymeVect_p;
+  
+  wordStrVect_p->clear();
+  delete wordStrVect_p;
 
   return 0;
 }
