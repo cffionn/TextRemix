@@ -49,16 +49,32 @@ int expandRhymeDatabase()
 
   if(globalDoDebug) std::cout << __FILE__ << ", " << __LINE__ << std::endl;
 
+  const int nMaxBackStr = 3;
   int wordIter = 0;
   while(wordStrVect_p->size() > wordIter){
     std::string wordLastStr = wordStrVect_p->at(wordIter);
-    if(wordLastStr.size() == 2) 
+    
+    while(wordLastStr.size() > nMaxBackStr){
+      wordLastStr.replace(0, 1, "");
+    }
 
     std::vector<std::string>* isRhymeStrVect_p = new std::vector<std::string>;
     
     for(int rhymeIter = wordIter+1; rhymeIter < (int)wordStrVect_p->size(); rhymeIter++){
-      if(wordStrVect_p->at(rhymeIter).size() == 0) continue;
-      
+      rhymeWordStr = wordStrVect_p->at(rhymeIter);
+
+      while(rhymeWordStr.size() > nMaxBackStr){
+	rhymeWordStr.replace(0, 1, "");
+      }
+
+      for(int backIter = 0; backIter < nMaxBackStr; backIter++){
+	if(rhymeWordStr.size() == backIter+1){
+
+	}
+	else if(wordLastStr.size() == backIter+1){
+
+	}
+      }
     }
 
 
@@ -86,7 +102,7 @@ int expandRhymeDatabase()
 
     if((input.find("y") != std::string::npos && input.size() == 1) || (input.find("yes") != std::string::npos && input.size() == 3)){
       //yes block
-
+      
     }
     else if((input.find("n") != std::string::npos && input.size() == 1) || (input.find("no") != std::string::npos && input.size() == 2)){
       //no block
