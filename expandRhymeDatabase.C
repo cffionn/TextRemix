@@ -51,6 +51,17 @@ int expandRhymeDatabase()
 
   int wordIter = 0;
   while(wordStrVect_p->size() > wordIter){
+    std::string wordLastStr = wordStrVect_p->at(wordIter);
+    if(wordLastStr.size() == 2) 
+
+    std::vector<std::string>* isRhymeStrVect_p = new std::vector<std::string>;
+    
+    for(int rhymeIter = wordIter+1; rhymeIter < (int)wordStrVect_p->size(); rhymeIter++){
+      if(wordStrVect_p->at(rhymeIter).size() == 0) continue;
+      
+    }
+
+
     std::cout << "Create new rhyme file for word \'" << wordStrVect_p->at(wordIter) << "\'? (y/n) ";
     std::string input;
     std::cin >> input;
@@ -85,6 +96,9 @@ int expandRhymeDatabase()
       std::cout << "Input not y/n. Please choose y/n" << std::endl;
       continue;
     }
+
+    isRhymeStrVect_p->clear();
+    delete isRhymeStrVect_p;
 
     wordIter++;
   }
