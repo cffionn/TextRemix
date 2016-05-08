@@ -79,7 +79,7 @@ int expandRhymeDatabase()
     }
     else if((input.find("n") != std::string::npos && input.size() == 1) || (input.find("no") != std::string::npos && input.size() == 2)){
       //no block
-      
+      stillNoRhymeVect_p->push_back(wordStrVect_p->at(wordIter));      
     }
     else{
       std::cout << "Input not y/n. Please choose y/n" << std::endl;
