@@ -7,6 +7,7 @@ pos=$(( ${#path} - ${#rest} ))
 path=${path:0:$pos}
 
 rm $path/*.C~
+rm $path/#*.C#
 rm $path/testFunctions/*.C~
 rm $path/*.h~
 rm $path/*.md~

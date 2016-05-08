@@ -45,7 +45,9 @@ std::vector<std::string> returnFileList(std::string dirPath, const std::string f
       if(checkDir(fullStr)){
 	std::vector<std::string> tempStrVect = returnFileList(fullStr, filterStr, currentSize + fileList.size());
         for(int iter = 0; iter < (int)tempStrVect.size(); iter++){
-          if(tempStrVect.at(iter).find(filterStr.c_str()) != std::string::npos || !doFilter) fileList.push_back(tempStrVect.at(iter));
+          if(tempStrVect.at(iter).find(filterStr.c_str()) != std::string::npos || !doFilter){
+	    if(checkFile(tempStrVect.at(iter))) fileList.push_back(tempStrVect.at(iter));
+	  }
         }
 
 	if(fileList.size() + currentSize > listSizeLimit){
@@ -54,7 +56,9 @@ std::vector<std::string> returnFileList(std::string dirPath, const std::string f
 	}
       }
       else{
-        if(fullStr.find(filterStr.c_str()) != std::string::npos || !doFilter) fileList.push_back(fullStr);
+        if(fullStr.find(filterStr.c_str()) != std::string::npos || !doFilter){
+	  if(checkFile(tempStrVect.at(iter))) fileList.push_back(fullStr);
+	}
 
 	if(fileList.size() + currentSize > listSizeLimit){
 	  std::cout << "Exceeded limit on number of files (" << listSizeLimit << "). Return." << std::endl;
