@@ -9,6 +9,7 @@
 #include "dirent.h"
 #include "sys/stat.h"
 
+#include "interface/globalDoDebug.h"
 #include "interface/checkMakeDir.h"
 
 const int listSizeLimit = 10000;

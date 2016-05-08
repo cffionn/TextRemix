@@ -3,6 +3,8 @@
 
 #include <string>
 
+#include "interface/globalDoDebug.h"
+
 const std::string alphabetSoup = "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz";
 const std::string alphabetSoupUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const std::string alphabetSoupLower = "abcdefghijklmnopqrstuvwxyz";

@@ -6,6 +6,8 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
+#include "interface/globalDoDebug.h"
+
 struct stat st;
 
 bool checkDir(const std::string inPath)

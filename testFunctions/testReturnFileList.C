@@ -1,3 +1,4 @@
+#include "interface/globalDoDebug.h"
 #include "interface/returnFileList.h"
 #include <iostream>
 

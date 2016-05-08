@@ -1,3 +1,4 @@
+#include "interface/globalDoDebug.h"
 #include "interface/getSyllable.h"
 
 int testGetSyllable(const std::string testWord)

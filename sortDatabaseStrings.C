@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 
+#include "interface/globalDoDebug.h"
 #include "interface/getSyllable.h"
 #include "interface/checkMakeDir.h"
 #include "interface/returnFileList.h"

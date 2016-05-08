@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 
+#include "interface/globalDoDebug.h"
 #include "interface/getSyllable.h"
 #include "interface/getRhyme.h"
 #include "interface/checkMakeDir.h"
@@ -11,8 +12,6 @@
 #include <boost/algorithm/string.hpp>
 
 const std::string outSylPath = "outputSylSort/";
-
-const bool doDebug = false;
 
 int createSyllableSorted(const std::string inFileName, const bool doInteractiveRhyme)
 {
@@ -31,7 +30,7 @@ int createSyllableSorted(const std::string inFileName, const bool doInteractiveR
 
   std::ifstream file(inFileName);
 
-  if(doDebug) std::cout << __LINE__ << std::endl;
+  if(globalDoDebug) std::cout << __FILE__ << ", " << __LINE__ << std::endl;
 
   int numberOfLines = 0;
   while(std::getline(file, str)){
@@ -56,13 +55,13 @@ int createSyllableSorted(const std::string inFileName, const bool doInteractiveR
       str.replace(str.size()-1, 1, "");
     }
 
-    if(doDebug) std::cout << __LINE__ << std::endl;
+    if(globalDoDebug) std::cout << __FILE__ << ", " << __LINE__ << std::endl;
 
     while(str.find(" ") != std::string::npos){
       str.replace(0, str.find(" ")+1, "");
     }
 
-    if(doDebug) std::cout << __LINE__ << std::endl;
+    if(globalDoDebug) std::cout << __FILE__ << ", " << __LINE__ << std::endl;
 
     
 
@@ -72,7 +71,7 @@ int createSyllableSorted(const std::string inFileName, const bool doInteractiveR
       else iter++;
     }
 
-    if(doDebug) std::cout << __LINE__ << std::endl;
+    if(globalDoDebug) std::cout << __FILE__ << ", " << __LINE__ << std::endl;
 
     boost::algorithm::to_lower(str);
 
@@ -92,7 +91,7 @@ int createSyllableSorted(const std::string inFileName, const bool doInteractiveR
     lineIter++;
   }
 
-  if(doDebug) std::cout << __LINE__ << std::endl;
+  if(globalDoDebug) std::cout << __FILE__ << ", " << __LINE__ << std::endl;
 
   if(inStr_p->size() == 0){
     std::cout << "Input file empty. Return 1." << std::endl;
@@ -121,7 +120,7 @@ int createSyllableSorted(const std::string inFileName, const bool doInteractiveR
     }
   }
   
-  if(doDebug) std::cout << __LINE__ << std::endl;
+  if(globalDoDebug) std::cout << __FILE__ << ", " << __LINE__ << std::endl;
 
   int subSortIter = 0;
 
@@ -187,14 +186,14 @@ int createSyllableSorted(const std::string inFileName, const bool doInteractiveR
     subSortIter += subIterEnd;
   }
 
-  if(doDebug) std::cout << __LINE__ << std::endl;
+  if(globalDoDebug) std::cout << __FILE__ << ", " << __LINE__ << std::endl;
 
   std::string tempInFileName = inFileName;
   while(tempInFileName.find("/") != std::string::npos){
     tempInFileName.replace(0, tempInFileName.find("/")+1, "");
   }
 
-  if(doDebug) std::cout << __LINE__ << std::endl;
+  if(globalDoDebug) std::cout << __FILE__ << ", " << __LINE__ << std::endl;
 
   std::string outName = tempInFileName;
   std::string repStr = "_SylSort.txt";
@@ -202,7 +201,7 @@ int createSyllableSorted(const std::string inFileName, const bool doInteractiveR
     outName.replace(outName.find(".txt"), 4, repStr);
   }
 
-  if(doDebug) std::cout << __LINE__ << std::endl;
+  if(globalDoDebug) std::cout << __FILE__ << ", " << __LINE__ << std::endl;
   
   outName = outSylPath + outName;
 

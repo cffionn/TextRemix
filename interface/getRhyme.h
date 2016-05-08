@@ -9,6 +9,7 @@
 
 #include <boost/algorithm/string.hpp>    
 
+#include "interface/globalDoDebug.h"
 #include "interface/defAlphaNumSoup.h"
 #include "interface/returnFileList.h"
 

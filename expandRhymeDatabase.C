@@ -2,19 +2,18 @@
 #include <fstream>
 #include <vector>
 
+#include "interface/globalDoDebug.h"
 #include "interface/getRhyme.h"
 #include "interface/checkMakeDir.h"
 #include "interface/returnFileList.h"
 
 #include <boost/algorithm/string.hpp>
 
-const bool doDebug = false;
-
 int expandRhymeDatabase()
 {
   //  const bool doInteractive = true;
 
-  if(doDebug) std::cout << __LINE__ << std::endl;
+  if(globalDoDebug) std::cout << __FILE__ << ", " << __LINE__ << std::endl;
 
   if(!checkDir(rhymeDatabasePath)){
     std::cout << "rhymeDatabasePath, \'" << rhymeDatabasePath << "\' not a directory. Return 1." << std::endl;
@@ -41,14 +40,14 @@ int expandRhymeDatabase()
   }
 
 
-  if(doDebug) std::cout << __LINE__ << std::endl;
+  if(globalDoDebug) std::cout << __FILE__ << ", " << __LINE__ << std::endl;
 
   if(wordStrVect_p->size() == 0){
     std::cout << "Input file is empty. Return 1." << std::endl;
     return 1;
   }
 
-  if(doDebug) std::cout << __LINE__ << std::endl;
+  if(globalDoDebug) std::cout << __FILE__ << ", " << __LINE__ << std::endl;
 
   int wordIter = 0;
   while(wordStrVect_p->size() > wordIter){

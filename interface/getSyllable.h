@@ -8,6 +8,7 @@
 
 #include <boost/algorithm/string.hpp>    
 
+#include "interface/globalDoDebug.h"
 #include "interface/defAlphaNumSoup.h"
 
 const int nSylFiles = 8;
