@@ -61,22 +61,39 @@ int expandRhymeDatabase()
     std::vector<std::string>* isRhymeStrVect_p = new std::vector<std::string>;
     
     for(int rhymeIter = wordIter+1; rhymeIter < (int)wordStrVect_p->size(); rhymeIter++){
-      rhymeWordStr = wordStrVect_p->at(rhymeIter);
+      std::string rhymeWordStr = wordStrVect_p->at(rhymeIter);
+      std::string rhymeWordCutStr = wordStrVect_p->at(rhymeIter);
 
-      while(rhymeWordStr.size() > nMaxBackStr){
-	rhymeWordStr.replace(0, 1, "");
+
+      while(rhymeWordCutStr.size() > nMaxBackStr){
+	rhymeWordCutStr.replace(0, 1, "");
       }
 
-      for(int backIter = 0; backIter < nMaxBackStr; backIter++){
-	if(rhymeWordStr.size() == backIter+1){
-
+      if(rhymeWordCutStr.find(wordLastStr) != std::string::npos){
+	isRhymeStrVect_p->push_back(rhymeWordStr);
+	continue;
+      }
+      else if(wordLastStr.find(rhymeWordCutStr) != std::string::npos){
+	isRhymeStrVect_p->push_back(rhymeWordStr);
+	continue;
+      }
+      else if(rhymeWordCutStr.size() == nMaxBackStr){
+	if(wordLastStr.find(rhymeWordCutStr.substr(1, nMaxBackStr-1)) != std::string::npos){
+	  isRhymeStrVect_p->push_back(rhymeWordStr);
 	}
-	else if(wordLastStr.size() == backIter+1){
-
-	}
+      }
+      else if(wordLastStr.size() == nMaxBackStr){
+	if(rhymeWordCutStr.find(wordLastStr.substr(1, nMaxBackStr-1)) != std::string::npos){
+          isRhymeStrVect_p->push_back(rhymeWordStr);
+        }
       }
     }
 
+    std::cout << "Word \'" << wordStrVect_p->at(wordIter) << "\'. Possible rhymes: " << std::endl;
+
+    for(int rhymeIter = 0; rhymeIter < (int)isRhymeStrVect_p->size(); rhymeIter++){
+      std::cout << " " << isRhymeStrVect_p->at(rhymeIter) << std::endl;
+    }
 
     std::cout << "Create new rhyme file for word \'" << wordStrVect_p->at(wordIter) << "\'? (y/n) ";
     std::string input;
@@ -103,6 +120,7 @@ int expandRhymeDatabase()
     if((input.find("y") != std::string::npos && input.size() == 1) || (input.find("yes") != std::string::npos && input.size() == 3)){
       //yes block
       
+
     }
     else if((input.find("n") != std::string::npos && input.size() == 1) || (input.find("no") != std::string::npos && input.size() == 2)){
       //no block
