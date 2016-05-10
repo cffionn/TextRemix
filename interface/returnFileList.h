@@ -21,15 +21,21 @@ std::vector<std::string> returnFileList(std::string dirPath, const std::string f
 
   std::vector<std::string> fileList;
 
+  if(checkFile(dirPath)){
+    if(dirPath.find(filterStr) != std::string::npos) fileList.push_back(dirPath);
+    else std::cout << "Warning: Input dirPath \'" << dirPath << "\' is file, but doesn't match filterStr \'" << filterStr << "\'. Returning empty file list" << std::endl;
+
+    return fileList;
+  }
+  else if(!checkDir(dirPath)){
+    return fileList;
+  }
+
   DIR *dpdf = opendir(dirPath.c_str());
   struct dirent *epdf;
 
   std::string interString = "";
-  if(dirPath.substr(dirPath.size() - filterStr.size(), filterStr.size()).find(filterStr) != std::string::npos){
-    fileList.push_back(dirPath);
-    return fileList;
-  }
-  else if(dirPath.substr(dirPath.size()-1, 1).find("/") == std::string::npos) interString = "/";
+  if(dirPath.substr(dirPath.size()-1, 1).find("/") == std::string::npos) interString = "/";
 
 
   if(dpdf != NULL){
