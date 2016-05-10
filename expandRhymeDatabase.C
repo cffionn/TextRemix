@@ -124,6 +124,7 @@ int expandRhymeDatabase()
       if(wordStrVect_p->at(wordIter).size() > 1) newFileName = newFileName + wordStrVect_p->at(wordIter).substr(1, wordStrVect_p->at(wordIter).size()-1);
       newFileName = wordLastStr + "_" + newFileName + ".txt";
       std::cout << "Filename \'" << newFileName << "\' ok? (y/n)" << std::endl;
+      
     }
     else if((input.find("n") != std::string::npos && input.size() == 1) || (input.find("no") != std::string::npos && input.size() == 2)){
       //no block
