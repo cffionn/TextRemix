@@ -2,6 +2,7 @@
 #define CHECKMAKEDIR_H
 
 #include <string>
+#include <iostream>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
