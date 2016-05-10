@@ -6,6 +6,7 @@
 #include "interface/getRhyme.h"
 #include "interface/checkMakeDir.h"
 #include "interface/returnFileList.h"
+#include "interface/parseYesNo.h"
 
 #include <boost/algorithm/string.hpp>
 
@@ -99,25 +100,10 @@ int expandRhymeDatabase()
     std::string input;
     std::cin >> input;
     
-    if(input.size() == 0){
-      std::cout << "No input give. Please choose y/n." << std::endl;
-      continue;
-    }
+    int yesNo = parseYesNo(input);
 
-    bool continueBool = false;
-    for(int iter = 0; iter < (int)input.size(); iter++){
-      if(alphabetSoup.find(input.at(iter)) == std::string::npos){
-	std::cout << "Input not alphabet. Please choose y/n" << std::endl;
-	continueBool = true;
-	break;
-      }
-    }
-    
-    if(continueBool) continue;
-
-    boost::algorithm::to_lower(input);    
-
-    if((input.find("y") != std::string::npos && input.size() == 1) || (input.find("yes") != std::string::npos && input.size() == 3)){
+    if(yesNo == -1) continue;
+    else if(yesNo == 1){
       //yes block
       std::string newFileName = wordStrVect_p->at(wordIter).substr(0, 1);
       boost::algorithm::to_upper(newFileName);
@@ -126,12 +112,12 @@ int expandRhymeDatabase()
       std::cout << "Filename \'" << newFileName << "\' ok? (y/n)" << std::endl;
       
     }
-    else if((input.find("n") != std::string::npos && input.size() == 1) || (input.find("no") != std::string::npos && input.size() == 2)){
+    else if(yesNo == 0){
       //no block
       stillNoRhymeVect_p->push_back(wordStrVect_p->at(wordIter));      
     }
     else{
-      std::cout << "Input not y/n. Please choose y/n" << std::endl;
+      std::cout << "isYesNo returning non-0, 1, -1. Debug." << std::endl;
       continue;
     }
 

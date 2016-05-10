@@ -25,7 +25,12 @@ std::vector<std::string> returnFileList(std::string dirPath, const std::string f
   struct dirent *epdf;
 
   std::string interString = "";
-  if(dirPath.substr(dirPath.size()-1, 1).find("/") == std::string::npos) interString = "/";
+  if(dirPath.substr(dirPath.size() - filterStr.size(), filterStr.size()).find(filterStr) != std::string::npos){
+    fileList.push_back(dirPath);
+    return fileList;
+  }
+  else if(dirPath.substr(dirPath.size()-1, 1).find("/") == std::string::npos) interString = "/";
+
 
   if(dpdf != NULL){
     epdf = readdir(dpdf);
