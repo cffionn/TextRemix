@@ -109,8 +109,12 @@ int expandRhymeDatabase()
       boost::algorithm::to_upper(newFileName);
       if(wordStrVect_p->at(wordIter).size() > 1) newFileName = newFileName + wordStrVect_p->at(wordIter).substr(1, wordStrVect_p->at(wordIter).size()-1);
       newFileName = wordLastStr + "_" + newFileName + ".txt";
-      std::cout << "Filename \'" << newFileName << "\' ok? (y/n)" << std::endl;
-      
+      int yesNo2 = -1;
+      while(yesNo2 == -1){
+	std::cout << "Filename \'" << newFileName << "\' ok? (y/n)";
+	std::cin >> input;
+	yesNo2 = parseYesNo(input);
+      }
     }
     else if(yesNo == 0){
       //no block

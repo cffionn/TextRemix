@@ -35,10 +35,9 @@ bool isYesNo(std::string input)
 }
 
 //return 1 if yes; 0 if no; -1 if invalid
-int parseYesNo(const std::string input)
+int parseYesNo(std::string input)
 {
-
-  if(isYesNo(input)) return -1;
+  if(!isYesNo(input)) return -1;
   boost::algorithm::to_lower(input);
 
   if(input.find("y") != std::string::npos && input.size() == 1) return 1;
