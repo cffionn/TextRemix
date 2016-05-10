@@ -32,4 +32,11 @@ bool isYesNo(std::string input)
   return false;
 }
 
+//return 1 if yes; 0 if no; -1 if invalid
+int parseYesNo(const std::string input)
+{
+  if(isYesNo(input)) return -1;
+  else if()
+}
+
 #endif
