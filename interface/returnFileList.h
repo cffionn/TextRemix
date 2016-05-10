@@ -28,7 +28,12 @@ std::vector<std::string> returnFileList(std::string dirPath, const std::string f
     return fileList;
   }
   else if(!checkDir(dirPath)){
-    return fileList;
+    while(dirPath.size() > 0){
+      if(dirPath.substr(dirPath.size()-1, 1).find("/") == std::string::npos) dirPath.replace(dirPath.size()-1, 1, "");
+      else break;
+    }
+    
+    if(!checkDir(dirPath)) return fileList;
   }
 
   DIR *dpdf = opendir(dirPath.c_str());
