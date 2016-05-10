@@ -21,6 +21,11 @@ std::vector<std::string> returnFileList(std::string dirPath, const std::string f
 
   std::vector<std::string> fileList;
 
+  if(dirPath.size() == 1 && dirPath.find("/") != std::string::npos){
+    std::cout << "Error: will not run on top directory. Return empty fileList." << std::endl;
+    return fileList;
+  }
+
   if(checkFile(dirPath)){
     if(dirPath.find(filterStr) != std::string::npos) fileList.push_back(dirPath);
     else std::cout << "Warning: Input dirPath \'" << dirPath << "\' is file, but doesn't match filterStr \'" << filterStr << "\'. Returning empty file list" << std::endl;
@@ -33,7 +38,7 @@ std::vector<std::string> returnFileList(std::string dirPath, const std::string f
       else break;
     }
     
-    if(!checkDir(dirPath)) return fileList;
+    if(!checkDir(dirPath) || (dirPath.size() == 1 && dirPath.find("/") != std::string::npos)) return fileList;
   }
 
   DIR *dpdf = opendir(dirPath.c_str());
