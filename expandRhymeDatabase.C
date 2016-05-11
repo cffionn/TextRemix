@@ -110,10 +110,24 @@ int expandRhymeDatabase()
       if(wordStrVect_p->at(wordIter).size() > 1) newFileName = newFileName + wordStrVect_p->at(wordIter).substr(1, wordStrVect_p->at(wordIter).size()-1);
       newFileName = wordLastStr + "_" + newFileName + ".txt";
       int yesNo2 = -1;
-      while(yesNo2 == -1){
-	std::cout << "Filename \'" << newFileName << "\' ok? (y/n)";
-	std::cin >> input;
-	yesNo2 = parseYesNo(input);
+      while(yesNo2 == -1 || yesNo2 == 0){
+	if(yesNo2 == -1){
+	  std::cout << "Filename \'" << newFileName << "\' ok? (y/n)";
+	  std::cin >> input;
+	  yesNo2 = parseYesNo(input);
+	}
+	else{
+	  std::cout << "Please input newFileName: ";
+	  std::string inputFileName;
+	  std::cin >> inputFileName;
+
+	  if(inputFileName.substr(inputFileName.size()-4, 4).find(".txt") != std::string::npos){
+	    newFileName = inputFileName;
+	  }
+	  else{
+	    std::cout << "Input filename \'" << inputFileName << "\' is invalid. Please end in \'.txt\'" << std::endl;
+	  }
+	}
       }
     }
     else if(yesNo == 0){
