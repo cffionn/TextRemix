@@ -124,17 +124,22 @@ int expandRhymeDatabase()
 	  if(inputFileName.size () < 4){
 	    std::cout << "Filename \'" << inputFileName << "\' too short. Please try new name." << std::endl;
 	  }
-	  else if(inputFileName.substr(inputFileName.size()-4, 4).find(".txt") != std::string::npos){
-	    newFileName = inputFileName;
-	    yesNo2 = -1;
+	  else if(inputFileName.substr(inputFileName.size()-4, 4).find(".txt") == std::string::npos){
+	    std::cout << "Input filename \'" << inputFileName << "\' is invalid. Please end in \'.txt\'" << std::endl;
 	  }
 	  else{
-	    std::cout << "Input filename \'" << inputFileName << "\' is invalid. Please end in \'.txt\'" << std::endl;
+	    newFileName = inputFileName;
+	    yesNo2 = -1;
 	  }
 	}
       }
 
+      newFileName = rhymeDatabasePath + newFileName;
+      std::ofstream newRhymeFile(newFileName.c_str());
+      newRhymeFile << wordStrVect_p->at(wordIter) << std::endl;
+      newRhymeFile.close();
 
+      
     }
     else if(yesNo == 0){
       //no block
