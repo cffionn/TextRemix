@@ -121,14 +121,20 @@ int expandRhymeDatabase()
 	  std::string inputFileName;
 	  std::cin >> inputFileName;
 
-	  if(inputFileName.substr(inputFileName.size()-4, 4).find(".txt") != std::string::npos){
+	  if(inputFileName.size () < 4){
+	    std::cout << "Filename \'" << inputFileName << "\' too short. Please try new name." << std::endl;
+	  }
+	  else if(inputFileName.substr(inputFileName.size()-4, 4).find(".txt") != std::string::npos){
 	    newFileName = inputFileName;
+	    yesNo2 = -1;
 	  }
 	  else{
 	    std::cout << "Input filename \'" << inputFileName << "\' is invalid. Please end in \'.txt\'" << std::endl;
 	  }
 	}
       }
+
+
     }
     else if(yesNo == 0){
       //no block
