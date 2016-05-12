@@ -46,6 +46,15 @@ bool containsConsonant(std::string inStr)
 }
 
 
+bool containsNotAlphabet(std::string inStr)
+{
+  for(int iter = 0; iter < (int)inStr.size(); iter++){
+    if(alphabetSoup.find(inStr.at(iter)) == std::string::npos) return true;
+  }
+
+  return false;
+}
+
 std::string replaceNumbersWithWords(std::string inSentence)
 {
   for(int iter = 0; iter < nNumbers; iter++){

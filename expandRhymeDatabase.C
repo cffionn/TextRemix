@@ -124,31 +124,54 @@ int expandRhymeDatabase()
 
 	  if(inputFileName.size () < 4){
 	    std::cout << "Filename \'" << inputFileName << "\' too short. Please try new name." << std::endl;
+	    continue;
 	  }
 	  else if(inputFileName.substr(inputFileName.size()-4, 4).find(".txt") == std::string::npos){
 	    std::cout << "Input filename \'" << inputFileName << "\' is invalid. Please end in \'.txt\'" << std::endl;
+	    continue;
 	  }
 	  else if(inputFileName.find("_") == std::string::npos){
 	    std::cout << "Input filename \'" << inputFileName << "\' is invalid. Please use \'_\' as part of valid form \'<sound>_<word>.txt\'" << std::endl;
+	    continue;
 	  }
-	  else if(inputFileName.substr(0, inputFileName.find("_")).size() > 3 || inputFileName.substr(0, inputFileName.find("_")).size() == 0){
+
+	  std::string inputFileNameSoundStr = inputFileName.substr(0, inputFileName.find("_"));
+	  std::string inputFileNameWordStr = inputFileName.substr(inputFileName.find("_")+1, inputFileName.find(".") - inputFileName.find("_") - 1);
+
+	  if(inputFileNameSoundStr.size() > 3 || inputFileNameSoundStr.size() == 0){
 	    std::cout << "Input filename \'" << inputFileName << "\' is invalid. Please use 1-3 letters in <sound> as part of valid form \'<sound>_<word>.txt\'" << std::endl;
+	    continue;
 	  }
-	  else if(!containsVowel(inputFileName.substr(0, inputFileName.find("_")))){
+	  else if(!containsVowel(inputFileNameSoundStr)){
 	    std::cout << "Input filename \'" << inputFileName << "\' is invalid. <sound> must contain vowel as part of valid form \'<sound>_<word>.txt\'" << std::endl;
+	    continue;
+	  }
+	  else if(containsNotAlphabet(inputFileNameSoundStr)){
+	    std::cout << "Input filename \'" << inputFileName << "\' is invalid. <sound>, \'" << inputFileNameSoundStr << "\' must be alphabet as part of valid form \'<sound>_<word>.txt\'" << std::endl;
+	    continue;
+	  }
+	  else if(containsNotAlphabet(inputFileNameWordStr)){
+	    std::cout << "Input filename \'" << inputFileName << "\' is invalid. <word>, \'" << inputFileNameWordStr << "\' must be alphabet as part of valid form \'<sound>_<word>.txt\'" << std::endl;
+	    continue;
 	  }
 	  else{
-	    newFileName = inputFileName;
-	    yesNo2 = -1;
+	    Bool_t wordValid = false;
+
+	    
 	  }
+
+	  newFileName = inputFileName;
+	  yesNo2 = -1;	  
 	}
       }
 
+      //temp comment out of output rhyme file to keep db clean during dev
+      /*
       newFileName = rhymeDatabasePath + newFileName;
       std::ofstream newRhymeFile(newFileName.c_str());
       newRhymeFile << wordStrVect_p->at(wordIter) << std::endl;
       newRhymeFile.close();
-
+      */
       
     }
     else if(yesNo == 0){
