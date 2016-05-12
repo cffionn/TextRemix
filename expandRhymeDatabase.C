@@ -6,6 +6,7 @@
 #include "interface/getRhyme.h"
 #include "interface/checkMakeDir.h"
 #include "interface/returnFileList.h"
+#include "interface/defAlphaNumSoup.h"
 #include "interface/parseYesNo.h"
 
 #include <boost/algorithm/string.hpp>
@@ -126,6 +127,15 @@ int expandRhymeDatabase()
 	  }
 	  else if(inputFileName.substr(inputFileName.size()-4, 4).find(".txt") == std::string::npos){
 	    std::cout << "Input filename \'" << inputFileName << "\' is invalid. Please end in \'.txt\'" << std::endl;
+	  }
+	  else if(inputFileName.find("_") == std::string::npos){
+	    std::cout << "Input filename \'" << inputFileName << "\' is invalid. Please use \'_\' as part of valid form \'<sound>_<word>.txt\'" << std::endl;
+	  }
+	  else if(inputFileName.substr(0, inputFileName.find("_")).size() > 3 || inputFileName.substr(0, inputFileName.find("_")).size() == 0){
+	    std::cout << "Input filename \'" << inputFileName << "\' is invalid. Please use 1-3 letters in <sound> as part of valid form \'<sound>_<word>.txt\'" << std::endl;
+	  }
+	  else if(!containsVowel(inputFileName.substr(0, inputFileName.find("_")))){
+	    std::cout << "Input filename \'" << inputFileName << "\' is invalid. <sound> must contain vowel as part of valid form \'<sound>_<word>.txt\'" << std::endl;
 	  }
 	  else{
 	    newFileName = inputFileName;

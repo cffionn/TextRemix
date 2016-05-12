@@ -24,6 +24,28 @@ const int nNumBack = 6;
 const std::string numBack[nNumBack] = {" ", ".", ",", "!", "?", "'"};
 
 
+bool containsVowel(std::string inStr)
+{
+  for(int iter = 0; iter < inStr.size(); iter++){
+    if(alphabetSoupVowel.find(inStr.at(iter)) != std::string::npos){
+      return true;
+    }
+  }
+  return false;
+}
+
+
+bool containsConsonant(std::string inStr)
+{
+  for(int iter = 0; iter < inStr.size(); iter++){
+    if(alphabetSoupConsonant.find(inStr.at(iter)) != std::string::npos){
+      return true;
+    }
+  }
+  return false;
+}
+
+
 std::string replaceNumbersWithWords(std::string inSentence)
 {
   for(int iter = 0; iter < nNumbers; iter++){
