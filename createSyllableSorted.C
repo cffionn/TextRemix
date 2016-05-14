@@ -66,7 +66,7 @@ int createSyllableSorted(const std::string inFileName, const bool doInteractiveR
     
 
     int iter = 0;
-    while(iter < str.size()){
+    while(iter < (int)str.size()){
       if(alphabetSoup.find(str[iter]) == std::string::npos) str.replace(iter, 1, "");
       else iter++;
     }

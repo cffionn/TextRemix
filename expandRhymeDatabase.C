@@ -53,7 +53,7 @@ int expandRhymeDatabase()
 
   const int nMaxBackStr = 3;
   int wordIter = 0;
-  while(wordStrVect_p->size() > wordIter){
+  while((int)wordStrVect_p->size() > wordIter){
     std::string wordLastStr = wordStrVect_p->at(wordIter);
     
     while(wordLastStr.size() > nMaxBackStr){
@@ -155,7 +155,7 @@ int expandRhymeDatabase()
 	    continue;
 	  }
 	  else{
-	    Bool_t wordValid = false;
+	    //temp for make testing	    bool wordValid = false;
 
 	    
 	  }

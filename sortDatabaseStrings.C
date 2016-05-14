@@ -69,7 +69,7 @@ int sortFileStrings(const std::string inFileName)
       }
       else{
 	int pos = 0;
-	while(lead == -1 && pos < tempStr1.size() && pos < tempStr2.size()){
+	while(lead == -1 && pos < (int)tempStr1.size() && pos < (int)tempStr2.size()){
 	  int tempPos1 = alphabetSoup.find(tempStr1[pos]);
 	  int tempPos2 = alphabetSoup.find(tempStr2[pos]);
 	  
