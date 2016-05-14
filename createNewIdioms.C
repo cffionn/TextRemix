@@ -305,7 +305,7 @@ int runCreateNewIdioms(const std::string inFileName, const std::string inFileNam
 
   int lead = -1;
   int pos = 0;
-  while(lead == -1 && pos < tempInFileName.size() && pos <  tempInFileName2.size()){
+  while(lead == -1 && pos < (int)tempInFileName.size() && pos <  (int)tempInFileName2.size()){
     std::string tempChar1 = tempInFileName.substr(pos, 1);
     std::string tempChar2 = tempInFileName2.substr(pos, 1);
 

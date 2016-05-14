@@ -26,7 +26,7 @@ const std::string numBack[nNumBack] = {" ", ".", ",", "!", "?", "'"};
 
 bool containsVowel(std::string inStr)
 {
-  for(int iter = 0; iter < inStr.size(); iter++){
+  for(int iter = 0; iter < (int)inStr.size(); iter++){
     if(alphabetSoupVowel.find(inStr.at(iter)) != std::string::npos){
       return true;
     }
@@ -37,7 +37,7 @@ bool containsVowel(std::string inStr)
 
 bool containsConsonant(std::string inStr)
 {
-  for(int iter = 0; iter < inStr.size(); iter++){
+  for(int iter = 0; iter < (int)inStr.size(); iter++){
     if(alphabetSoupConsonant.find(inStr.at(iter)) != std::string::npos){
       return true;
     }

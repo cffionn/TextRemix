@@ -6,6 +6,7 @@ rest=${path#*$TextRemix}
 pos=$(( ${#path} - ${#rest} ))
 path=${path:0:$pos}
 
+rm $path/Makefile~
 rm $path/*.C~
 rm $path/#*.C#
 rm $path/testFunctions/*.C~
