@@ -29,19 +29,4 @@ testFunctions/testGetSyllable.exe: testFunctions/testGetSyllable.C
 	$(CXX) $(CXXFLAGS) -o testFunctions/testGetSyllable.exe testFunctions/testGetSyllable.C 
 
 clean:
-	rm Makefile~ || true
-	rm *.C~ || true
-	rm \#*.C# || true
-	rm testFunctions/*.C~ || true
-	rm testFunctions/\#*.C# || true
-	rm interface/*.h~ || true
-	rm interface/\#*.h# || true
-	rm *.md~ || true
-	rm *.sh~ || true
-	rm cleanup/*.sh~ || true
-	rm inputDatabase/*.txt~	|| true
-	rm rhymeDatabase/*.txt~	|| true
-	rm syllableDatabase/*.txt~ || true
-
-	rm *.exe || true
-	rm testFunctions/*.exe || true
+	sh cleanup/cleanAll.sh || true
