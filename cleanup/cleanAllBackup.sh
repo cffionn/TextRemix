@@ -11,8 +11,10 @@ rm $path/*.C~
 rm $path/#*.C#
 rm $path/testFunctions/*.C~
 rm $path/*.h~
-rm $path/*.md~
+rm $path/#*.h#
 rm $path/interface/*.h~
+rm $path/interface/#*.h#
+rm $path/*.md~
 rm $path/*.sh~
 rm $path/cleanup/*.sh~
 rm $path/inputDatabase/*.txt~
