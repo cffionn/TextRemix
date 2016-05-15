@@ -159,7 +159,7 @@ int expandRhymeDatabase()
 	    if(wordStrVect_p->at(wordIter).find(inputFileNameWordStr) != std::string::npos && wordStrVect_p->at(wordIter).size() == inputFileNameWordStr.size()) wordValid = true;
 
 	    for(int rhymeIter = 0; rhymeIter < (int)isRhymeStrVect_p->size(); rhymeIter++){
-	      if(isRhymeStrVect_p->at(rhymeIter).find(inputFileNameWordStr) != std::string::npos && inputFileNameWordStr.size() == isRhymeStrVect_p->size()){
+	      if(isRhymeStrVect_p->at(rhymeIter).find(inputFileNameWordStr) != std::string::npos && inputFileNameWordStr.size() == isRhymeStrVect_p->at(rhymeIter).size()){
 		wordValid = true;
 		break;
 	      }
@@ -171,12 +171,19 @@ int expandRhymeDatabase()
 	      std::cout << " Possible words: \'" << wordStrVect_p->at(wordIter) << "\', ";
 	      for(int rhymeIter = 0; rhymeIter < (int)isRhymeStrVect_p->size(); rhymeIter++){
 		if(rhymeIter < (int)isRhymeStrVect_p->size() - 1) std::cout << "\'" << isRhymeStrVect_p->at(rhymeIter) << "\', ";
-		else std::cout << "\' " << isRhymeStrVect_p->at(rhymeIter) << "\'." << std::endl;
+		else std::cout << "\'" << isRhymeStrVect_p->at(rhymeIter) << "\'." << std::endl;
 	      }
 
 	      continue;
 	    }
 	  }
+
+	  std::string tempStartWordStr = inputFileNameWordStr.substr(0,1);
+	  boost::algorithm::to_upper(tempStartWordStr);
+	  std::string tempEndWordStr = "";
+	  if(inputFileNameWordStr.size() > 1) tempEndWordStr = inputFileNameWordStr.substr(1, inputFileNameWordStr.size()-1);
+
+	  inputFileName = inputFileNameSoundStr + "_" + tempStartWordStr + tempEndWordStr + ".txt";
 
 	  newFileName = inputFileName;
 	  yesNo2 = -1;	  
