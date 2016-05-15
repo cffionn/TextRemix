@@ -63,8 +63,26 @@ int removeDatabaseDuplicates(const std::string dirPath)
 	  
 	  if(word1.size() == word2.size() && word1.find(word2) != std::string::npos){
 	    std::cout << "Duplicate word \'" << word1 << "\' in files \'" << dbFileList.at(fileIter) << "\', \'" << dbFileList.at(fileIter2) << "\'." << std::endl;
+
+	    
+	    int inputInt = -1;
+	    while(inputInt == -1){
+	      std::cout << " Remove word \'" << word1 << "\' from file \'" << dbFileList.at(fileIter) << "\'? (y/n)";
+	      std::string input;
+	      std::cin >> input;
+
+	      inputInt = parseYesNo(input);
+
+	      if(inputInt == 1){
+		std::cout << "YES!" << std::endl;
+	      }
+	      else if(inputInt == 0){
+		std::cout << "No?" << std::endl;
+	      }
+	    }
+
 	  }
-	  wordIter2++;
+	  else wordIter2++;
 	}
 
 	wordIter1++;
