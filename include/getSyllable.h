@@ -8,8 +8,8 @@
 
 #include <boost/algorithm/string.hpp>    
 
-#include "interface/globalDoDebug.h"
-#include "interface/defAlphaNumSoup.h"
+#include "include/globalDoDebug.h"
+#include "include/defAlphaNumSoup.h"
 
 const int nSylFiles = 8;
 const std::string sylFileStrings[nSylFiles] = {"syllableDatabase/oneSyllable.txt", "syllableDatabase/twoSyllable.txt", "syllableDatabase/threeSyllable.txt", "syllableDatabase/fourSyllable.txt", "syllableDatabase/fiveSyllable.txt", "syllableDatabase/sixSyllable.txt", "syllableDatabase/sevenSyllable.txt", "syllableDatabase/eightSyllable.txt"};

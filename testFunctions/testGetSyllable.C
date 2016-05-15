@@ -1,5 +1,8 @@
-#include "interface/globalDoDebug.h"
-#include "interface/getSyllable.h"
+#include <iostream>
+#include <string>
+
+#include "include/globalDoDebug.h"
+#include "include/getSyllable.h"
 
 int testGetSyllable(const std::string testWord)
 {

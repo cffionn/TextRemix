@@ -2,12 +2,12 @@
 #include <iostream>
 #include <string>
 
-#include "interface/globalDoDebug.h"
-#include "interface/getSyllable.h"
-#include "interface/getRhyme.h"
-#include "interface/checkMakeDir.h"
-#include "interface/returnFileList.h"
-#include "interface/defAlphaNumSoup.h"
+#include "include/globalDoDebug.h"
+#include "include/getSyllable.h"
+#include "include/getRhyme.h"
+#include "include/checkMakeDir.h"
+#include "include/returnFileList.h"
+#include "include/defAlphaNumSoup.h"
 
 #include <boost/algorithm/string.hpp>
 

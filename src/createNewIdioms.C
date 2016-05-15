@@ -10,9 +10,9 @@
 
 #include <boost/algorithm/string.hpp>
 
-#include "interface/globalDoDebug.h"
-#include "interface/defAlphaNumSoup.h"
-#include "interface/checkMakeDir.h"
+#include "include/globalDoDebug.h"
+#include "include/defAlphaNumSoup.h"
+#include "include/checkMakeDir.h"
 
 const std::string outDirFull = "outputFull/";
 const std::string outDirTweet = "outputTweet/";

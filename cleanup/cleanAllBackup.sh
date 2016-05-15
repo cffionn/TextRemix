@@ -11,8 +11,8 @@ rm $path/src/*.C~
 rm $path/src/#*.C#
 rm $path/testFunctions/*.C~
 rm $path/testFunctions/#*.C#
-rm $path/interface/*.h~
-rm $path/interface/#*.h#
+rm $path/include/*.h~
+rm $path/include/#*.h#
 rm $path/*.md~
 rm $path/*.sh~
 rm $path/cleanup/*.sh~

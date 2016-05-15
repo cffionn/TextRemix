@@ -1,6 +1,6 @@
-#include "interface/globalDoDebug.h"
-#include "interface/returnFileList.h"
-#include "interface/getRhyme.h"
+#include "include/globalDoDebug.h"
+#include "include/returnFileList.h"
+#include "include/getRhyme.h"
 #include <iostream>
 
 const std::string filterStr = ".txt";

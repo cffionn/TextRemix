@@ -7,7 +7,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-#include "interface/globalDoDebug.h"
+#include "include/globalDoDebug.h"
 
 struct stat st;
 

@@ -4,8 +4,8 @@
 #include <iostream>
 #include <string>
 
-#include "interface/globalDoDebug.h"
-#include "interface/defAlphaNumSoup.h"
+#include "include/globalDoDebug.h"
+#include "include/defAlphaNumSoup.h"
 
 #include <boost/algorithm/string.hpp>
 

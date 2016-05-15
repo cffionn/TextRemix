@@ -2,12 +2,12 @@
 #include <fstream>
 #include <vector>
 
-#include "interface/globalDoDebug.h"
-#include "interface/getRhyme.h"
-#include "interface/checkMakeDir.h"
-#include "interface/returnFileList.h"
-#include "interface/defAlphaNumSoup.h"
-#include "interface/parseYesNo.h"
+#include "include/globalDoDebug.h"
+#include "include/getRhyme.h"
+#include "include/checkMakeDir.h"
+#include "include/returnFileList.h"
+#include "include/defAlphaNumSoup.h"
+#include "include/parseYesNo.h"
 
 #include <boost/algorithm/string.hpp>
 

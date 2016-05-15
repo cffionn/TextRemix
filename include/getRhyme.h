@@ -9,9 +9,9 @@
 
 #include <boost/algorithm/string.hpp>    
 
-#include "interface/globalDoDebug.h"
-#include "interface/defAlphaNumSoup.h"
-#include "interface/returnFileList.h"
+#include "include/globalDoDebug.h"
+#include "include/defAlphaNumSoup.h"
+#include "include/returnFileList.h"
 
 const std::string rhymeDatabasePath = "rhymeDatabase/";
 

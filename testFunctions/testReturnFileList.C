@@ -1,6 +1,8 @@
-#include "interface/globalDoDebug.h"
-#include "interface/returnFileList.h"
+#include "include/globalDoDebug.h"
+#include "include/returnFileList.h"
+
 #include <iostream>
+#include <string>
 
 int testReturnFileList(const std::string testPath, const std::string filterStr)
 {
