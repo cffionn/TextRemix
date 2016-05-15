@@ -189,15 +189,27 @@ int expandRhymeDatabase()
 	  yesNo2 = -1;	  
 	}
       }
-
-      //temp comment out of output rhyme file to keep db clean during dev
-      /*
+    
       newFileName = rhymeDatabasePath + newFileName;
       std::ofstream newRhymeFile(newFileName.c_str());
       newRhymeFile << wordStrVect_p->at(wordIter) << std::endl;
-      newRhymeFile.close();
-      */
       
+      std::cout << "File \'" << newFileName << "\' created. Word \'" << wordStrVect_p->at(wordIter) << "\' added." << std::endl;
+
+      int rhymeWordPos = 0;
+      while((int)isRhymeStrVect_p->size() > rhymeWordPos){
+	std::cout << "Add word \'" << isRhymeStrVect_p->at(rhymeWordPos) << "\' to file \'" << newFileName << "\'? (y/n)";
+	std::cin >> input;
+	int inputVal = parseYesNo(input);
+	if(inputVal == -1) continue;
+	else if(inputVal == 1){
+	  std::cout << "DUMMY" << std::endl;
+	}
+	
+	rhymeWordPos++;
+      }
+      
+      newRhymeFile.close(); 
     }
     else if(yesNo == 0){
       //no block
