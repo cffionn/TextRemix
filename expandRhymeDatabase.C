@@ -155,9 +155,27 @@ int expandRhymeDatabase()
 	    continue;
 	  }
 	  else{
-	    //temp for make testing	    bool wordValid = false;
+	    bool wordValid = false;
+	    if(wordStrVect_p->at(wordIter).find(inputFileNameWordStr) != std::string::npos && wordStrVect_p->at(wordIter).size() == inputFileNameWordStr.size()) wordValid = true;
 
-	    
+	    for(int rhymeIter = 0; rhymeIter < (int)isRhymeStrVect_p->size(); rhymeIter++){
+	      if(isRhymeStrVect_p->at(rhymeIter).find(inputFileNameWordStr) != std::string::npos && inputFileNameWordStr.size() == isRhymeStrVect_p->size()){
+		wordValid = true;
+		break;
+	      }
+	    }
+
+	    if(!wordValid){
+	      std::cout << "Input fileName \'" << inputFileName << "\' is invalid. <word>, \'" << inputFileNameWordStr << "\' must be of the following list as part of valid form \'<sound>_<word>.txt\'" << std::endl;
+	      
+	      std::cout << " Possible words: \'" << wordStrVect_p->at(wordIter) << "\', ";
+	      for(int rhymeIter = 0; rhymeIter < (int)isRhymeStrVect_p->size(); rhymeIter++){
+		if(rhymeIter < (int)isRhymeStrVect_p->size() - 1) std::cout << "\'" << isRhymeStrVect_p->at(rhymeIter) << "\', ";
+		else std::cout << "\' " << isRhymeStrVect_p->at(rhymeIter) << "\'." << std::endl;
+	      }
+
+	      continue;
+	    }
 	  }
 
 	  newFileName = inputFileName;

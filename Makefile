@@ -5,28 +5,28 @@ ifeq "$(GCCVERSION)" "1"
   CXXFLAGS += -Wno-error=misleading-indentation
 endif
 
-all: createNewIdioms.exe createSyllableSorted.exe sortDatabaseStrings.exe expandRhymeDatabase.exe testFunctions/testReturnFileList.exe testFunctions/testGetRhyme.exe testFunctions/testGetSyllable.exe
+all: createNewIdioms createSyllableSorted sortDatabaseStrings expandRhymeDatabase testReturnFileList testGetRhyme testGetSyllable
 
-createNewIdioms.exe: createNewIdioms.C
-	$(CXX) $(CXXFLAGS) -o createNewIdioms.exe createNewIdioms.C 
+createNewIdioms: createNewIdioms.C
+	$(CXX) $(CXXFLAGS) -o bin/createNewIdioms.exe createNewIdioms.C 
 
-createSyllableSorted.exe: createSyllableSorted.C 
-	$(CXX) $(CXXFLAGS) -o createSyllableSorted.exe createSyllableSorted.C 
+createSyllableSorted: createSyllableSorted.C 
+	$(CXX) $(CXXFLAGS) -o bin/createSyllableSorted.exe createSyllableSorted.C 
 
-sortDatabaseStrings.exe: sortDatabaseStrings.C 
-	$(CXX) $(CXXFLAGS) -o sortDatabaseStrings.exe sortDatabaseStrings.C 
+sortDatabaseStrings: sortDatabaseStrings.C 
+	$(CXX) $(CXXFLAGS) -o bin/sortDatabaseStrings.exe sortDatabaseStrings.C 
 
-expandRhymeDatabase.exe: expandRhymeDatabase.C 
-	$(CXX) $(CXXFLAGS) -o expandRhymeDatabase.exe expandRhymeDatabase.C 
+expandRhymeDatabase: expandRhymeDatabase.C 
+	$(CXX) $(CXXFLAGS) -o bin/expandRhymeDatabase.exe expandRhymeDatabase.C 
 
-testFunctions/testReturnFileList.exe: testFunctions/testReturnFileList.C 
-	$(CXX) $(CXXFLAGS) -o testFunctions/testReturnFileList.exe testFunctions/testReturnFileList.C 
+testReturnFileList: testFunctions/testReturnFileList.C 
+	$(CXX) $(CXXFLAGS) -o bin/testReturnFileList.exe testFunctions/testReturnFileList.C 
 
-testFunctions/testGetRhyme.exe: testFunctions/testGetRhyme.C 
-	$(CXX) $(CXXFLAGS) -o testFunctions/testGetRhyme.exe testFunctions/testGetRhyme.C 
+testGetRhyme: testFunctions/testGetRhyme.C 
+	$(CXX) $(CXXFLAGS) -o bin/testGetRhyme.exe testFunctions/testGetRhyme.C 
 
-testFunctions/testGetSyllable.exe: testFunctions/testGetSyllable.C 
-	$(CXX) $(CXXFLAGS) -o testFunctions/testGetSyllable.exe testFunctions/testGetSyllable.C 
+testGetSyllable: testFunctions/testGetSyllable.C 
+	$(CXX) $(CXXFLAGS) -o bin/testGetSyllable.exe testFunctions/testGetSyllable.C 
 
 clean:
 	sh cleanup/cleanAll.sh || true

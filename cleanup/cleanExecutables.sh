@@ -7,5 +7,4 @@ rest=${path#*$TextRemix}
 pos=$(( ${#path} - ${#rest} ))
 path=${path:0:$pos}
 
-rm $path/*.exe
-rm $path/testFunctions/*.exe
+rm $path/bin/*.exe
