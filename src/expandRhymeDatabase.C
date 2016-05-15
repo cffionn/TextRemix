@@ -203,7 +203,15 @@ int expandRhymeDatabase()
 	int inputVal = parseYesNo(input);
 	if(inputVal == -1) continue;
 	else if(inputVal == 1){
-	  std::cout << "DUMMY" << std::endl;
+	  newRhymeFile << isRhymeStrVect_p->at(rhymeWordPos) << std::endl;
+	  //edit here
+
+	  for(int wordIter2 = wordIter+1; wordIter2 < (int)wordStrVect_p->size(); wordIter2++){
+	    if(wordStrVect_p->at(wordIter2).size() == isRhymeStrVect_p->at(rhymeWordPos).size() && wordStrVect_p->at(wordIter2).find(isRhymeStrVect_p->at(rhymeWordPos)) != std::string::npos){
+	      wordStrVect_p->erase(wordStrVect_p->begin()+wordIter2);
+	      break;
+	    }
+	  }
 	}
 	
 	rhymeWordPos++;
