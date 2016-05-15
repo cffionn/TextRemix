@@ -23,6 +23,18 @@ int createSyllableSorted(const std::string inFileName, const bool doInteractiveR
 
   std::vector<std::string> rhymeFileList = returnFileList(rhymeDatabasePath, ".txt");
 
+  if(globalDoDebug) std::cout << __FILE__ << ", " << __LINE__ << std::endl;
+
+  int rhymeListPos = 0;
+  while((int)rhymeFileList.size() > rhymeListPos){
+    std::cout << rhymeFileList.at(rhymeListPos) << std::endl;
+    if(rhymeFileList.at(rhymeListPos).size() - rhymeDatabasePath.size() < 4) rhymeFileList.erase(rhymeFileList.begin()+rhymeListPos);
+    else if(rhymeFileList.at(rhymeListPos).substr(rhymeFileList.at(rhymeListPos).size()-4, 4).find(".txt") == std::string::npos) rhymeFileList.erase(rhymeFileList.begin()+rhymeListPos);
+    else rhymeListPos++;
+  }
+
+  if(globalDoDebug) std::cout << __FILE__ << ", " << __LINE__ << std::endl;
+
   if(inFileName.find(".txt") == std::string::npos){
     std::cout << "inFileName, \'" << inFileName << "\' is invalid. Not \'.txt\'. Return 1." << std::endl;
     return 1;
@@ -36,6 +48,8 @@ int createSyllableSorted(const std::string inFileName, const bool doInteractiveR
   while(std::getline(file, str)){
     numberOfLines++;
   }
+
+  int numberOfLines2 = std::max(10, numberOfLines);
 
   file.close();
   file.open(inFileName);
@@ -79,14 +93,21 @@ int createSyllableSorted(const std::string inFileName, const bool doInteractiveR
 
     int rhymePos = getRhyme(str, &rhymeFileList, doInteractiveRhyme);
 
-    if(fillIter%10 == 0 || lineIter%(numberOfLines/10) == 0){
+    if(globalDoDebug) std::cout << __FILE__ << ", " << __LINE__ << std::endl;
+
+    if(fillIter%10 == 0 || lineIter%(numberOfLines2/10) == 0){
       std::cout << "Line number " << lineIter << "/" << numberOfLines - 1 << std::endl;
       fillIter++;
     }
 
+    if(globalDoDebug) std::cout << __FILE__ << ", " << __LINE__ << std::endl;
+
+
     std::string rhymeStr = rhymeFileList.at(rhymePos).substr(rhymeFileList.at(rhymePos).find("/")+1, rhymeFileList.at(rhymePos).find("/")+1-rhymeFileList.at(rhymePos).size());
     rhymeStr = rhymeStr.substr(0, rhymeStr.find(".txt"));
     lastWordRhymeStr_p->push_back(rhymeStr);
+
+    if(globalDoDebug) std::cout << __FILE__ << ", " << __LINE__ << std::endl;
 
     lineIter++;
   }
