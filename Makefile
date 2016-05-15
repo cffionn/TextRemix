@@ -7,17 +7,17 @@ endif
 
 all: createNewIdioms createSyllableSorted sortDatabaseStrings expandRhymeDatabase testReturnFileList testGetRhyme testGetSyllable
 
-createNewIdioms: createNewIdioms.C
-	$(CXX) $(CXXFLAGS) -o bin/createNewIdioms.exe createNewIdioms.C 
+createNewIdioms: src/createNewIdioms.C
+	$(CXX) $(CXXFLAGS) -o bin/createNewIdioms.exe src/createNewIdioms.C 
 
-createSyllableSorted: createSyllableSorted.C 
-	$(CXX) $(CXXFLAGS) -o bin/createSyllableSorted.exe createSyllableSorted.C 
+createSyllableSorted: src/createSyllableSorted.C 
+	$(CXX) $(CXXFLAGS) -o bin/createSyllableSorted.exe src/createSyllableSorted.C 
 
-sortDatabaseStrings: sortDatabaseStrings.C 
-	$(CXX) $(CXXFLAGS) -o bin/sortDatabaseStrings.exe sortDatabaseStrings.C 
+sortDatabaseStrings: src/sortDatabaseStrings.C 
+	$(CXX) $(CXXFLAGS) -o bin/sortDatabaseStrings.exe src/sortDatabaseStrings.C 
 
-expandRhymeDatabase: expandRhymeDatabase.C 
-	$(CXX) $(CXXFLAGS) -o bin/expandRhymeDatabase.exe expandRhymeDatabase.C 
+expandRhymeDatabase: src/expandRhymeDatabase.C 
+	$(CXX) $(CXXFLAGS) -o bin/expandRhymeDatabase.exe src/expandRhymeDatabase.C 
 
 testReturnFileList: testFunctions/testReturnFileList.C 
 	$(CXX) $(CXXFLAGS) -o bin/testReturnFileList.exe testFunctions/testReturnFileList.C 

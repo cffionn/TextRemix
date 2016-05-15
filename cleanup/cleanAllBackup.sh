@@ -7,11 +7,10 @@ pos=$(( ${#path} - ${#rest} ))
 path=${path:0:$pos}
 
 rm $path/Makefile~
-rm $path/*.C~
-rm $path/#*.C#
+rm $path/src/*.C~
+rm $path/src/#*.C#
 rm $path/testFunctions/*.C~
-rm $path/*.h~
-rm $path/#*.h#
+rm $path/testFunctions/#*.C#
 rm $path/interface/*.h~
 rm $path/interface/#*.h#
 rm $path/*.md~
