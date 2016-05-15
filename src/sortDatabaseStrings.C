@@ -174,6 +174,11 @@ int sortDatabaseStrings(const std::string inPath)
     std::cout << "Input path \'" << inPath << "\' not a database. Return 1." << std::endl;
     return 1;
   }
+  else if(inPath.find("input") != std::string::npos){
+    std::cout << "Input path \'" << inPath << "\' not a valid database. Cannot be \'input\'. Return 1." << std::endl;
+    return 1;
+  }
+
 
   const std::string filterString = ".txt";
   

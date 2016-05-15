@@ -5,7 +5,7 @@ ifeq "$(GCCVERSION)" "1"
   CXXFLAGS += -Wno-error=misleading-indentation
 endif
 
-all: createNewIdioms createSyllableSorted sortDatabaseStrings expandRhymeDatabase testReturnFileList testGetRhyme testGetSyllable
+all: createNewIdioms createSyllableSorted sortDatabaseStrings expandRhymeDatabase removeDatabaseDuplicates testReturnFileList testGetRhyme testGetSyllable
 
 createNewIdioms: src/createNewIdioms.C
 	$(CXX) $(CXXFLAGS) -o bin/createNewIdioms.exe src/createNewIdioms.C 
@@ -18,6 +18,9 @@ sortDatabaseStrings: src/sortDatabaseStrings.C
 
 expandRhymeDatabase: src/expandRhymeDatabase.C 
 	$(CXX) $(CXXFLAGS) -o bin/expandRhymeDatabase.exe src/expandRhymeDatabase.C 
+
+removeDatabaseDuplicates: src/removeDatabaseDuplicates.C 
+	$(CXX) $(CXXFLAGS) -o bin/removeDatabaseDuplicates.exe src/removeDatabaseDuplicates.C 
 
 testReturnFileList: testFunctions/testReturnFileList.C 
 	$(CXX) $(CXXFLAGS) -o bin/testReturnFileList.exe testFunctions/testReturnFileList.C 
