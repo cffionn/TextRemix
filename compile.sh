@@ -11,4 +11,7 @@ rest=${path#*$TextRemix}
 pos=$(( ${#path} - ${#rest} ))
 path=${path:0:$pos}
 
-g++ $1 -Werror -Wall -Wextra -I $path -O2 -o "bin/${1/%.C/}.exe"
+srcStr="src/"
+output=${1#*$srcStr}
+
+g++ $1 -Werror -Wall -Wextra -I $path -O2 -o "bin/${output/%.C/}.exe"
