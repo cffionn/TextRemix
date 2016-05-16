@@ -149,6 +149,12 @@ int sortFileStrings(const std::string inFileName, std::vector<std::string>* dupl
       
       firstConsonantWord = firstConsonantWordLetter + firstConsonantWord.substr(1, firstConsonantWord.size()-1);
       
+      while(newFileName.size() > 2 && alphabetSoupConsonant.find(newFileName.at(0)) != std::string::npos){
+	newFileName = newFileName.substr(1, newFileName.size()-1);
+      }
+
+      if(newFileName.size() > 2 && newFileName.substr(newFileName.size()-1, 1).find("s") != std::string::npos) newFileName = newFileName.substr(0, newFileName.size()-1);
+
       newFileName = newFilePath + newFileName + "_" + firstConsonantWord + ".txt";
     }
   }
@@ -228,11 +234,6 @@ int sortDatabaseStrings(const std::string inPath)
     }
   }
 
-
-  for(int strIter = 0; strIter < (int)duplicateWordVect_p->size(); strIter++){
-    std::cout << duplicateWordVect_p->at(strIter) << std::endl;
-  }
-  
 
   for(int fileIter = 0; fileIter < nFiles; fileIter++){
     retVal = sortFileStrings(dbFileList.at(fileIter), duplicateWordVect_p);
