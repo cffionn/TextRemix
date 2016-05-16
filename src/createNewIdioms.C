@@ -406,6 +406,8 @@ int main(int argc, char *argv[])
   }
 
   std::string arg3 = argv[3];
+  if(arg3.size() > 1 && arg3.substr(0,1).find("-") != std::string::npos) arg3 = arg3.substr(1, arg3.size()-1);
+
   if(!isAllNumber(arg3)){
     std::cout << "Arg 3 \'" << arg3 << "\' is not a number. Please give number of desired output lines (-1 if max)" << std::endl;
   }

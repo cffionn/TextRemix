@@ -27,7 +27,6 @@ int createSyllableSorted(const std::string inFileName, const bool doInteractiveR
 
   int rhymeListPos = 0;
   while((int)rhymeFileList.size() > rhymeListPos){
-    std::cout << rhymeFileList.at(rhymeListPos) << std::endl;
     if(rhymeFileList.at(rhymeListPos).size() - rhymeDatabasePath.size() < 4) rhymeFileList.erase(rhymeFileList.begin()+rhymeListPos);
     else if(rhymeFileList.at(rhymeListPos).substr(rhymeFileList.at(rhymeListPos).size()-4, 4).find(".txt") == std::string::npos) rhymeFileList.erase(rhymeFileList.begin()+rhymeListPos);
     else rhymeListPos++;

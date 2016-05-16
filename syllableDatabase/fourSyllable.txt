@@ -26,3 +26,5 @@ salamasond
 understandeth
 unshunnable
 verbosity
+reality
+territory
