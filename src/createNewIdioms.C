@@ -19,7 +19,7 @@ const std::string outDirTweet = "outputTweet/";
 
 int myrandom(int i){return std::rand()%i;}
 
-int createNewIdioms(const std::string inFileName, const std::string inFileName2, const std::string outName, bool doAppend)
+int createNewIdioms(const std::string inFileName, const std::string inFileName2, const std::string outName, bool doAppend, int numberOutputLines)
 {
 
   std::ifstream file;
@@ -64,7 +64,13 @@ int createNewIdioms(const std::string inFileName, const std::string inFileName2,
     return 1;
   }
 
+  std::srand(unsigned(std::time(NULL)));
+  std::random_shuffle(inStr1_p->begin(), inStr1_p->end(), myrandom);
+  std::random_shuffle(inStr2_p->begin(), inStr2_p->end(), myrandom);
+
+
   std::vector<std::string>* newStr_p = new std::vector<std::string>;
+  bool breakBool = false;
 
   const int inStr1Size = (int)inStr1_p->size();
   const int inStr2Size = (int)inStr2_p->size();
@@ -105,9 +111,16 @@ int createNewIdioms(const std::string inFileName, const std::string inFileName2,
 
 	  std::string newStr = inStr1_p->at(iter).substr(0, pos1) + inStr2_p->at(iter2).substr(pos2, inStr2_p->size() - pos2);
 	  newStr_p->push_back(newStr);
+	  if((int)newStr_p->size() > numberOutputLines*2 && numberOutputLines != -1){
+	    breakBool = true;
+	    break;
+	  }
 	}
       }
+      if(breakBool) break;
     }
+
+    if(breakBool) break;
 
     inStr1Words_p->clear();
     delete inStr1Words_p;
@@ -239,7 +252,6 @@ int createNewIdioms(const std::string inFileName, const std::string inFileName2,
   }
   tempOutNameTweet = outDirTweet + tempOutNameTweet;
 
-  std::srand(unsigned(std::time(NULL)));
   std::random_shuffle(newStr_p->begin(), newStr_p->end(), myrandom);
 
   const int newStrSize = (int)newStr_p->size();
@@ -249,7 +261,11 @@ int createNewIdioms(const std::string inFileName, const std::string inFileName2,
 
     if(doAppend) outFile.open(tempOutName.c_str(), std::ios_base::app);
     else outFile.open(tempOutName.c_str());
-    for(int iter = 0; iter < newStrSize; iter++){
+
+    int outNum = std::min(newStrSize, numberOutputLines);
+    if(numberOutputLines == -1) outNum = newStrSize;
+
+    for(int iter = 0; iter < outNum; iter++){
       outFile << newStr_p->at(iter) << std::endl;
     }
   
@@ -263,8 +279,17 @@ int createNewIdioms(const std::string inFileName, const std::string inFileName2,
     std::ofstream outTweetFile;
     if(doAppend) outTweetFile.open(tempOutNameTweet.c_str(), std::ios_base::app);
     else outTweetFile.open(tempOutNameTweet.c_str());
+
+    int outNum = std::min(newStrSize, numberOutputLines);
+    if(numberOutputLines == -1) outNum = newStrSize;
+
+    int tweetPushBack = 0;
     for(int iter = 0; iter < newStrSize; iter++){
-      if(newStr_p->at(iter).size() < 140) outTweetFile << newStr_p->at(iter) << std::endl;
+      if(newStr_p->at(iter).size() < 140){
+	outTweetFile << newStr_p->at(iter) << std::endl;
+	tweetPushBack++;
+	if(tweetPushBack >= numberOutputLines) break;
+      }
     }
 
     outTweetFile.close();
@@ -288,7 +313,7 @@ int createNewIdioms(const std::string inFileName, const std::string inFileName2,
   return 0;
 }
 
-int runCreateNewIdioms(const std::string inFileName, const std::string inFileName2)
+int runCreateNewIdioms(const std::string inFileName, const std::string inFileName2, int numberOutputLines)
 {
   std::string outName;
 
@@ -352,16 +377,27 @@ int runCreateNewIdioms(const std::string inFileName, const std::string inFileNam
     outName = tempInFileName2 + "_" + tempInFileName;
   }
 
-  int retVal = createNewIdioms(inFileName, inFileName2, outName, false);
-  retVal = createNewIdioms(inFileName2, inFileName, outName, true);
+
+  int tempNumberOutputLines1 = numberOutputLines/2;
+  int tempNumberOutputLines2 = numberOutputLines/2;
+  if(numberOutputLines%2 == 0) tempNumberOutputLines2--;
+
+  if(numberOutputLines == -1){
+    tempNumberOutputLines1 = -1;
+    tempNumberOutputLines2 = -1;
+  }
+  else if(inFileName.size() == inFileName2.size() && inFileName.find(inFileName2) != std::string::npos) tempNumberOutputLines1 = numberOutputLines;
+
+  int retVal = createNewIdioms(inFileName, inFileName2, outName, false, tempNumberOutputLines1);
+  if(inFileName.size() != inFileName2.size() || inFileName.find(inFileName2) == std::string::npos) retVal = createNewIdioms(inFileName2, inFileName, outName, true, tempNumberOutputLines2);
 
   return retVal;
 }
 
 int main(int argc, char *argv[])
 {
-  if(argc != 3){
-    std::cout << "Usage: createNewIdioms.exe <inputFile> <inputFile2>" << std::endl;
+  if(argc != 4){
+    std::cout << "Usage: createNewIdioms.exe <inputFile> <inputFile2> <numberOfOutputLines, -1 if max>" << std::endl;
     std::cout << "Number of args given: " << argc << std::endl;
     for(int iter = 0; iter < argc; iter++){
       std::cout << "  argv[" << iter << "]: " << argv[iter] << std::endl;
@@ -369,7 +405,12 @@ int main(int argc, char *argv[])
     return -1;
   }
 
-  int result = runCreateNewIdioms(argv[1], argv[2]);
+  std::string arg3 = argv[3];
+  if(!isAllNumber(arg3)){
+    std::cout << "Arg 3 \'" << arg3 << "\' is not a number. Please give number of desired output lines (-1 if max)" << std::endl;
+  }
+
+  int result = runCreateNewIdioms(argv[1], argv[2], std::stoi(argv[3]));
 
   return result;
 }

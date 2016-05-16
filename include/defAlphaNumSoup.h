@@ -55,6 +55,17 @@ bool containsNotAlphabet(std::string inStr)
   return false;
 }
 
+
+bool isAllNumber(std::string inStr)
+{
+  for(int iter = 0; iter < (int)inStr.size(); iter++){
+    if(digitSoup.find(inStr.at(iter)) == std::string::npos) return false;
+  }
+
+  return true;
+}
+
+
 std::string replaceNumbersWithWords(std::string inSentence)
 {
   for(int iter = 0; iter < nNumbers; iter++){
