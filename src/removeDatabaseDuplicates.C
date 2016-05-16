@@ -126,7 +126,7 @@ int removeDatabaseDuplicates(std::string dirPath)
       }
 
       if(file2IsModded){
-	std::string outFile2Name = "test_" + dbFileList.at(fileIter2).substr(dbFileList.at(fileIter2).find("/")+1, dbFileList.at(fileIter2).size() - dbFileList.at(fileIter2).find("/")-1);
+	std::string outFile2Name = dbFileList.at(fileIter2).substr(dbFileList.at(fileIter2).find("/")+1, dbFileList.at(fileIter2).size() - dbFileList.at(fileIter2).find("/")-1);
 	
 	if(dirPath.substr(dirPath.size()-1, 1).find("/") == std::string::npos) dirPath = dirPath + "/";
 	outFile2Name = dirPath + outFile2Name;
@@ -145,7 +145,7 @@ int removeDatabaseDuplicates(std::string dirPath)
     }    
     
     if(file1IsModded){
-      std::string outFile1Name = "test_" + dbFileList.at(fileIter).substr(dbFileList.at(fileIter).find("/")+1, dbFileList.at(fileIter).size() - dbFileList.at(fileIter).find("/")-1);
+      std::string outFile1Name = dbFileList.at(fileIter).substr(dbFileList.at(fileIter).find("/")+1, dbFileList.at(fileIter).size() - dbFileList.at(fileIter).find("/")-1);
       if(dirPath.substr(dirPath.size()-1, 1).find("/") == std::string::npos) dirPath = dirPath + "/";
       outFile1Name = dirPath + outFile1Name;
       std::ofstream outFile1(outFile1Name);

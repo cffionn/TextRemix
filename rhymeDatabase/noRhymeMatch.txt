@@ -1,5 +1,4 @@
 a
-air
 am
 art
 bag
@@ -10,7 +9,6 @@ books
 brayed
 bread
 bush
-chair
 charge
 club
 court
