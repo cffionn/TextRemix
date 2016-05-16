@@ -125,6 +125,7 @@ int sortFileStrings(const std::string inFileName)
       
       std::string firstConsonantWord = "";
       for(int strIter = 0; strIter < nStr; strIter++){
+	if(strForSort_p->at(strIter).size() == 1) continue;
 	if(alphabetSoupConsonant.find(strForSort_p->at(strIter).at(0)) != std::string::npos){
 	  firstConsonantWord = strForSort_p->at(strIter);
 	  break;
