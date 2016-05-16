@@ -33,6 +33,12 @@ int createNewIdioms(const std::string inFileName, const std::string inFileName2,
   if(inFileName.find(".txt") != std::string::npos){
     file.open(inFileName.c_str());
     while(std::getline(file, str)){
+      while(str.substr(0, 1).find(" ") != std::string::npos){
+	str.replace(0, 1, "");
+      }
+
+      if(str.find("\n") != std::string::npos) std::cout << "You can find and remove: " << str.find("\n") << std::endl;
+
       inStr1_p->push_back(str);
     }
     file.close();
@@ -45,6 +51,10 @@ int createNewIdioms(const std::string inFileName, const std::string inFileName2,
   if(inFileName2.find(".txt") != std::string::npos){
     file.open(inFileName2.c_str());
     while(std::getline(file, str)){
+      while(str.substr(0, 1).find(" ") != std::string::npos){
+	str.replace(0, 1, "");
+      }
+
       inStr2_p->push_back(str);
     }
     file.close();
@@ -380,7 +390,7 @@ int runCreateNewIdioms(const std::string inFileName, const std::string inFileNam
 
   int tempNumberOutputLines1 = numberOutputLines/2;
   int tempNumberOutputLines2 = numberOutputLines/2;
-  if(numberOutputLines%2 == 0) tempNumberOutputLines2--;
+  if(numberOutputLines%2 != 0) tempNumberOutputLines2--;
 
   if(numberOutputLines == -1){
     tempNumberOutputLines1 = -1;
