@@ -12,7 +12,7 @@
 
 const std::string underscoreStr = "_";
 
-int sortFileStrings(const std::string inFileName)
+int sortFileStrings(const std::string inFileName, std::vector<std::string>* duplicateWordVect_p)
 {
   if(!checkFile(inFileName)){
     std::cout << "Input file \'" << inFileName << "\' is invalid. Return 1." << std::endl;
@@ -125,6 +125,17 @@ int sortFileStrings(const std::string inFileName)
       
       std::string firstConsonantWord = "";
       for(int strIter = 0; strIter < nStr; strIter++){
+	
+	bool continueBool = false;
+	for(int dupIter = 0; dupIter < (int)duplicateWordVect_p->size(); dupIter++){
+	  if(duplicateWordVect_p->at(dupIter).size() == strForSort_p->at(strIter).size() && duplicateWordVect_p->at(dupIter).find(strForSort_p->at(strIter)) != std::string::npos){
+	    continueBool = true;
+	    break;
+	  }
+	}
+
+	if(continueBool) continue;
+
 	if(strForSort_p->at(strIter).size() == 1) continue;
 	if(alphabetSoupConsonant.find(strForSort_p->at(strIter).at(0)) != std::string::npos){
 	  firstConsonantWord = strForSort_p->at(strIter);
@@ -185,9 +196,46 @@ int sortDatabaseStrings(const std::string inPath)
   
   std::vector<std::string> dbFileList = returnFileList(inPath, filterString);
   int nFiles = (int)dbFileList.size();
+  std::vector<std::string>* bigWordVect_p = new std::vector<std::string>;
+  std::vector<std::string>* duplicateWordVect_p = new std::vector<std::string>;
 
   for(int fileIter = 0; fileIter < nFiles; fileIter++){
-    retVal = sortFileStrings(dbFileList.at(fileIter));
+    std::ifstream inFile(dbFileList.at(fileIter));
+    std::string inStr;
+
+    while(std::getline(inFile,inStr)){
+      bool continueBool = false;
+      for(int strIter = 0; strIter < (int)duplicateWordVect_p->size(); strIter++){
+	if(inStr.size() == duplicateWordVect_p->at(strIter).size() && inStr.find(duplicateWordVect_p->at(strIter)) != std::string::npos){
+	  continueBool = true;
+	  break;
+	}
+      }
+
+      if(continueBool) continue;
+
+      for(int strIter = 0; strIter < (int)bigWordVect_p->size(); strIter++){
+	if(inStr.size() == bigWordVect_p->at(strIter).size() && inStr.find(bigWordVect_p->at(strIter)) != std::string::npos){
+	  duplicateWordVect_p->push_back(inStr);
+	  continueBool = true;
+          break;
+        }
+      }
+
+      if(continueBool) continue;
+
+      bigWordVect_p->push_back(inStr);
+    }
+  }
+
+
+  for(int strIter = 0; strIter < (int)duplicateWordVect_p->size(); strIter++){
+    std::cout << duplicateWordVect_p->at(strIter) << std::endl;
+  }
+  
+
+  for(int fileIter = 0; fileIter < nFiles; fileIter++){
+    retVal = sortFileStrings(dbFileList.at(fileIter), duplicateWordVect_p);
     if(retVal != 0) break;
   }
 
