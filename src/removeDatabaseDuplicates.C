@@ -111,7 +111,6 @@ int removeDatabaseDuplicates(std::string dirPath)
               inputInt = parseYesNo(input);
 
               if(inputInt == 1){
-		std::cout << "YES!" << std::endl;
 		wordIter2++;
                 continueBool = true;
               }
