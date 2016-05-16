@@ -8,10 +8,13 @@ To Build:  In a clean directory, run
     cd TextRemix
     make
 
-At this point should be built; Please contact for errors.
+At this point all .C files in ~/src should be built with executables found in ~/bin; Please contact for errors.
 
 To Run
   
+    ./bin/\<.exe file\>
+
+Inadequate input arguments will prompt when running
 
 To cleanup executables, backups, etc.: In ~\TextRemix run
 
