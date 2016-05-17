@@ -37,7 +37,7 @@ int createNewIdioms(const std::string inFileName, const std::string inFileName2,
 	str.replace(0, 1, "");
       }
 
-      if(str.find("\n") != std::string::npos) std::cout << "You can find and remove: " << str.find("\n") << std::endl;
+      if(str.find("\r") != std::string::npos) str = str.substr(0, str.find("\r"));
 
       inStr1_p->push_back(str);
     }
@@ -54,6 +54,8 @@ int createNewIdioms(const std::string inFileName, const std::string inFileName2,
       while(str.substr(0, 1).find(" ") != std::string::npos){
 	str.replace(0, 1, "");
       }
+
+      if(str.find("\r") != std::string::npos) str = str.substr(0, str.find("\r"));
 
       inStr2_p->push_back(str);
     }
