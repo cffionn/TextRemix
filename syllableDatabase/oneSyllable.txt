@@ -28,6 +28,7 @@ ash
 ass
 at
 ate
+aught
 ay
 b
 back
@@ -54,6 +55,8 @@ bear
 beard
 beat
 beats
+beck
+bed
 been
 beep
 beer
@@ -67,6 +70,7 @@ bent
 best
 bet
 bib
+bid
 bier
 big
 bile
@@ -97,6 +101,7 @@ board
 boat
 bog
 boil
+bold
 bone
 bones
 boo
@@ -108,6 +113,7 @@ boots
 bop
 bore
 born
+borne
 bot
 both
 boughs
@@ -131,6 +137,7 @@ breadth
 break
 breast
 breath
+breathe
 bred
 brick
 bride
@@ -150,6 +157,7 @@ brought
 brow
 brown
 brunt
+brute
 buck
 bug
 build
@@ -171,6 +179,7 @@ bye
 cad
 cage
 cake
+calf
 call
 called
 callt
@@ -215,6 +224,7 @@ chips
 choke
 chop
 chore
+chough
 chow
 chuck
 chunk
@@ -259,6 +269,7 @@ cook
 cool
 coop
 cop
+coped
 core
 corn
 corpse
@@ -317,6 +328,7 @@ deck
 deckd
 decks
 deed
+deeds
 deep
 dell
 den
@@ -350,6 +362,7 @@ dram
 drank
 draw
 draws
+dream
 drill
 drink
 drip
@@ -369,7 +382,10 @@ dwell
 each
 ear
 ears
+earth
+ease
 eat
+edge
 eel
 eggs
 else
@@ -399,10 +415,12 @@ fart
 fast
 fat
 fate
+faults
 fear
 feast
 feat
 fed
+fee
 feel
 feels
 feet
@@ -451,6 +469,7 @@ flop
 flow
 flunk
 fly
+foe
 fog
 foil
 food
@@ -472,6 +491,7 @@ france
 frank
 free
 fresh
+friend
 friends
 fright
 frill
@@ -500,6 +520,7 @@ gave
 gay
 gent
 get
+gib
 gifts
 gill
 gin
@@ -508,6 +529,7 @@ give
 gives
 glad
 glance
+glass
 glean
 glen
 glide
@@ -538,6 +560,7 @@ grained
 gram
 grass
 grate
+grave
 gray
 great
 greet
@@ -571,15 +594,18 @@ had
 hail
 hair
 hairs
+half
 hall
 ham
 hand
+hands
 hang
 hank
 hard
 harsh
 has
 hash
+hast
 haste
 hat
 hatch
@@ -595,6 +621,7 @@ hear
 heard
 hears
 heart
+hearts
 heat
 hed
 heel
@@ -620,6 +647,7 @@ ho
 hock
 hog
 hold
+holdst
 hole
 home
 hood
@@ -627,6 +655,7 @@ hoods
 hoof
 hook
 hoop
+hoops
 hoot
 hop
 hope
@@ -691,10 +720,12 @@ k
 kale
 kate
 keel
+keen
 keep
 kept
 kick
 kill
+killd
 killed
 kills
 kin
@@ -719,6 +750,7 @@ knows
 krill
 ku
 lack
+lacks
 lad
 laid
 lake
@@ -743,6 +775,7 @@ leaves
 lede
 left
 leg
+legs
 lent
 less
 lest
@@ -755,17 +788,21 @@ lief
 liege
 lies
 life
+lifes
 light
 lights
 like
 line
 lines
 link
+linkd
 lip
 lit
 live
+lived
 lives
 lo
+load
 loathe
 lock
 log
@@ -802,6 +839,7 @@ mack
 mad
 made
 maid
+maids
 mail
 main
 make
@@ -809,6 +847,7 @@ makes
 male
 mall
 man
+mans
 map
 mar
 mash
@@ -819,9 +858,11 @@ mays
 me
 mean
 means
+meant
 meat
 meet
 men
+met
 mice
 might
 mile
@@ -837,6 +878,7 @@ miss
 mit
 mock
 mold
+month
 moo
 mood
 moon
@@ -849,6 +891,7 @@ mould
 mouse
 mouth
 move
+moves
 mow
 much
 muck
@@ -881,14 +924,17 @@ nip
 no
 nook
 noon
+nor
 not
 notch
 note
 nought
 now
 nun
+nut
 o
 oat
+oaths
 of
 off
 oh
@@ -922,11 +968,14 @@ pants
 par
 part
 parts
+pass
 passed
 pat
+pate
 pause
 paw
 pay
+peace
 pearl
 peat
 peck
@@ -948,6 +997,7 @@ pinch
 pine
 ping
 pink
+pins
 pipe
 pipes
 pit
@@ -995,9 +1045,11 @@ pray
 price
 pride
 priest
+prince
 proof
 prop
 proud
+prove
 puck
 puffd
 pug
@@ -1032,6 +1084,7 @@ rat
 rate
 raw
 ray
+razed
 reach
 read
 reel
@@ -1051,6 +1104,7 @@ rink
 rip
 rise
 road
+roar
 roc
 rock
 rogue
@@ -1121,6 +1175,7 @@ sees
 self
 sell
 send
+sends
 sense
 sent
 serve
@@ -1129,6 +1184,7 @@ shake
 shakes
 shall
 shame
+shape
 shaped
 share
 sharp
@@ -1138,12 +1194,15 @@ sheet
 sheets
 shell
 shells
+shent
 shes
 shin
 shine
 ship
+shirt
 shit
 shock
+shoes
 shoo
 shook
 shoot
@@ -1178,11 +1237,13 @@ since
 sine
 sing
 sink
+sins
 sip
 sir
 sit
 sits
 six
+sized
 skate
 skies
 skill
@@ -1197,6 +1258,7 @@ slam
 slap
 slash
 slat
+slave
 slaw
 slay
 sleep
@@ -1221,10 +1283,12 @@ small
 smash
 smeard
 smell
+smells
 smile
 smock
 smog
 smoke
+smooth
 smote
 smug
 snack
@@ -1253,7 +1317,9 @@ sore
 sort
 sought
 soul
+souls
 sow
+spade
 spades
 spain
 spam
@@ -1265,8 +1331,10 @@ spat
 spaz
 speak
 speech
+speed
 spell
 spent
+sphere
 spice
 spill
 spilt
@@ -1296,6 +1364,7 @@ squall
 stack
 stage
 stain
+staind
 stake
 stale
 stall
@@ -1356,6 +1425,7 @@ stump
 stun
 such
 suit
+sum
 sun
 sunk
 sure
@@ -1417,6 +1487,7 @@ their
 them
 theme
 then
+thence
 there
 theres
 these
@@ -1519,7 +1590,10 @@ turk
 turn
 twas
 tweet
+twelve
+twere
 twice
+twill
 twin
 twine
 twit
@@ -1557,6 +1631,7 @@ warm
 wars
 was
 wash
+wast
 watch
 watchd
 way
@@ -1590,6 +1665,8 @@ whip
 who
 whole
 whom
+whore
+whored
 whos
 whose
 why
@@ -1599,8 +1676,10 @@ wide
 wife
 wild
 will
+wilt
 win
 wind
+winds
 wine
 wing
 wink
@@ -1624,6 +1703,7 @@ worms
 worn
 wot
 would
+wouldst
 wow
 wrap
 wren
@@ -1634,6 +1714,7 @@ wrong
 wrongs
 wrote
 wrought
+wrung
 yam
 yank
 yap
@@ -1651,6 +1732,7 @@ you
 your
 youre
 yours
+youth
 youve
 yuck
 zack
