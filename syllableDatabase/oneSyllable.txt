@@ -1854,7 +1854,6 @@ voice
 vouch
 vow
 vows
-vyouve
 wack
 wag
 wage
@@ -2003,6 +2002,7 @@ your
 youre
 yours
 youth
+youve
 yuck
 zack
 zap
