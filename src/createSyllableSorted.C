@@ -99,6 +99,10 @@ int createSyllableSorted(const std::string inFileName, const bool doInteractiveR
       fillIter++;
     }
 
+    if(lineIter%1000 == 0){
+      std::cout << "Line number " << lineIter << "/" << numberOfLines - 1 << std::endl;
+    }
+
     if(globalDoDebug) std::cout << __FILE__ << ", " << __LINE__ << std::endl;
 
 
