@@ -35,6 +35,7 @@ belt
 bet
 bid
 bier
+birds
 birth
 blaze
 bleed
@@ -70,6 +71,7 @@ buzz
 by
 c
 calf
+caught
 cause
 chance
 change
@@ -262,6 +264,7 @@ hoyle
 hurt
 if
 is
+ive
 jaws
 job
 joy
@@ -465,6 +468,7 @@ showed
 shown
 shows
 siege
+sieve
 since
 sir
 sits
@@ -691,6 +695,7 @@ arras
 arrests
 arrows
 asking
+asleep
 aspect
 assured
 athens
@@ -740,6 +745,7 @@ bother
 bounty
 breakdowns
 breeding
+broken
 brokers
 brother
 brothers
@@ -828,6 +834,7 @@ desert
 designd
 desire
 desires
+despair
 destroy
 device
 differ
@@ -939,6 +946,7 @@ int
 intent
 inurnd
 itself
+jena
 jephthah
 jester
 jesus
@@ -951,6 +959,7 @@ labour
 ladies
 lady
 lamond
+lantern
 lasting
 latebut
 leisure
@@ -1211,6 +1220,7 @@ vulgar
 wager
 wagons
 warning
+wasnt
 water
 waxes
 weakness
@@ -1232,6 +1242,7 @@ woodwork
 wretched
 yourself
 yourselves
+abandoned
 accident
 addition
 adidos
@@ -1488,6 +1499,7 @@ everpreserved
 expostulate
 extremity
 fellowstudent
+herbarium
 honourable
 horatio
 imputation

@@ -123,7 +123,7 @@ int createNewIdioms(const std::string inFileName, const std::string inFileName2,
 
 	  std::string newStr = inStr1_p->at(iter).substr(0, pos1) + inStr2_p->at(iter2).substr(pos2, inStr2_p->size() - pos2);
 	  newStr_p->push_back(newStr);
-	  if((int)newStr_p->size() > numberOutputLines*2 && numberOutputLines != -1){
+	  if((int)newStr_p->size() > numberOutputLines*2 && numberOutputLines > 0){
 	    breakBool = true;
 	    break;
 	  }
@@ -275,7 +275,7 @@ int createNewIdioms(const std::string inFileName, const std::string inFileName2,
     else outFile.open(tempOutName.c_str());
 
     int outNum = std::min(newStrSize, numberOutputLines);
-    if(numberOutputLines == -1) outNum = newStrSize;
+    if(numberOutputLines <= 0) outNum = newStrSize;
 
     for(int iter = 0; iter < outNum; iter++){
       outFile << newStr_p->at(iter) << std::endl;
@@ -293,14 +293,14 @@ int createNewIdioms(const std::string inFileName, const std::string inFileName2,
     else outTweetFile.open(tempOutNameTweet.c_str());
 
     int outNum = std::min(newStrSize, numberOutputLines);
-    if(numberOutputLines == -1) outNum = newStrSize;
+    if(numberOutputLines <= 0) outNum = newStrSize;
 
     int tweetPushBack = 0;
     for(int iter = 0; iter < newStrSize; iter++){
       if(newStr_p->at(iter).size() < 140){
 	outTweetFile << newStr_p->at(iter) << std::endl;
 	tweetPushBack++;
-	if(tweetPushBack >= numberOutputLines) break;
+	if(tweetPushBack >= numberOutputLines && numberOutputLines > 0) break;
       }
     }
 

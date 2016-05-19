@@ -1371,6 +1371,7 @@ plan
 plane
 plank
 plans
+plants
 plate
 play
 playd
@@ -2122,6 +2123,7 @@ turk
 turn
 turnd
 turned
+turns
 turnst
 twain
 twas

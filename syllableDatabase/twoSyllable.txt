@@ -247,6 +247,7 @@ breeder
 breeding
 bridebed
 bringing
+brittle
 broken
 brokers
 brothel
@@ -272,6 +273,7 @@ buzzers
 byr
 cabin
 caesar
+caeser
 calfskins
 calmly
 camel
@@ -318,6 +320,7 @@ cherub
 chickens
 children
 china
+chinese
 choler
 chopine
 chorus
@@ -489,6 +492,7 @@ deserved
 designd
 desire
 desires
+despair
 despised
 despite
 destroy
@@ -857,6 +861,7 @@ horrid
 horseback
 horses
 houses
+hovers
 humble
 humbly
 humor
@@ -893,6 +898,7 @@ inmost
 inquire
 ins
 insert
+inside
 install
 instance
 instant
@@ -918,6 +924,7 @@ japan
 jawbone
 jealous
 jelly
+jena
 jephthah
 jester
 jesus
@@ -946,6 +953,7 @@ lady
 ladys
 lament
 lamond
+lantern
 larger
 lasting
 latebut
@@ -1526,6 +1534,7 @@ sickly
 sickness
 signet
 silence
+silent
 silken
 silver
 simple
@@ -1694,6 +1703,7 @@ torrent
 touches
 touching
 toward
+towers
 traduced
 translate
 trappings
@@ -1884,6 +1894,7 @@ wouldnt
 wounded
 wretched
 wringing
+written
 yaughan
 yearsyet
 yellow
