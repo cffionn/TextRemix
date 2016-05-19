@@ -31,7 +31,8 @@ int createSimplePoem(const std::string inFileName)
   while((int)poemVect_p->size() < 10){
 
     int strSize = (int)strVect_p->size();
-
+    
+    bool isMatch = false;
     for(int iter = 0; iter < strSize-1; iter++){
       std::string sentence1 = strVect_p->at(iter);
       std::vector<std::string>* words1_p = new std::vector<std::string>;
@@ -44,14 +45,43 @@ int createSimplePoem(const std::string inFileName)
 
 	getWordsFromSentence(sentence2, words2_p);
 
-	words1_p->clear();
-	delete words1_p;
+	for(int wordIter1 = 0; wordIter1 < (int)words1_p->size(); wordIter1++){
+	  std::string word1 = words1_p->at(wordIter1);
+
+	  for(int wordIter2 = 0; wordIter2 < (int)words2_p->size(); wordIter2++){
+	    std::string word2 = words2_p->at(wordIter2);
+
+	    if(word1.find(word2) != std::string::npos || word2.find(word1) != std::string::npos){
+	      isMatch = true;
+	      break;
+	    }
+	  }
+	  if(isMatch) break;
+	}
+
+	if(isMatch){
+	  poemVect_p->push_back(sentence1);
+	  poemVect_p->push_back(sentence2);
+
+	  strVect_p->erase(strVect_p->begin()+iter2);
+	  strVect_p->erase(strVect_p->begin()+iter);
+	}
+	else if(iter == strSize - 2) outOfMatches = true;
+
+	words2_p->clear();
+	delete words2_p;
+
+	if(isMatch) break;
       }
+
 
       words1_p->clear();
       delete words1_p;
-    }
 
+
+      if(isMatch) break;
+    }
+  
     if(outOfMatches) break;
   }
 
