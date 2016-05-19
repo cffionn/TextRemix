@@ -5,6 +5,7 @@
 
 #include "include/globalDoDebug.h"
 #include "include/checkOutputTxtFile.h"
+#include "include/getWordsFromSentence.h"
 
 int myrandom(int i){return std::rand()%i;}
 
@@ -35,11 +36,13 @@ int createSimplePoem(const std::string inFileName)
       std::string sentence1 = strVect_p->at(iter);
       std::vector<std::string>* words1_p = new std::vector<std::string>;
 
+      getWordsFromSentence(sentence1, words1_p);
 
       for(int iter2 = 1; iter2 < strSize; iter2++){
 	std::string sentence2 = strVect_p->at(iter2);
 	std::vector<std::string>* words2_p = new std::vector<std::string>;
 
+	getWordsFromSentence(sentence2, words2_p);
 
 	words1_p->clear();
 	delete words1_p;

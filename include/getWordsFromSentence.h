@@ -4,8 +4,13 @@
 #include <string>
 #include <vector>
 
-void getWordsFromSentenec(const std::string sentence, std::vector<std::string>* words_p)
+#include "include/globalDoDebug.h"
+#include "include/defAlphaNumSoup.h"
+
+void getWordsFromSentence(std::string sentence, std::vector<std::string>* words_p)
 {
+  sentence = replaceNumbersWithWords(sentence);
+
   int sentenceIter = 0;
   while(sentenceIter < (int)sentence.size()){
     if(alphabetSoup.find(sentence.at(sentenceIter)) == std::string::npos){

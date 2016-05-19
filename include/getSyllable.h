@@ -10,6 +10,7 @@
 
 #include "include/globalDoDebug.h"
 #include "include/defAlphaNumSoup.h"
+#include "include/getWordsFromSentence.h"
 
 const int nSylFiles = 8;
 const std::string sylFileStrings[nSylFiles] = {"syllableDatabase/oneSyllable.txt", "syllableDatabase/twoSyllable.txt", "syllableDatabase/threeSyllable.txt", "syllableDatabase/fourSyllable.txt", "syllableDatabase/fiveSyllable.txt", "syllableDatabase/sixSyllable.txt", "syllableDatabase/sevenSyllable.txt", "syllableDatabase/eightSyllable.txt"};
@@ -63,24 +64,9 @@ int getSyllables(std::string inSentence)
 {
   int syllables = 0;
 
-  inSentence = replaceNumbersWithWords(inSentence);
   std::vector<std::string>* sentenceWords_p = new std::vector<std::string>;
 
-  //FINISH EDITING HERE
-
-  getWordsFromSentence(inSentence, );
-
-
-
-  while(true){
-    std::size_t tempPos = inSentence.find(" ");
-    if(tempPos == std::string::npos){
-      sentenceWords_p->push_back(inSentence);
-      break;
-    }
-    sentenceWords_p->push_back(inSentence.substr(0, tempPos));
-    inSentence = inSentence.substr(tempPos+1, inSentence.size()-tempPos+1);
-  }
+  getWordsFromSentence(inSentence, sentenceWords_p);
 
   for(int iter = 0; iter < (int)sentenceWords_p->size(); iter++){
     if(sentenceWords_p->at(iter).size() == 0) continue;
