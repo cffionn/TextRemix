@@ -64,20 +64,13 @@ int getSyllables(std::string inSentence)
   int syllables = 0;
 
   inSentence = replaceNumbersWithWords(inSentence);
-
-  int sentenceIter = 0;
-  while(sentenceIter < (int)inSentence.size()){
-    if(alphabetSoup.find(inSentence.at(sentenceIter)) == std::string::npos){
-      inSentence.erase(inSentence.begin()+sentenceIter);
-    }
-    else sentenceIter++;
-  }
-
-  while(inSentence.find("  ") != std::string::npos){
-    inSentence.erase(inSentence.find("  "), 1);
-  }
-
   std::vector<std::string>* sentenceWords_p = new std::vector<std::string>;
+
+  //FINISH EDITING HERE
+
+  getWordsFromSentence(inSentence, );
+
+
 
   while(true){
     std::size_t tempPos = inSentence.find(" ");

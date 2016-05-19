@@ -10,31 +10,13 @@
 #include <boost/algorithm/string.hpp>
 
 #include "include/globalDoDebug.h"
-#include "include/checkMakeDir.h"
+#include "include/checkOutputTxtFile.h"
 
 int myrandom(int i){return std::rand()%i;}
 
 int randomizeTxtFile(const std::string inFileName)
 {
-  if(inFileName.size() < 4){
-    std::cout << "inFileName \'" << inFileName << "\' needs to be at least four characters for \'.txt\'. Return -1" << std::endl;
-    return -1;
-  }
-
-  if(inFileName.substr(inFileName.size()-4, 4).find(".txt") == std::string::npos){
-    std::cout << "inFileName \'" << inFileName << "\' needs to be \'.txt\'. Return -1" << std::endl;
-    return -1;
-  }
-
-  if(inFileName.substr(0, 6).find("output") == std::string::npos){
-    std::cout << "inFileName \'" << inFileName << "\' must be output*/*.txt. Return -1" << std::endl;
-    return -1;
-  }
-
-  if(!checkFile(inFileName)){
-    std::cout << "inFileName \'" << inFileName << "\' not a file. Return -1" << std::endl;
-    return -1;
-  }
+  if(!checkOutputTxtFile(inFileName)) return -1;
   
   std::ifstream inFile(inFileName);
   std::string str;
