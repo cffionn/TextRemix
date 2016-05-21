@@ -14,4 +14,4 @@ path=${path:0:$pos}
 srcStr="src/"
 output=${1#*$srcStr}
 
-g++ $1 -Werror -Wall -Wextra -I $path -O2 -o "bin/${output/%.C/}.exe"
+g++ $1 -Werror -Wall -Wextra -I $path -O2 -o "$path/bin/${output/%.C/}.exe"
