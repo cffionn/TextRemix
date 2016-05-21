@@ -16,6 +16,7 @@ rm $path/include/#*.h#
 rm $path/*.md~
 rm $path/*.sh~
 rm $path/cleanup/*.sh~
+rm $path/bash/*.sh~
 rm $path/inputDatabase/*.txt~
 rm $path/rhymeDatabase/*.txt~
 rm $path/syllableDatabase/*.txt~
