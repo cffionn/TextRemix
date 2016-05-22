@@ -79,4 +79,23 @@ int getSyllables(std::string inSentence)
   return syllables;
 }
 
+int getNWords(std::string inSentence)
+{
+  int nWords = 0;
+
+  std::vector<std::string>* sentenceWords_p = new std::vector<std::string>;
+
+  getWordsFromSentence(inSentence, sentenceWords_p);
+
+  for(int iter = 0; iter < (int)sentenceWords_p->size(); iter++){
+    if(sentenceWords_p->at(iter).size() == 0) continue;
+    nWords++;
+  }
+
+  sentenceWords_p->clear();
+  delete sentenceWords_p;
+
+  return nWords;
+}
+
 #endif

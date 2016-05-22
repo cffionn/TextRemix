@@ -7,6 +7,7 @@
 #include "include/checkMakeDir.h"
 #include "include/checkOutputTxtFile.h"
 #include "include/parseYesNo.h"
+#include "include/getSyllable.h"
 
 const std::string macDBDirStr = "machineDatabase/";
 const std::string goodFileName = "goodStrings.txt";
@@ -79,6 +80,8 @@ int addToMachineDatabase(const std::string inFileName)
   for(int iter = 0; iter < nStr; iter++){
     int yesNo = -1;
     std::string inStr = strVect_p->at(iter);
+    int nWords = getNWords(inStr);
+    int nSyl = getSyllables(inStr);
 
     while(yesNo == -1){
       std::cout << "\'" << inStr << "\'" << std::endl;
@@ -91,12 +94,12 @@ int addToMachineDatabase(const std::string inFileName)
 
       if(yesNo == 1){
 	std::fstream goodFile(tempGoodFileName, std::ios_base::app);
-	goodFile << inStr << std::endl;
+	goodFile << inStr << "," << nWords << "," << nSyl << "," << "1" << std::endl;
 	goodFile.close();
       }
       else if(yesNo == 0){
 	std::fstream badFile(tempBadFileName, std::ios_base::app);
-	badFile << inStr << std::endl;
+	badFile << inStr << "," << nWords << "," << nSyl << "," << "0" << std::endl;
 	badFile.close();
       }
     }
