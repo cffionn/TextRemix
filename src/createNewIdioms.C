@@ -21,13 +21,14 @@ int myrandom(int i){return std::rand()%i;}
 
 int createNewIdioms(const std::string inFileName, const std::string inFileName2, const std::string outName, bool doAppend, int numberOutputLines)
 {
-
   std::ifstream file;
   std::string str; 
 
   std::vector<std::string>* inStr1_p = new std::vector<std::string>;
   std::vector<std::string>* inStr2_p = new std::vector<std::string>;
   std::vector<std::string>* totalWords_p = new std::vector<std::string>;
+
+  if(globalDoDebug) std::cout << __FILE__ << ", " << __LINE__ << std::endl;
 
 
   if(inFileName.find(".txt") != std::string::npos){
