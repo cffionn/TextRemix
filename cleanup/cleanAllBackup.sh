@@ -14,6 +14,7 @@ rm $path/testFunctions/#*.C#
 rm $path/include/*.h~
 rm $path/include/#*.h#
 rm $path/*.md~
+rm $path/python/*.py~
 rm $path/*.sh~
 rm $path/cleanup/*.sh~
 rm $path/bash/*.sh~
