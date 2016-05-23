@@ -29,13 +29,22 @@ int addToMachineDatabase(const std::string inFileName)
     std::string str;
 
     while(std::getline(prevFile, str)){
+      str = str.substr(1, str.size()-1);
+      str = str.substr(0, str.find("\","));
+
       prevStr_p->push_back(str);
     }
 
     prevFile.close();
+  }
+  if(checkFile(tempBadFileName)){
+    std::ifstream prevFile(tempBadFileName);
+    std::string str;
 
-    prevFile.open(tempBadFileName);
     while(std::getline(prevFile, str)){
+      str = str.substr(1, str.size()-1);
+      str = str.substr(0, str.find("\","));
+
       prevStr_p->push_back(str);
     }
     
@@ -94,12 +103,12 @@ int addToMachineDatabase(const std::string inFileName)
 
       if(yesNo == 1){
 	std::fstream goodFile(tempGoodFileName, std::ios_base::app);
-	goodFile << inStr << "," << nWords << "," << nSyl << "," << "1" << std::endl;
+	goodFile << "\""<< inStr << "\"" << "," << nWords << "," << nSyl << "," << "1" << std::endl;
 	goodFile.close();
       }
       else if(yesNo == 0){
 	std::fstream badFile(tempBadFileName, std::ios_base::app);
-	badFile << inStr << "," << nWords << "," << nSyl << "," << "0" << std::endl;
+	badFile << "\"" << inStr << "\"" << "," << nWords << "," << nSyl << "," << "0" << std::endl;
 	badFile.close();
       }
     }
