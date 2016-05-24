@@ -10,3 +10,5 @@ path=${path:0:$pos}
 rm $path/inputDatabase/*.txt~
 rm $path/rhymeDatabase/*.txt~
 rm $path/syllableDatabase/*.txt~
+rm $path/wordtypeDatabase/*.txt~
+rm $path/machineDatabase/*.txt~

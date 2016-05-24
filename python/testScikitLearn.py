@@ -143,8 +143,9 @@ def testScikitLearn():
   clf = svm.SVC(gamma=0.001, C=100.)
 
   clf.fit(xFit, yFit)
-  
-  clf.predict(xPredict)
-#  print(yPredict)
+
+  for i in range(0,len(xPredict)):
+    print(clf.predict(xPredict[i:i+1]))
+    print(yPredict[i]) 
 
 testScikitLearn()

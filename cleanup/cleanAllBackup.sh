@@ -18,7 +18,5 @@ rm $path/python/*.py~
 rm $path/*.sh~
 rm $path/cleanup/*.sh~
 rm $path/bash/*.sh~
-rm $path/inputDatabase/*.txt~
-rm $path/machineDatabase/*.txt~
-rm $path/rhymeDatabase/*.txt~
-rm $path/syllableDatabase/*.txt~
+
+sh $path/cleanup/cleanDatabaseBackup.sh
