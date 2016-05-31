@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ $# -ne 1 ]
+then
+    echo "Usage: ./makeCatHaiku.sh <inputFile>"
+    exit 1
+fi
+
 
 TextRemix="TextRemix"
 path=$PWD
