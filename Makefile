@@ -12,7 +12,7 @@ INCLUDE = -I /opt/local/include -I $(path)
 
 MKDIR_BIN = mkdir -p $(path)/bin
 
-all: mkdirBin createNewIdioms createSyllableSorted sortDatabaseStrings expandRhymeDatabase removeDatabaseDuplicates randomizeTxtFile createSimplePoem createHaiku addToMachineDatabase testReturnFileList testGetRhyme testGetSyllable
+all: mkdirBin createNewIdioms createSyllableSorted sortDatabaseStrings expandRhymeDatabase removeDatabaseDuplicates randomizeTxtFile createSimplePoem createHaiku addToMachineDatabase createRandomStrings createCombinedInput testReturnFileList testGetRhyme testGetSyllable
 
 mkdirBin: 
 	$(MKDIR_BIN)
@@ -43,6 +43,12 @@ createHaiku: src/createHaiku.C
 
 addToMachineDatabase: src/addToMachineDatabase.C
 	$(CXX) $(CXXFLAGS) $(INCLUDE) -o bin/addToMachineDatabase.exe src/addToMachineDatabase.C
+
+createRandomStrings: src/createRandomStrings.C
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -o bin/createRandomStrings.exe src/createRandomStrings.C 
+
+createCombinedInput: src/createCombinedInput.C
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -o bin/createCombinedInput.exe src/createCombinedInput.C 
 
 testReturnFileList: testFunctions/testReturnFileList.C 
 	$(CXX) $(CXXFLAGS) $(INCLUDE) -o bin/testReturnFileList.exe testFunctions/testReturnFileList.C 
