@@ -17,3 +17,239 @@
 "running, shouting now into the state of film and Advil",10,14,1
 "running, shouting now into the rhythm of the plastic anthem",10,16,1
 "running, shouting now into the badges",6,10,1
+"Magnum magnum",2,4,1
+"How are you savage?",4,5,1
+"Blood stains the parish",4,5,1
+"Guns control the badges",4,6,1
+"Classic",1,2,1
+"Example of dissatisfaction",3,9,1
+"Taking up drastic action",4,7,1
+"Taking up drastic action",4,7,1
+"Acid acid",2,4,1
+"Raindrops to kill them bastards",5,7,1
+"We'll feed the masses",4,5,1
+"We'll feed them acid",4,5,1
+"But we're dancing dancing",4,6,1
+"To the rhythm of the plastic anthem",7,10,1
+"Dancing",1,2,1
+"While they're preaching the plastic anthem",6,9,1
+"Stabbing stabbing",2,4,1
+"A hole in the very fabric",6,8,1
+"Of",1,1,1
+"Society",1,4,1
+"Well it's eternally",3,6,1
+"Will the wind be beneath my wings?",7,8,1
+"Will the water wash over my sins?",7,9,1
+"Will the wind be beneath my wings?",7,8,1
+"Will the water wash over my sins?",7,9,1
+"Until this is over",4,6,1
+"Until this is over",4,6,1
+"Until this is over",4,6,1
+"(I was)",2,2,1
+"Baptized before the gods",4,6,1
+"But I'm still holding clothes",5,6,1
+"I'm still holding yours",4,5,1
+"Magnum magnum",2,4,1
+"Can you even lift that cannon?",6,8,1
+"And you're a savage savage",5,7,1
+"Living in the the pastor's masters",6,9,1
+"Fragile fragile",2,4,1
+"We're living in the state of film and Advil",9,11,1
+"Living on boulevard Madville",4,8,1
+"Living on boulevard Madville",4,8,1
+"Gassing gassing",2,4,1
+"Our people into mass attacking",5,9,1
+"Our people with innocent passage",5,9,1
+"Oh!",1,1,1
+"When I saw you ahead I ran two blocks",9,10,1
+"shouting your name then realizing it wasn't",7,11,1
+"you but some alarmed pretender, I went on",8,11,1
+"running, shouting now into the sky,",6,9,1
+"continuing your fame and luster. Since I've",7,11,1
+"been incinerated, I've oft returned to this thought,",8,13,1
+"that all things loved are pursued and never caught,",9,11,1
+"even as you slept beside me you were flying off.",10,13,1
+"At least what's never had can't be lost, the sieve",10,11,1
+"of self stuck with just some larger chunks, jawbone,",9,11,1
+"wedding ring, a single repeated dream,",6,10,1
+"a lullaby in every elegy, descriptions",6,13,1
+"of the sea written in the desert, your broken",9,12,1
+"umbrella, me claiming I could fix it.",7,10,1
+"The wolf appointed to tear me apart",7,10,1
+"is sure making slow work of it.",7,8,1
+"This morning just one eye weeping,",6,8,1
+"a single chip out of my back and",8,9,1
+"the usual maniacal wooden bird flutes",6,12,1
+"in the brain. Listen to that feeble howl",8,10,1
+"like having fangs is something to regret,",7,10,1
+"like we shouldn't give thanks for blood",7,8,1
+"thirst. Even my idiot neighbor backing out",7,12,1
+"without looking could do a better job,",7,10,1
+"even that leaning diseased tree or dream",7,10,1
+"of a palsied hand squeezing the throat but",8,10,1
+"we've been at this for years, lying exposed",8,10,1
+"on the couch in the fat of the afternoon,",9,11,1
+"staring down the moon among night blooms.",7,9,1
+"What good's a reluctant wolf anyway?",6,10,1
+"The other wolves just get it drunk",7,8,1
+"then tie it to a post. Poor pup.",8,8,1
+"Here's my hand. Bite.",4,4,1
+"You don't have a clue, says the power drill",9,10,1
+"to the canoe hanging from the rafters.",7,10,1
+"Is life a contest everything plays",6,9,1
+"by different rules for different prizes?",6,11,1
+"You're really worthless, aren't you?",5,8,1
+"barks the cherry tree covered with eponymous",7,12,1
+"fruit to the wagon lying on its side.",8,10,1
+"Unfair! Wasn't that wagon not two days ago",8,12,1
+"leading the parade, the puppy refusing",6,11,1
+"to wear her hat? Can't you just leave me",9,9,1
+"alone? says the big picture of Marilyn",7,11,1
+"Monroe behind her nonreflective glass.",5,10,1
+"Is the universe infinity in ruckus",6,12,1
+"and wrack? The third grader loose",6,7,1
+"in dishwares, the geo-tech",4,7,1
+"weeping on the beach. Mine, mine,",6,7,1
+"says the squirrel to the transformer,",6,9,1
+"unclear on the capacities of electricity.",6,14,1
+"String of Christmas lights tangled with",6,8,1
+"extension cords, can't you work things out?",7,9,1
+"The young couple takes a step toward the altar,",9,12,1
+"increasing the magnetic force that sends",6,10,1
+"ex-lovers whirling off into nether nebulae",6,13,1
+"but attracting mothers-in-law. In one wing,",6,11,1
+"the oxygen mask taken from the famous writer",8,13,1
+"of terza rema glee while in another",7,11,1
+"an infant arrives, loudly disappointed",5,11,1
+"to have to do everything now himself,",7,10,1
+"no longer able to breathe under water.",7,11,1
+"Will we never see our dead friends again?",8,10,1
+"A motorcycle roars on the terrible screw",7,12,1
+"of the parking structure, lava",5,8,1
+"heaves itself into the frigid strait.",6,9,1
+"The city comes to a standstill",6,8,1
+"and life turns into still life,",6,7,1
+"it is as brittle as plants in a herbarium.",9,13,1
+"You ride a bicycle which doesn't",6,9,1
+"move, only the houses wheel by,",6,8,1
+"slowly, showing their noses, brows,",5,8,1
+"and pouting lips. The evening becomes",6,10,1
+"a still life, it doesn't feel like existing,",8,11,1
+"therefore it glistens like a Chinese lantern",7,11,1
+"in a peaceful garden. Nightfall, motionless,",6,11,1
+"the last one. The last word. Happiness",7,9,1
+"hovers in the crowns of the trees.",7,8,1
+"Inside the leaves, kings are asleep.",6,8,1
+"No word, the yellow sail of the sun",8,9,1
+"towers over the roofs like a tent abandoned",8,12,1
+"by Caeser. Pain becomes a still life and despair",9,12,1
+"is only a still life, framed",6,7,1
+"by the mouth of one passerby. The square",8,10,1
+"keeps silent in a dark foliage of birds'",8,11,1
+"wings. Silence as on the fields of Jena",8,10,1
+"after the battle when loving women",6,10,1
+"look at the faces of the slain.",7,8,1
+"You will be aware of an absence, presently,",8,12,1
+"Growing beside you, like a tree,",6,8,1
+"A death tree, color gone, an Australian gum tree ---",9,12,1
+"Balding, gelded by lightning--an illusion,",5,11,1
+"And a sky like a pig's backside, an utter lack of attention.",12,16,1
+"But right now you are dumb.",6,6,1
+"And I love your stupidity,",5,8,1
+"The blind mirror of it. I look in",8,9,1
+"And find no face but my own, and you think that's funny.",12,13,1
+"It is good for me",5,5,1
+"To have you grab my nose, a ladder rung.",9,10,1
+"One day you may touch what's wrong ---",7,7,1
+"The small skulls, the smashed blue hills, the godawful hush.",10,12,1
+"Till then your smiles are found money.",7,8,1
+"Do-do-do-do-do-do-do",1,7,1
+"Do-do-do-do-do-do-do",1,7,1
+"Do-do-do-do-do-do-do",1,7,1
+"Do-do-do-do-do",1,7,1
+"And we back, and we back, and we back, and we back",12,12,1
+"Do-do-do-do-do-do-do",1,7,1
+"Do-do-do-do-do-do-do",1,7,1
+"Do-do-do-do-do-do-do",1,7,1
+"Do-do-do-do-do",1,7,1
+"And we back, and we back, and we back",9,9,1
+"",0,0,1
+"They ain't teaching taxes in school",6,8,1
+"It don't even matter I was acting a fool",9,12,1
+"But who would think the raps would turn into racks?",10,11,1
+"Don't matter, matter fact, it could happen to you",9,12,1
+"Scars on my head, I'm the boy who lived",9,9,1
+"The boy love playing when the boy too sick",9,10,1
+"Reclining on a prayer, I'm declining to help",8,13,1
+"I've been lying to my body can't rely on myself",10,14,1
+"Last year got addicted to xans",6,8,1
+"Started forgetting my name and started missing my chance",9,14,1
+"LA for four months end up leaving right back",9,10,1
+"I'm in love with my city bitch I sleep in my hat",12,13,1
+"I felt hog tied ever since my dog died",9,10,1
+"He lived to 84, damn, that's a long ride",8,8,1
+"I know he up there he just sit and he wait",11,11,1
+"I'll be racing up the stairs I'mma get to the gate singing",12,15,1
+"",0,0,1
+"Do-do-do-do-do-do-do",1,7,1
+"Do-do-do-do-do-do-do",1,7,1
+"Do-do-do-do-do-do-do",1,7,1
+"Do-do-do-do-do",1,7,1
+"Do-do-do-do-do-do-do",1,7,1
+"Do-do-do-do-do-do-do",1,7,1
+"Do-do-do-do-do-do-do",1,7,1
+"Do-do-do-do-do",1,7,1
+"",0,0,1
+"All my days I prayed and prayed and now I see the finish line",14,15,1
+"Oh I'm gonna finish mine",5,7,1
+"All my days I prayed and prayed and now I see the finish line",14,15,1
+"Gonna finish mine",3,5,1
+"ill be free",3,3,1
+"Someday we'll all be free",5,6,1
+"Be free",2,2,1
+"",0,0,1
+"Gimme the water, gimme the water",6,10,1
+"I need the kind from Space Jam",7,7,1
+"Get this money, get this budget, KOK to day camp",10,14,1
+"Me and my girl plan to stay to the end",10,10,1
+"Hope there never come a day where we be better as friends",12,14,1
+"We in a marathon we could build a marriage on",10,13,1
+"Arguments as parents digging deeper than a baritone",8,15,1
+"I've been getting blocked just trying to make songs with friends",11,13,1
+"Labels told me to my face that they own my friends",11,12,1
+"I got to pray I got to pray, like Hammer after "2 Legit"",12,15,1
+"I got the power I could poke Lucifer with crucifix",10,15,1
+"I cannot scrap the stupid shit",6,8,1
+"I "Stand Up" like I'm Ludacris",6,8,1
+"I know some folks that talk so much you'd think they drive an Uber whip",15,16,1
+"Damn, queen said why we in a queen bed",9,9,1
+"I said it's yours don't worry little bean head",9,11,1
+"I'm just here to catch my breath, I got a world tattoo",12,13,1
+"She said cool just bring me some food",8,8,1
+"",0,0,1
+"All my days I prayed and prayed and now I see the finish line",14,15,1
+"Oh I'm gonna finish mine",5,7,1
+"All my days I prayed and prayed and now I see the finish line",14,15,1
+"I'm gonna finish mine",4,6,1
+"",0,0,1
+"Do-do-do-do-do-do-do",1,7,1
+"Do-do-do-do-do-do-do",1,7,1
+"Do-do-do-do-do-do-do",1,7,1
+"Do-do-do-do-do",1,7,1
+"Do-do-do-do-do-do-do",1,7,1
+"Do-do-do-do-do-do-do",1,7,1
+"Do-do-do-do-do-do-do",1,7,1
+"Do-do-do-do-do",1,7,1
+"",0,0,1
+"Part 2: Drown",2,2,1
+"",0,0,1
+"The water may be deeper than it's ever been",9,12,1
+"",0,0,1
+"Lord rain down on me so I can move on water",11,12,1
+"Like children at the altar, like God inside my house",10,13,1
+"I love you, I love you, you looking holy like Mama",11,14,1
+"You made a church out of feathers",7,8,1
+"So when she fly to the Father",7,8,1
+"She know the choir gon' follow and all the offering paid",11,14,1
+"She gave my name away to your holy house",9,11,1
+"She like my blessings in disguise",6,8,1

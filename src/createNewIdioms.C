@@ -19,8 +19,27 @@ const std::string outDirTweet = "outputTweet/";
 
 int myrandom(int i){return std::rand()%i;}
 
-int createNewIdioms(const std::string inFileName, const std::string inFileName2, const std::string outName, bool doAppend, int numberOutputLines)
+
+bool isStringInVect(std::string inStr, std::vector<std::string>* inVect_p)
 {
+  bool isInVect = false;
+
+  const int vectSize = (int)inVect_p->size();
+
+  for(int iter = 0; iter < vectSize; iter++){
+    if(inVect_p->at(iter).size() == inStr.size() && inVect_p->at(iter).find(inStr) != std::string::npos){
+      isInVect = true;
+      break;
+    }
+  }
+
+  return isInVect;
+}
+
+std::vector<std::string> createNewIdioms(const std::string inFileName, const std::string inFileName2, const int numberOutputLines = -1)
+{
+  std::vector<std::string> returnVectorOfStrings;
+
   std::ifstream file;
   std::string str; 
 
@@ -45,8 +64,8 @@ int createNewIdioms(const std::string inFileName, const std::string inFileName2,
     file.close();
   }
   else{
-    std::cout << "inFileName 1, \'" << inFileName << "\' is invalid. Not \'.txt\'. Return 1." << std::endl;
-    return 1;
+    std::cout << "inFileName 1, \'" << inFileName << "\' is invalid. Not \'.txt\'. return empty vector." << std::endl;
+    return returnVectorOfStrings;
   }
 
   if(inFileName2.find(".txt") != std::string::npos){
@@ -63,18 +82,18 @@ int createNewIdioms(const std::string inFileName, const std::string inFileName2,
     file.close();
   }
   else{
-    std::cout << "inFileName 2, \'" << inFileName2 << "\' is invalid. Not \'.txt\'. Return 1." << std::endl;
-    return 1;
+    std::cout << "inFileName 2, \'" << inFileName2 << "\' is invalid. Not \'.txt\'. return empty vector." << std::endl;
+    return returnVectorOfStrings;
   }
 
   if(inStr1_p->size() == 0){
-    std::cout << "Input file 1 empty. Return 1" << std::endl;
-    return 1;
+    std::cout << "Input file 1 empty. return empty vector" << std::endl;
+    return returnVectorOfStrings;
   }
 
   if(inStr2_p->size() == 0){
-    std::cout << "Input file 2 empty. Return 1" << std::endl;
-    return 1;
+    std::cout << "Input file 2 empty. return empty vector" << std::endl;
+    return returnVectorOfStrings;
   }
 
   std::srand(unsigned(std::time(NULL)));
@@ -87,6 +106,7 @@ int createNewIdioms(const std::string inFileName, const std::string inFileName2,
 
   const int inStr1Size = (int)inStr1_p->size();
   const int inStr2Size = (int)inStr2_p->size();
+
   for(int iter = 0; iter < inStr1Size; iter++){
     std::vector<std::string>* inStr1Words_p = new std::vector<std::string>;
     std::string tempStr = inStr1_p->at(iter);
@@ -115,30 +135,7 @@ int createNewIdioms(const std::string inFileName, const std::string inFileName2,
       }
       if(addWord) totalWords_p->push_back(inStr1Words_p->at(wordIter));
     }
-
-    for(int iter2 = 0; iter2 < inStr2Size; iter2++){
-      for(int wordIter = 0; wordIter < str1WordsSize; wordIter++){
-	if(inStr2_p->at(iter2).find(inStr1Words_p->at(wordIter)) != std::string::npos){
-	  std::size_t pos1 = inStr1_p->at(iter).find(inStr1Words_p->at(wordIter).c_str());
-	  std::size_t pos2 = inStr2_p->at(iter2).find(inStr1Words_p->at(wordIter).c_str());
-
-	  std::string newStr = inStr1_p->at(iter).substr(0, pos1) + inStr2_p->at(iter2).substr(pos2, inStr2_p->size() - pos2);
-	  newStr_p->push_back(newStr);
-	  if((int)newStr_p->size() > numberOutputLines*2 && numberOutputLines > 0){
-	    breakBool = true;
-	    break;
-	  }
-	}
-      }
-      if(breakBool) break;
-    }
-
-    if(breakBool) break;
-
-    inStr1Words_p->clear();
-    delete inStr1Words_p;
   }
-
 
   for(int iter = 0; iter < inStr2Size; iter++){
     std::vector<std::string>* inStr2Words_p = new std::vector<std::string>;
@@ -170,147 +167,98 @@ int createNewIdioms(const std::string inFileName, const std::string inFileName2,
     }
   }
 
-  int newIter = 0;
-  while(newIter < (int)newStr_p->size()){
-    
-    bool doIter = true;
-    for(int iter = newIter+1; iter < (int)newStr_p->size(); iter++){
-      if(!strcmp(newStr_p->at(newIter).c_str(), newStr_p->at(iter).c_str())){
-	newStr_p->erase(newStr_p->begin() + iter);
-	doIter = false;
-	break;
-      }
-    }
-    if(doIter) newIter++;
-  }
-
-  newIter = 0;
-  while(newIter < (int)newStr_p->size()){
-    
-    bool doIter = true;
-    for(int iter = 0; iter < (int)inStr1_p->size(); iter++){
-      if(!strcmp(newStr_p->at(newIter).c_str(), inStr1_p->at(iter).c_str())){
-	newStr_p->erase(newStr_p->begin() + newIter);
-	doIter = false;
-	break;
-      }
-    }
-    if(doIter) newIter++;
-  }
-
-  newIter = 0;
-  while(newIter < (int)newStr_p->size()){
-    
-    bool doIter = true;
-    for(int iter = 0; iter < (int)inStr2_p->size(); iter++){
-      if(!strcmp(newStr_p->at(newIter).c_str(), inStr2_p->at(iter).c_str())){
-	newStr_p->erase(newStr_p->begin() + newIter);
-	doIter = false;
-	break;
-      }
-    }
-    if(doIter) newIter++;
-  }
-
-  const int totalWordSize = (int)totalWords_p->size();                                                         
-  newIter = 0;
-  while(newIter < (int)newStr_p->size()){
-    std::vector<std::string>* inStrWords_p = new std::vector<std::string>;
-    std::string tempStr = newStr_p->at(newIter);
+  for(int iter = 0; iter < inStr1Size; iter++){
+    std::vector<std::string>* inStr1Words_p = new std::vector<std::string>;
+    std::string tempStr = inStr1_p->at(iter);
 
     while(true){
       std::size_t tempPos = tempStr.find(" ");
       if(tempPos == std::string::npos){
-	inStrWords_p->push_back(tempStr);
+	inStr1Words_p->push_back(tempStr);
 	break;
       }
-      inStrWords_p->push_back(tempStr.substr(0, tempPos+1));
+      inStr1Words_p->push_back(tempStr.substr(0, tempPos+1));
       tempStr = tempStr.substr(tempPos+1, tempStr.size()-tempPos+1);
     }
 
-    const int strWordsSize = (int)inStrWords_p->size();
-    bool doIter = true;
-    for(int wordIter = 0; wordIter < strWordsSize; wordIter++){
-      bool wordPasses = false;
-      for(int totalWordIter = 0; totalWordIter < totalWordSize; totalWordIter++){
-	if(!strcmp(inStrWords_p->at(wordIter).c_str(), totalWords_p->at(totalWordIter).c_str())){
-	  wordPasses = true;
-	  break;
+    const int str1WordsSize = (int)inStr1Words_p->size();
+
+    for(int iter2 = 0; iter2 < inStr2Size; iter2++){
+      for(int wordIter = 0; wordIter < str1WordsSize; wordIter++){
+	if(inStr2_p->at(iter2).find(inStr1Words_p->at(wordIter)) != std::string::npos){
+	  std::size_t pos1 = inStr1_p->at(iter).find(inStr1Words_p->at(wordIter).c_str());
+	  std::size_t pos2 = inStr2_p->at(iter2).find(inStr1Words_p->at(wordIter).c_str());
+
+	  std::string newStr = inStr1_p->at(iter).substr(0, pos1) + inStr2_p->at(iter2).substr(pos2, inStr2_p->size() - pos2);
+	  bool isUsedStr = isStringInVect(newStr, newStr_p);
+	  if(!isUsedStr) isUsedStr = isStringInVect(newStr, inStr1_p);
+	  if(!isUsedStr) isUsedStr = isStringInVect(newStr, inStr2_p);
+	  if(!isUsedStr) isUsedStr = isStringInVect(newStr, totalWords_p);
+
+	  if(!isUsedStr){
+	    std::vector<std::string>* wordsInNewStr_p = new std::vector<std::string>;
+	    std::string tempNewStr = newStr;
+
+	    while(true){
+	      std::size_t tempPos = tempNewStr.find(" ");
+	      if(tempPos == std::string::npos){
+		wordsInNewStr_p->push_back(tempNewStr);
+		break;
+	      }
+	      wordsInNewStr_p->push_back(tempNewStr.substr(0, tempPos+1));
+	      tempNewStr = tempNewStr.substr(tempPos+1, tempNewStr.size()-tempPos+1);
+	    }
+
+	    bool strIsGood = true;
+	    for(int newWordIter = 0; newWordIter < (int)wordsInNewStr_p->size(); newWordIter++){
+	      bool wordIsGood = false;
+	      std::string newWord = wordsInNewStr_p->at(newWordIter);
+
+	      for(int totWordIter = 0; totWordIter < (int)totalWords_p->size(); totWordIter++){
+		std::string totWord = totalWords_p->at(totWordIter);
+		
+		if(newWord.size() == totWord.size() && newWord.find(totWord) != std::string::npos){
+		  wordIsGood = true;
+		  break;
+		}
+	      }
+
+	      if(!wordIsGood){
+		strIsGood = false;
+		break;
+	      }
+	    }
+
+	    if(!strIsGood) isUsedStr = true;
+	    
+	    wordsInNewStr_p->clear();
+	    delete wordsInNewStr_p;
+	  }
+
+	  if(!isUsedStr) newStr_p->push_back(newStr);
+
+	  if((int)newStr_p->size() >= numberOutputLines && numberOutputLines > 0){
+	    breakBool = true;
+	    break;
+	  }
 	}
       }
-      if(!wordPasses){
-	doIter = false;
-	break;
-      }
-    }
-    if(doIter) newIter++;
-    else newStr_p->erase(newStr_p->begin()+newIter);
-
-    inStrWords_p->clear();
-    delete inStrWords_p;
-  }
-
-  std::string tempOutName = outName;
-  std::string repStr = "_MixedOutput.txt";
-  if(tempOutName.find(".txt") != std::string::npos){
-    tempOutName.replace(tempOutName.find(".txt"), 4, repStr);
-  }
-  tempOutName = outDirFull + tempOutName;
-   
- 
-  std::string tempOutNameTweet = outName;
-  std::string repStrTweet = "_TweetOutput.txt";
-  if(tempOutNameTweet.find(".txt") != std::string::npos){
-    tempOutNameTweet.replace(tempOutNameTweet.find(".txt"), 4, repStrTweet);
-  }
-  tempOutNameTweet = outDirTweet + tempOutNameTweet;
-
-  std::random_shuffle(newStr_p->begin(), newStr_p->end(), myrandom);
-
-  const int newStrSize = (int)newStr_p->size();
- 
-  if(checkMakeDir(outDirFull)){
-    std::ofstream outFile;
-
-    if(doAppend) outFile.open(tempOutName.c_str(), std::ios_base::app);
-    else outFile.open(tempOutName.c_str());
-
-    int outNum = std::min(newStrSize, numberOutputLines);
-    if(numberOutputLines <= 0) outNum = newStrSize;
-
-    for(int iter = 0; iter < outNum; iter++){
-      outFile << newStr_p->at(iter) << std::endl;
-    }
-  
-    outFile.close();
-  }
-  else{
-    std::cout << "Error making dir \'" << outDirFull << "\'. File \'" << tempOutName << "\' not written." << std::endl;
-  }
-
-  if(checkMakeDir(outDirTweet)){
-    std::ofstream outTweetFile;
-    if(doAppend) outTweetFile.open(tempOutNameTweet.c_str(), std::ios_base::app);
-    else outTweetFile.open(tempOutNameTweet.c_str());
-
-    int outNum = std::min(newStrSize, numberOutputLines);
-    if(numberOutputLines <= 0) outNum = newStrSize;
-
-    int tweetPushBack = 0;
-    for(int iter = 0; iter < newStrSize; iter++){
-      if(newStr_p->at(iter).size() < 140){
-	outTweetFile << newStr_p->at(iter) << std::endl;
-	tweetPushBack++;
-	if(tweetPushBack >= numberOutputLines && numberOutputLines > 0) break;
-      }
+      if(breakBool) break;
     }
 
-    outTweetFile.close();
+    if(breakBool) break;
+
+    inStr1Words_p->clear();
+    delete inStr1Words_p;
   }
-  else{
-    std::cout << "Error making dir \'" << outDirTweet << "\'. File \'" << tempOutNameTweet << "\' not written." << std::endl;
+
+  const int numberOfStrings = newStr_p->size();
+  returnVectorOfStrings.reserve(numberOfStrings);
+
+  for(int iter = 0; iter < numberOfStrings; iter++){
+    returnVectorOfStrings.push_back(newStr_p->at(iter));
   }
-  
+
   totalWords_p->clear();
   delete totalWords_p;
   
@@ -323,7 +271,7 @@ int createNewIdioms(const std::string inFileName, const std::string inFileName2,
   inStr2_p->clear();
   delete inStr2_p;
 
-  return 0;
+  return returnVectorOfStrings;
 }
 
 int runCreateNewIdioms(const std::string inFileName, const std::string inFileName2, int numberOutputLines)
@@ -390,21 +338,101 @@ int runCreateNewIdioms(const std::string inFileName, const std::string inFileNam
     outName = tempInFileName2 + "_" + tempInFileName;
   }
 
+  bool sameFile = (inFileName.size() == inFileName2.size() && inFileName.find(inFileName2) != std::string::npos);
 
-  int tempNumberOutputLines1 = numberOutputLines/2;
-  int tempNumberOutputLines2 = numberOutputLines/2;
-  if(numberOutputLines%2 != 0) tempNumberOutputLines2--;
+  std::vector<std::string> newStrVect1;
+  if(numberOutputLines > 0) newStrVect1.reserve(numberOutputLines);
+  newStrVect1 = createNewIdioms(inFileName, inFileName2, numberOutputLines);
 
-  if(numberOutputLines == -1){
-    tempNumberOutputLines1 = -1;
-    tempNumberOutputLines2 = -1;
+  std::vector<std::string> newStrVect2;
+  if(numberOutputLines > 0) newStrVect2.reserve(numberOutputLines);
+  if(!sameFile) newStrVect2 = createNewIdioms(inFileName2, inFileName, numberOutputLines);
+
+  std::cout << newStrVect1.size() << ", " << newStrVect2.size() << std::endl;
+
+  std::string tempOutName = outName;
+  std::string repStr = "_MixedOutput.txt";
+  if(tempOutName.find(".txt") != std::string::npos){
+    tempOutName.replace(tempOutName.find(".txt"), 4, repStr);
   }
-  else if(inFileName.size() == inFileName2.size() && inFileName.find(inFileName2) != std::string::npos) tempNumberOutputLines1 = numberOutputLines;
+  tempOutName = outDirFull + tempOutName;
+    
+  std::string tempOutNameTweet = outName;
+  std::string repStrTweet = "_TweetOutput.txt";
+  if(tempOutNameTweet.find(".txt") != std::string::npos){
+    tempOutNameTweet.replace(tempOutNameTweet.find(".txt"), 4, repStrTweet);
+  }
+  tempOutNameTweet = outDirTweet + tempOutNameTweet;
 
-  int retVal = createNewIdioms(inFileName, inFileName2, outName, false, tempNumberOutputLines1);
-  if(inFileName.size() != inFileName2.size() || inFileName.find(inFileName2) == std::string::npos) retVal = createNewIdioms(inFileName2, inFileName, outName, true, tempNumberOutputLines2);
+  std::random_shuffle(newStrVect1.begin(), newStrVect1.end(), myrandom);
+  std::random_shuffle(newStrVect2.begin(), newStrVect2.end(), myrandom);
 
-  return retVal;
+  if(checkMakeDir(outDirFull)){
+    std::ofstream outFile(tempOutName.c_str(), std::ofstream::out | std::ofstream::trunc);
+    outFile.close();
+
+    outFile.open(tempOutName.c_str(), std::ios_base::app);
+
+    int vectIter = 0;
+    int writeIter = 0;
+    while((vectIter < (int)newStrVect1.size() || vectIter < (int)newStrVect2.size()) && writeIter < numberOutputLines){
+      
+      if(vectIter < (int)newStrVect1.size()){
+	outFile << newStrVect1.at(vectIter) << std::endl;
+
+	writeIter++;
+      }
+      
+      if(vectIter < (int)newStrVect2.size() && writeIter < numberOutputLines){
+	outFile << newStrVect2.at(vectIter) << std::endl;
+
+        writeIter++;
+      }
+      
+      vectIter++;
+    }
+  
+    outFile.close();
+  }
+  else{
+    std::cout << "Error making dir \'" << outDirFull << "\'. File \'" << tempOutName << "\' not written." << std::endl;
+  }
+
+  if(checkMakeDir(outDirTweet)){
+    std::ofstream outFileTweet(tempOutNameTweet.c_str(), std::ofstream::out | std::ofstream::trunc);
+    outFileTweet.close();
+
+    outFileTweet.open(tempOutNameTweet.c_str(), std::ios_base::app);
+
+    int vectIter = 0;
+    int writeIter = 0;
+    while((vectIter < (int)newStrVect1.size() || vectIter < (int)newStrVect2.size()) && writeIter < numberOutputLines){
+      if(vectIter < (int)newStrVect1.size()){
+
+	if((int)newStrVect1.at(vectIter).size() <= 140){
+	  outFileTweet << newStrVect1.at(vectIter) << std::endl;
+	  writeIter++;
+	}
+      }
+
+      if(vectIter < (int)newStrVect2.size() && writeIter < numberOutputLines){
+
+	if((int)newStrVect2.at(vectIter).size() <= 140){
+	  outFileTweet << newStrVect2.at(vectIter) << std::endl;
+	  writeIter++;
+	}
+      }
+
+      vectIter++;
+    }    
+
+    outFileTweet.close();
+  }
+  else{
+    std::cout << "Error making dir \'" << outDirTweet << "\'. File \'" << tempOutNameTweet << "\' not written." << std::endl;
+  }
+
+  return 0;
 }
 
 int main(int argc, char *argv[])

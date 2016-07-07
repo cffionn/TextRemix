@@ -122,7 +122,12 @@ int createSyllableSorted(const std::string inFileName, const bool doInteractiveR
     return 1;
   }
 
+  std::cout << "Sorting..." << std::endl;
+  int entryDiv = std::max((int)inStr_p->size()/20, 1);
+
   for(int iter = 0; iter < (int)inStr_p->size()-1; iter++){
+    if(iter%entryDiv == 0) std::cout << "Sorting " << iter << "/" << inStr_p->size() << std::endl;
+
     for(int iter2 = iter+1; iter2 < (int)inStr_p->size(); iter2++){
       if(inStrSyl_p->at(iter) < inStrSyl_p->at(iter2)){
 
@@ -147,6 +152,8 @@ int createSyllableSorted(const std::string inFileName, const bool doInteractiveR
   if(globalDoDebug) std::cout << __FILE__ << ", " << __LINE__ << std::endl;
 
   int subSortIter = 0;
+
+  std::cout << "Sub-sorting..." << std::endl;
 
   while(subSortIter < (int)(inStr_p->size())){
     int subSyl = inStrSyl_p->at(subSortIter);
@@ -208,6 +215,7 @@ int createSyllableSorted(const std::string inFileName, const bool doInteractiveR
     }
 
     subSortIter += subIterEnd;
+    std::cout << "Sub-sort (" << inStrSyl_p->at(subSortIter-1) << ") " << subSortIter << "/" << inStr_p->size() << std::endl;
   }
 
   if(globalDoDebug) std::cout << __FILE__ << ", " << __LINE__ << std::endl;
