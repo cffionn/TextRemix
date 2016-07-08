@@ -348,6 +348,31 @@ int runCreateNewIdioms(const std::string inFileName, const std::string inFileNam
   if(numberOutputLines > 0) newStrVect2.reserve(numberOutputLines);
   if(!sameFile) newStrVect2 = createNewIdioms(inFileName2, inFileName, numberOutputLines);
 
+  int eraseIter = 0;
+
+  while(eraseIter < (int)newStrVect1.size()){
+    std::string tempStr1 = newStrVect1.at(eraseIter);
+
+    int tempPos2 = -1;
+    for(int vect2Iter = 0; vect2Iter < (int)newStrVect2.size(); vect2Iter++){
+      if(tempStr1.size() == newStrVect2.at(vect2Iter).size() && newStrVect2.at(vect2Iter).find(tempStr1) != std::string::npos){
+	tempPos2 = vect2Iter;
+	break;
+      }
+    }
+
+    if(tempPos2 >= 0){
+      if(newStrVect1.size() > newStrVect2.size()){
+	newStrVect1.erase(newStrVect1.begin() + eraseIter);
+      }
+      else{
+	newStrVect2.erase(newStrVect2.begin() + tempPos2);
+	eraseIter++;
+      }
+    }
+    else eraseIter++;
+  }
+
   std::cout << newStrVect1.size() << ", " << newStrVect2.size() << std::endl;
 
   std::string tempOutName = outName;
@@ -397,6 +422,9 @@ int runCreateNewIdioms(const std::string inFileName, const std::string inFileNam
   else{
     std::cout << "Error making dir \'" << outDirFull << "\'. File \'" << tempOutName << "\' not written." << std::endl;
   }
+
+  std::random_shuffle(newStrVect1.begin(), newStrVect1.end(), myrandom);
+  std::random_shuffle(newStrVect2.begin(), newStrVect2.end(), myrandom);
 
   if(checkMakeDir(outDirTweet)){
     std::ofstream outFileTweet(tempOutNameTweet.c_str(), std::ofstream::out | std::ofstream::trunc);

@@ -38,6 +38,7 @@ aleppo
 allegiance
 allowance
 already
+altitude
 amaking
 amazement
 ambition
@@ -64,6 +65,7 @@ arguments
 arresto
 artery
 article
+articles
 assistant
 assurance
 astonish
@@ -95,7 +97,9 @@ beerbarrel
 befalln
 befitted
 behavior
+beloved
 benefit
+benetted
 berattle
 bernardo
 bestial
@@ -106,11 +110,14 @@ bicycle
 birthwherein
 blueberry
 bodiless
+bodykins
 boisterous
 borrower
+borrowing
 boulevard
 bounteous
 bravery
+brevity
 burial
 business
 butterflies
@@ -119,6 +126,7 @@ calendar
 calumny
 canary
 cannoneer
+canonized
 canopy
 capable
 capital
@@ -146,6 +154,7 @@ charybdis
 cheerfully
 chicago
 chronicles
+cicatrice
 circumcised
 circumscribed
 circumstance
@@ -167,6 +176,7 @@ commended
 commingled
 commission
 companies
+companions
 company
 competent
 complexion
@@ -215,11 +225,13 @@ courtiers
 covenant
 creation
 crocodile
+crowflowers
 crucifix
 cuckoobuds
 daintier
 dalliance
 dallying
+damnable
 damnation
 dangerous
 darkening
@@ -235,6 +247,7 @@ defeated
 defective
 definement
 dejected
+delated
 delicate
 deliver
 deliverd
@@ -246,6 +259,7 @@ descriptions
 desirous
 desperate
 destiny
+detecting
 determine
 devices
 devotions
@@ -263,6 +277,7 @@ disclaiming
 discomfort
 discovers
 discretion
+diseases
 dishonour
 dismantled
 distemper
@@ -273,6 +288,7 @@ distracted
 distraction
 divided
 divulging
+document
 dominions
 downgyved
 dreadfully
@@ -295,7 +311,9 @@ emphasis
 employment
 emptiness
 emulate
+enactures
 encounter
+encounterd
 encumberd
 endeavour
 enemies
@@ -308,11 +326,13 @@ entreated
 entreatments
 entreaty
 envenom
+envenomd
 envious
 epitaph
 eruption
 escoted
 especial
+espials
 eternal
 eterne
 evening
@@ -340,6 +360,7 @@ faculties
 faculty
 falconers
 fallingoff
+familiar
 families
 fantastic
 fantasy
@@ -362,10 +383,12 @@ forever
 forgeries
 forgery
 forgetting
+forgiveness
 forgotten
 fortified
 fortinbras
 francisco
+freefooted
 frowningly
 funeral
 gaingiving
@@ -413,6 +436,7 @@ horrible
 horridly
 horrorshe
 hourly
+howeer
 humourous
 husbandry
 hypocrite
@@ -437,6 +461,7 @@ importing
 importuned
 imposthume
 impotence
+impotent
 impression
 inclining
 incorrect
@@ -461,6 +486,7 @@ investments
 israel
 jealousy
 jigmaker
+johnadreams
 journeymen
 judicious
 julius
@@ -473,6 +499,7 @@ ladyship
 ladysmocks
 laertes
 languages
+lazarlike
 leperous
 liberal
 libertine
@@ -525,11 +552,14 @@ moderate
 modesties
 modesty
 monument
+moreover
 motionless
 mountebank
 multitude
 murderer
+murderous
 mutines
+mystery
 natural
 nebulae
 neglected
@@ -572,12 +602,14 @@ offenders
 offering
 officers
 offices
+olympus
 ominous
 ononly
 ontfrailty
 operant
 opinion
 opinions
+opposing
 opposite
 oppression
 oppressors
@@ -640,6 +672,7 @@ position
 possession
 possible
 potato
+potency
 potently
 practises
 precedent
@@ -662,6 +695,7 @@ profanely
 profession
 profoundest
 promisecrammed
+pronouncing
 property
 prophesy
 prophetic
@@ -669,6 +703,7 @@ proportions
 proposer
 provided
 providence
+provincial
 punishment
 purchases
 purgation
@@ -686,6 +721,7 @@ quietus
 quintessence
 radiant
 rapier
+ratified
 reaction
 readiness
 realizing
@@ -720,6 +756,7 @@ resemble
 resembles
 residence
 resolutes
+respeaking
 responsive
 retrograde
 returneth
@@ -728,6 +765,7 @@ revenue
 reverend
 reverted
 reynaldo
+rhapsody
 rhetoric
 riotous
 rodeo
@@ -737,6 +775,7 @@ royally
 salary
 salvation
 sanctified
+sanctuarize
 sandwiches
 sanity
 satisfied
@@ -748,6 +787,7 @@ secrecy
 seducewon
 selfslaughter
 semblable
+seneca
 sensible
 sepulchre
 serious
@@ -783,6 +823,7 @@ survivor
 swaddlingclouts
 swaggering
 tablebook
+tablesmeet
 tedious
 temperance
 tenable
@@ -793,6 +834,7 @@ testify
 theesomething
 thereabout
 thereunto
+thoroughly
 threatening
 together
 tomorrow
@@ -803,6 +845,7 @@ tragedy
 tragical
 traitorous
 transformer
+traveller
 treacherous
 treachery
 trippingly
@@ -811,6 +854,7 @@ truncheons
 turbulent
 twentieth
 tyrannous
+ubique
 ulcerous
 umbrella
 unbated
@@ -823,11 +867,13 @@ unfellowed
 ungarterd
 ungracious
 unholy
+unimproved
 universe
 unkennel
 unknowing
 unmanly
 unmasterd
+unpregnant
 unreclaimed
 unrighteous
 unshaken
@@ -869,6 +915,7 @@ warrantise
 waterfly
 wilfully
 willingly
+windlasses
 wintertime
 wittenberg
 wittingly
@@ -876,24 +923,3 @@ wonderful
 yeomans
 yesterday
 yesternight
-moreover
-tablesmeet
-altitude
-canonized
-familiar
-envenomd
-thoroughly
-bodykins
-brevity
-mystery
-provincial
-detecting
-traveller
-seneca
-borrowing
-opposing
-encounterd
-beloved
-document
-ubique
-pronouncing

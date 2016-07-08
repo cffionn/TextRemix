@@ -17,6 +17,7 @@ int createSyllableSorted(const std::string inFileName, const bool doInteractiveR
 {
   std::vector<std::string>* inStr_p = new std::vector<std::string>;
   std::vector<std::string>* lastWordStr_p = new std::vector<std::string>;
+  std::vector<int>* lastWordRhymePos_p = new std::vector<int>;
   std::vector<std::string>* lastWordRhymeStr_p = new std::vector<std::string>;
   std::vector<int>* inStrSyl_p = new std::vector<int>;
   std::string str;
@@ -92,6 +93,8 @@ int createSyllableSorted(const std::string inFileName, const bool doInteractiveR
 
     int rhymePos = getRhyme(str, &rhymeFileList, doInteractiveRhyme);
 
+    lastWordRhymePos_p->push_back(rhymePos);
+
     if(globalDoDebug) std::cout << __FILE__ << ", " << __LINE__ << std::endl;
 
     if(fillIter%10 == 0 || lineIter%(numberOfLines2/10) == 0){
@@ -135,16 +138,19 @@ int createSyllableSorted(const std::string inFileName, const bool doInteractiveR
 	std::string tempStr = inStr_p->at(iter);
 	std::string tempWordStr = lastWordStr_p->at(iter);
 	std::string tempWordRhymeStr = lastWordRhymeStr_p->at(iter);
+	int tempWordRhymePos = lastWordRhymePos_p->at(iter);
 
 	inStrSyl_p->at(iter) = inStrSyl_p->at(iter2);
 	inStr_p->at(iter) = inStr_p->at(iter2);
 	lastWordStr_p->at(iter) = lastWordStr_p->at(iter2);
 	lastWordRhymeStr_p->at(iter) = lastWordRhymeStr_p->at(iter2);
+	lastWordRhymePos_p->at(iter) = lastWordRhymePos_p->at(iter2);
 
 	inStrSyl_p->at(iter2) = tempSyl;
 	inStr_p->at(iter2) = tempStr;
 	lastWordStr_p->at(iter2) = tempWordStr;
 	lastWordRhymeStr_p->at(iter2) = tempWordRhymeStr;
+	lastWordRhymePos_p->at(iter2) = tempWordRhymePos;
       }
     }
   }
@@ -167,49 +173,31 @@ int createSyllableSorted(const std::string inFileName, const bool doInteractiveR
     for(int tempIter = subSortIter; tempIter < subSortIter+subIterEnd-1; tempIter++){
       for(int tempIter2 = tempIter+1; tempIter2 < subSortIter+subIterEnd; tempIter2++){
       
-	std::string tempWord1 = lastWordStr_p->at(tempIter);
-	std::string tempWord2 = lastWordStr_p->at(tempIter2);
+	int lead = 0;
 
-	int lead = -1;
-	int pos = 0;
-
-
-	int tempPos1 = getRhyme(tempWord1, &rhymeFileList, doInteractiveRhyme);
-	int tempPos2 = getRhyme(tempWord2, &rhymeFileList, doInteractiveRhyme);
+	int tempPos1 = lastWordRhymePos_p->at(tempIter);
+	int tempPos2 = lastWordRhymePos_p->at(tempIter2);
 
 	if(tempPos1 > tempPos2) lead = 1;
-	else if(tempPos1 < tempPos2) lead = 0;
-	else{
-	  while(lead == -1 && pos < (int)tempWord1.size() && pos < (int)tempWord2.size()){
-	    std::string tempChar1 = tempWord1.substr(pos, 1);
-	    std::string tempChar2 = tempWord2.substr(pos, 1);
-	    
-	    tempPos1 = alphabetSoup.find(tempChar1.c_str());
-	    tempPos2 = alphabetSoup.find(tempChar2.c_str());
-
-	    if(tempPos1 > tempPos2) lead = 1;
-	    else if(tempPos1 < tempPos2) lead = 0;
-	    else if(pos+1 == (int)tempWord1.size()) lead = 0;
-	    else if(pos+1 == (int)tempWord2.size()) lead = 1;  
-
-	    pos++;
-	  }
-	}
 
 	if(lead == 1){
 	  int tempSyl1 = inStrSyl_p->at(tempIter);
 	  std::string tempStr1 = inStr_p->at(tempIter);
+	  std::string tempWord1 = lastWordStr_p->at(tempIter);
 	  std::string tempRhymeStr1 = lastWordRhymeStr_p->at(tempIter);
+	  int tempRhymePos1 = lastWordRhymePos_p->at(tempIter);
 
 	  inStr_p->at(tempIter) = inStr_p->at(tempIter2);
 	  inStrSyl_p->at(tempIter) = inStrSyl_p->at(tempIter2);
 	  lastWordStr_p->at(tempIter) = lastWordStr_p->at(tempIter2);
 	  lastWordRhymeStr_p->at(tempIter) = lastWordRhymeStr_p->at(tempIter2);
+	  lastWordRhymePos_p->at(tempIter) = lastWordRhymePos_p->at(tempIter2);
 
 	  inStr_p->at(tempIter2) = tempStr1;
 	  inStrSyl_p->at(tempIter2) = tempSyl1;
 	  lastWordStr_p->at(tempIter2) = tempWord1;
 	  lastWordRhymeStr_p->at(tempIter2) = tempRhymeStr1;
+	  lastWordRhymePos_p->at(tempIter2) = tempRhymePos1;
 	}
       }
     }

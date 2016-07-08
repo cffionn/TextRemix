@@ -170,6 +170,7 @@ bore
 born
 borne
 bot
+botch
 both
 boughs
 bought
@@ -245,6 +246,7 @@ bunch
 bunk
 burn
 burns
+burnt
 burp
 burst
 bush
@@ -257,6 +259,7 @@ bye
 c
 cad
 cage
+cains
 cake
 calf
 call
@@ -344,6 +347,8 @@ clean
 clear
 cleat
 cleave
+cleft
+clepe
 click
 cliff
 climbed
@@ -366,6 +371,7 @@ cluck
 clue
 clump
 clutch
+coach
 coal
 coat
 cock
@@ -423,11 +429,13 @@ cross
 crow
 crown
 crowns
+crows
 cruel
 crust
 cry
 cud
 cue
+cuffs
 cup
 cups
 curb
@@ -448,6 +456,7 @@ damned
 dan
 dance
 dane
+danes
 dank
 dare
 dared
@@ -460,6 +469,7 @@ daws
 day
 days
 dead
+deal
 dealt
 dear
 dearth
@@ -546,6 +556,7 @@ drown
 drownd
 drowned
 drowns
+drugs
 drum
 drunk
 dry
@@ -554,6 +565,7 @@ due
 dug
 dukes
 dull
+dulls
 dumb
 dump
 dunk
@@ -741,6 +753,7 @@ from
 front
 frost
 frown
+frownd
 fruit
 fruits
 fry
@@ -774,6 +787,7 @@ gay
 gem
 gent
 get
+gets
 ghost
 ghosts
 gib
@@ -781,7 +795,9 @@ gibes
 gifts
 gill
 gin
+gins
 girl
+gis
 give
 gives
 glad
@@ -789,6 +805,7 @@ glance
 glares
 glass
 glean
+gleaned
 glee
 glen
 glide
@@ -849,6 +866,7 @@ grit
 groan
 groans
 groom
+groped
 gross
 ground
 grounds
@@ -858,6 +876,7 @@ grow
 grown
 grows
 grump
+grunt
 guard
 guards
 guess
@@ -887,6 +906,7 @@ hand
 hands
 hang
 hank
+hap
 haps
 hard
 hark
@@ -912,6 +932,7 @@ health
 hear
 heard
 hears
+hearsed
 heart
 hearts
 heat
@@ -958,6 +979,7 @@ ho
 hoar
 hock
 hog
+hoist
 hold
 holds
 holdst
@@ -989,6 +1011,7 @@ howled
 hoyle
 hue
 hug
+huge
 hum
 hump
 hung
@@ -1002,6 +1025,7 @@ i
 ice
 id
 if
+ild
 ill
 ills
 im
@@ -1081,10 +1105,12 @@ knife
 knight
 knit
 knock
+knocked
 knot
 know
 known
 knows
+knowst
 krill
 ku
 la
@@ -1130,6 +1156,7 @@ left
 leg
 legs
 lend
+lends
 length
 lent
 less
@@ -1222,6 +1249,7 @@ made
 maid
 maids
 mail
+maimed
 main
 make
 makes
@@ -1294,6 +1322,7 @@ mope
 more
 morn
 most
+mote
 mould
 moult
 mount
@@ -1302,6 +1331,7 @@ mournd
 mouse
 mouth
 mouthed
+mouths
 move
 moved
 moves
@@ -1425,6 +1455,7 @@ paw
 pay
 pays
 peace
+peak
 peal
 pearl
 peat
@@ -1510,6 +1541,7 @@ pour
 poured
 pours
 pout
+pox
 praise
 praised
 prank
@@ -1520,6 +1552,7 @@ prayed
 prayst
 prey
 price
+prick
 prickd
 pride
 priest
@@ -1681,6 +1714,7 @@ scale
 scam
 scan
 scannd
+scant
 scape
 scapes
 scar
@@ -1750,6 +1784,7 @@ shaped
 shapes
 shards
 share
+sharkd
 sharp
 she
 sheep
@@ -1760,6 +1795,7 @@ shell
 shells
 shent
 shes
+shift
 shin
 shine
 ship
@@ -1968,12 +2004,14 @@ spread
 spring
 springe
 springs
+sprung
 spun
 spunk
 spur
 spurns
 squall
 square
+squeak
 stack
 staff
 stage
@@ -2017,6 +2055,7 @@ still
 sting
 stink
 stir
+stirrd
 stoat
 stock
 stoke
@@ -2032,6 +2071,7 @@ stop
 stops
 store
 storm
+stoup
 stout
 stow
 straight
@@ -2055,6 +2095,7 @@ strife
 strike
 strikes
 string
+strings
 strip
 strive
 stroke
@@ -2236,6 +2277,7 @@ tore
 torn
 tot
 touch
+touchd
 tout
 tow
 town
@@ -2369,6 +2411,7 @@ weeds
 week
 weep
 weeps
+weigh
 weighd
 weight
 well
@@ -2522,30 +2565,3 @@ zip
 zone
 zoo
 zoom
-grunt
-gleaned
-burnt
-cleft
-botch
-groped
-hearsed
-hoist
-frownd
-knowst
-prick
-gins
-dulls
-mote
-gets
-knocked
-cuffs
-ild
-sprung
-cains
-sharkd
-lends
-squeak
-mouths
-touchd
-weigh
-shift
