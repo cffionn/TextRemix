@@ -30,13 +30,17 @@ int createSimplePoem(const std::string inFileName)
   std::vector<std::string>* fiveSyl_p = new std::vector<std::string>;
   std::vector<std::string>* sevenSyl_p = new std::vector<std::string>;
 
-  for(int iter = 0; iter < strSize; iter++){
-    std::string sentence1 = strVect_p->at(iter);
+  int strIter = 0;
+
+  while(strIter < strSize && ((int)fiveSyl_p->size() < 2 || (int)sevenSyl_p->size() < 1)){
+    std::string sentence1 = strVect_p->at(strIter);
         
     int syl = getSyllables(sentence1);
 
     if(syl == 5) fiveSyl_p->push_back(sentence1);
     else if(syl == 7) sevenSyl_p->push_back(sentence1);
+
+    strIter++;
   }
 
   if((int)fiveSyl_p->size() < 2){
