@@ -285,6 +285,7 @@ bolted
 bonnet
 bonny
 boogie
+borrowd
 bosom
 bother
 bottle
@@ -664,6 +665,7 @@ duties
 duty
 dwelling
 dying
+dyou
 eager
 earnest
 earthly
@@ -856,6 +858,7 @@ fretful
 fretted
 friending
 friendship
+frighted
 frigid
 frontier
 fruitful
@@ -2165,6 +2168,7 @@ unknown
 unless
 unmask
 unmatchd
+unmixd
 unnerved
 unpack
 unpeg
@@ -2343,6 +2347,3 @@ younger
 yourself
 yourselves
 youwhy
-frighted
-unmixd
-borrowd

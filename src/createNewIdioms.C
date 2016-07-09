@@ -400,7 +400,7 @@ int runCreateNewIdioms(const std::string inFileName, const std::string inFileNam
 
     int vectIter = 0;
     int writeIter = 0;
-    while((vectIter < (int)newStrVect1.size() || vectIter < (int)newStrVect2.size()) && writeIter < numberOutputLines){
+    while((vectIter < (int)newStrVect1.size() || vectIter < (int)newStrVect2.size()) && (writeIter < numberOutputLines || numberOutputLines < 0)){
       
       if(vectIter < (int)newStrVect1.size()){
 	outFile << newStrVect1.at(vectIter) << std::endl;
@@ -408,7 +408,7 @@ int runCreateNewIdioms(const std::string inFileName, const std::string inFileNam
 	writeIter++;
       }
       
-      if(vectIter < (int)newStrVect2.size() && writeIter < numberOutputLines){
+      if(vectIter < (int)newStrVect2.size() && (writeIter < numberOutputLines || numberOutputLines < 0)){
 	outFile << newStrVect2.at(vectIter) << std::endl;
 
         writeIter++;
@@ -434,7 +434,7 @@ int runCreateNewIdioms(const std::string inFileName, const std::string inFileNam
 
     int vectIter = 0;
     int writeIter = 0;
-    while((vectIter < (int)newStrVect1.size() || vectIter < (int)newStrVect2.size()) && writeIter < numberOutputLines){
+    while((vectIter < (int)newStrVect1.size() || vectIter < (int)newStrVect2.size()) && (writeIter < numberOutputLines || numberOutputLines < 0)){
       if(vectIter < (int)newStrVect1.size()){
 
 	if((int)newStrVect1.at(vectIter).size() <= 140){
@@ -443,7 +443,7 @@ int runCreateNewIdioms(const std::string inFileName, const std::string inFileNam
 	}
       }
 
-      if(vectIter < (int)newStrVect2.size() && writeIter < numberOutputLines){
+      if(vectIter < (int)newStrVect2.size() && (writeIter < numberOutputLines || numberOutputLines < 0)){
 
 	if((int)newStrVect2.at(vectIter).size() <= 140){
 	  outFileTweet << newStrVect2.at(vectIter) << std::endl;

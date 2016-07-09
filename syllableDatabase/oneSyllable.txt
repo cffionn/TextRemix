@@ -1787,6 +1787,7 @@ share
 sharkd
 sharp
 she
+sheen
 sheep
 sheet
 sheets
@@ -2565,4 +2566,3 @@ zip
 zone
 zoo
 zoom
-sheen
