@@ -20,14 +20,14 @@ const std::string outDirTweet = "outputTweet/";
 int myrandom(int i){return std::rand()%i;}
 
 
-bool isStringInVect(std::string inStr, std::vector<std::string>* inVect_p)
+bool isStringInVect(std::string inStr, std::vector<std::string>* inVect_p, bool exactInVect)
 {
   bool isInVect = false;
 
   const int vectSize = (int)inVect_p->size();
 
   for(int iter = 0; iter < vectSize; iter++){
-    if(inVect_p->at(iter).size() == inStr.size() && inVect_p->at(iter).find(inStr) != std::string::npos){
+    if((inVect_p->at(iter).size() == inStr.size() || !exactInVect) && inVect_p->at(iter).find(inStr) != std::string::npos){
       isInVect = true;
       break;
     }
@@ -36,7 +36,7 @@ bool isStringInVect(std::string inStr, std::vector<std::string>* inVect_p)
   return isInVect;
 }
 
-std::vector<std::string> createNewIdioms(const std::string inFileName, const std::string inFileName2, const int numberOutputLines = -1)
+std::vector<std::string> createNewIdioms(const std::string inFileName, const std::string inFileName2, bool comboClause, const int numberOutputLines = -1)
 {
   std::vector<std::string> returnVectorOfStrings;
 
@@ -94,6 +94,89 @@ std::vector<std::string> createNewIdioms(const std::string inFileName, const std
   if(inStr2_p->size() == 0){
     std::cout << "Input file 2 empty. return empty vector" << std::endl;
     return returnVectorOfStrings;
+  }
+
+  //editing at combo clause 
+  if(comboClause){
+    unsigned int tempStringPos = 0;
+    
+    while(tempStringPos < inStr1_p->size()-1){
+      std::string string1 = inStr1_p->at(tempStringPos);
+
+      std::size_t commaPos = string1.find(",");
+      std::size_t dotPos = string1.find(".");
+
+      if(commaPos != std::string::npos && commaPos != string1.size()-1){
+	std::string tempString1 = string1.substr(0, commaPos+1);
+	std::string tempString2 = string1.substr(commaPos+1, string1.size()-commaPos-1);
+
+	inStr1_p->at(tempStringPos) = tempString1;
+	inStr1_p->insert(inStr1_p->begin() + tempStringPos + 1, tempString2);
+      }
+      else if(dotPos != std::string::npos && dotPos != string1.size()-1){
+	std::string tempString1 = string1.substr(0, dotPos+1);
+	std::string tempString2 = string1.substr(dotPos+1, string1.size()-dotPos-1);
+
+	inStr1_p->at(tempStringPos) = tempString1;
+	inStr1_p->insert(inStr1_p->begin() + tempStringPos + 1, tempString2);
+      }
+      else if(commaPos == std::string::npos && dotPos == std::string::npos){
+	std::string insertString = inStr1_p->at(tempStringPos) + " " + inStr1_p->at(tempStringPos+1);
+	while(insertString.find("  ") != std::string::npos){
+	  insertString.replace(insertString.find("  "), 2, " ");
+	}
+
+	inStr1_p->at(tempStringPos) = insertString;
+	inStr1_p->erase(inStr1_p->begin()+tempStringPos+1);
+      }
+      else tempStringPos++;
+    }
+
+    for(unsigned int spaceIter = 0; spaceIter < inStr1_p->size(); spaceIter++){
+      while(inStr1_p->at(spaceIter).substr(0, 1).find(" ") != std::string::npos){
+	inStr1_p->at(spaceIter) = inStr1_p->at(spaceIter).substr(1, inStr1_p->at(spaceIter).size()-1);
+      }      
+    }
+
+    tempStringPos = 0;
+
+    while(tempStringPos < inStr2_p->size()-1){
+      std::string string1 = inStr2_p->at(tempStringPos);
+
+      std::size_t commaPos = string1.find(",");
+      std::size_t dotPos = string1.find(".");
+
+      if(commaPos != std::string::npos && commaPos != string1.size()-1){
+	std::string tempString1 = string1.substr(0, commaPos+1);
+	std::string tempString2 = string1.substr(commaPos+1, string1.size()-commaPos-1);
+
+	inStr2_p->at(tempStringPos) = tempString1;
+	inStr2_p->insert(inStr2_p->begin() + tempStringPos + 1, tempString2);
+      }
+      else if(dotPos != std::string::npos && dotPos != string1.size()-1){
+	std::string tempString1 = string1.substr(0, dotPos+1);
+	std::string tempString2 = string1.substr(dotPos+1, string1.size()-dotPos-1);
+
+	inStr2_p->at(tempStringPos) = tempString1;
+	inStr2_p->insert(inStr2_p->begin() + tempStringPos + 1, tempString2);
+      }
+      else if(commaPos == std::string::npos && dotPos == std::string::npos){
+	std::string insertString = inStr2_p->at(tempStringPos) + " " + inStr2_p->at(tempStringPos+1);
+	while(insertString.find("  ") != std::string::npos){
+	  insertString.replace(insertString.find("  "), 2, " ");
+	}
+
+	inStr2_p->at(tempStringPos) = insertString;
+	inStr2_p->erase(inStr2_p->begin()+tempStringPos+1);
+      }
+      else tempStringPos++;
+    }
+
+    for(unsigned int spaceIter = 0; spaceIter < inStr2_p->size(); spaceIter++){
+      while(inStr2_p->at(spaceIter).substr(0, 1).find(" ") != std::string::npos){
+	inStr2_p->at(spaceIter) = inStr2_p->at(spaceIter).substr(1, inStr2_p->at(spaceIter).size()-1);
+      }
+    }
   }
 
   std::srand(unsigned(std::time(NULL)));
@@ -190,10 +273,11 @@ std::vector<std::string> createNewIdioms(const std::string inFileName, const std
 	  std::size_t pos2 = inStr2_p->at(iter2).find(inStr1Words_p->at(wordIter).c_str());
 
 	  std::string newStr = inStr1_p->at(iter).substr(0, pos1) + inStr2_p->at(iter2).substr(pos2, inStr2_p->size() - pos2);
-	  bool isUsedStr = isStringInVect(newStr, newStr_p);
-	  if(!isUsedStr) isUsedStr = isStringInVect(newStr, inStr1_p);
-	  if(!isUsedStr) isUsedStr = isStringInVect(newStr, inStr2_p);
-	  if(!isUsedStr) isUsedStr = isStringInVect(newStr, totalWords_p);
+
+	  bool isUsedStr = isStringInVect(newStr, newStr_p, true);
+	  if(!isUsedStr) isUsedStr = isStringInVect(newStr, inStr1_p, false);
+	  if(!isUsedStr) isUsedStr = isStringInVect(newStr, inStr2_p, false);
+	  if(!isUsedStr) isUsedStr = isStringInVect(newStr, totalWords_p, true);
 
 	  if(!isUsedStr){
 	    std::vector<std::string>* wordsInNewStr_p = new std::vector<std::string>;
@@ -274,7 +358,7 @@ std::vector<std::string> createNewIdioms(const std::string inFileName, const std
   return returnVectorOfStrings;
 }
 
-int runCreateNewIdioms(const std::string inFileName, const std::string inFileName2, int numberOutputLines)
+int runCreateNewIdioms(const std::string inFileName, const std::string inFileName2, bool comboClause, int numberOutputLines)
 {
   std::string outName;
 
@@ -342,11 +426,11 @@ int runCreateNewIdioms(const std::string inFileName, const std::string inFileNam
 
   std::vector<std::string> newStrVect1;
   if(numberOutputLines > 0) newStrVect1.reserve(numberOutputLines);
-  newStrVect1 = createNewIdioms(inFileName, inFileName2, numberOutputLines);
+  newStrVect1 = createNewIdioms(inFileName, inFileName2, comboClause, numberOutputLines);
 
   std::vector<std::string> newStrVect2;
   if(numberOutputLines > 0) newStrVect2.reserve(numberOutputLines);
-  if(!sameFile) newStrVect2 = createNewIdioms(inFileName2, inFileName, numberOutputLines);
+  if(!sameFile) newStrVect2 = createNewIdioms(inFileName2, inFileName, comboClause, numberOutputLines);
 
   int eraseIter = 0;
 
@@ -465,8 +549,8 @@ int runCreateNewIdioms(const std::string inFileName, const std::string inFileNam
 
 int main(int argc, char *argv[])
 {
-  if(argc != 4){
-    std::cout << "Usage: createNewIdioms.exe <inputFile> <inputFile2> <numberOfOutputLines, -1 if max>" << std::endl;
+  if(argc != 5){
+    std::cout << "Usage: createNewIdioms.exe <inputFile> <inputFile2> <comboClause> <numberOfOutputLines, -1 if max>" << std::endl;
     std::cout << "Number of args given: " << argc << std::endl;
     for(int iter = 0; iter < argc; iter++){
       std::cout << "  argv[" << iter << "]: " << argv[iter] << std::endl;
@@ -477,11 +561,19 @@ int main(int argc, char *argv[])
   std::string arg3 = argv[3];
   if(arg3.size() > 1 && arg3.substr(0,1).find("-") != std::string::npos) arg3 = arg3.substr(1, arg3.size()-1);
 
+  std::string arg4 = argv[4];
+  if(arg4.size() > 1 && arg4.substr(0,1).find("-") != std::string::npos) arg4 = arg4.substr(1, arg4.size()-1);
+
   if(!isAllNumber(arg3)){
     std::cout << "Arg 3 \'" << arg3 << "\' is not a number. Please give number of desired output lines (-1 if max)" << std::endl;
   }
 
-  int result = runCreateNewIdioms(argv[1], argv[2], std::stoi(argv[3]));
+
+  if(!isAllNumber(arg4)){
+    std::cout << "Arg 4 \'" << arg4 << "\' is not a number. Please give number of desired output lines (-1 if max)" << std::endl;
+  }
+
+  int result = runCreateNewIdioms(argv[1], argv[2], std::stoi(argv[3]), std::stoi(argv[4]));
 
   return result;
 }

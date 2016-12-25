@@ -2,10 +2,10 @@ TextRemix="TextRemix"
 path=$(PWD)
 
 CXX = g++  
-CXXFLAGS = -Wall -O2 -Werror -Wextra -Wno-unused-local-typedefs
+CXXFLAGS = -Wall -O2 -Werror -Wextra -Wno-unused-local-typedefs -std=c++11
 GCCVERSION := $(shell expr `gcc -dumpversion | cut -f1 -d.` \>= 6)
 ifeq "$(GCCVERSION)" "1"
-  CXXFLAGS += -Wno-error=misleading-indentation
+  CXXFLAGS += -Wno-error=misleading-indentation 
 endif
 
 INCLUDE = -I /opt/local/include -I $(path)

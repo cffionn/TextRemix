@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <ctime>
+#include <algorithm>
 
 #include "include/globalDoDebug.h"
 #include "include/checkOutputTxtFile.h"
